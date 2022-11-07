@@ -11,3 +11,4 @@ declare namespace App {
 }
 
 declare module 'p2pcf';
+declare module '@douganderson444/tiny-browser-connect';
