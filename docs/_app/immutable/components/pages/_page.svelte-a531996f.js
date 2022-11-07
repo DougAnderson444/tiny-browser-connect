@@ -207,7 +207,7 @@ function create_fragment$1(ctx) {
 }
 function handleMsg(peer, msg) {
   console.log("Peer msg", peer.id, peer, msg);
-  addMessage(peer.id.substring(0, 5) + ": " + new TextDecoder("utf-8").decode(data));
+  addMessage(peer.id.substring(0, 5) + ": " + new TextDecoder("utf-8").decode(msg));
 }
 function addMessage(message) {
   const messageEl = document.createElement("div");
@@ -215,7 +215,12 @@ function addMessage(message) {
   document.getElementById("messages").appendChild(messageEl);
 }
 function instance($$self) {
-  const myWorker = {};
+  const myWorker = {
+    workerUrl: "https://p2pcf.douganderson444.workers.dev/",
+    stateHeartbeatWindowMs: 6e4,
+    fastPollingRateMs: 1e3,
+    slowPollingRateMs: 5e3
+  };
   let P2PCF;
   let stream;
   const removePeerUi = (clientId) => {
@@ -332,4 +337,4 @@ class Page extends SvelteComponent {
 export {
   Page as default
 };
-//# sourceMappingURL=_page.svelte-24b6c850.js.map
+//# sourceMappingURL=_page.svelte-a531996f.js.map

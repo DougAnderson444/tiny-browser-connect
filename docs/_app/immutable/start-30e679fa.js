@@ -1,5 +1,5 @@
 import { S as SvelteComponent, i as init, s as safe_not_equal, a as space, e as empty, c as claim_space, b as insert_hydration, g as group_outros, t as transition_out, d as check_outros, f as transition_in, h as detach, j as afterUpdate, o as onMount, k as element, l as claim_element, m as children, n as attr, p as set_style, q as text, r as claim_text, u as set_data, v as create_component, w as claim_component, x as mount_component, y as destroy_component, z as tick } from "./chunks/index-2b05990c.js";
-import { g as get_base_uri, f as find_anchor, s as stores, a as scroll_state, b as set_paths, i as init$1 } from "./chunks/singletons-a89fff20.js";
+import { g as get_base_uri, f as find_anchor, s as stores, a as scroll_state, b as set_paths, i as init$1 } from "./chunks/singletons-db33a9b0.js";
 import { _ as __vitePreload } from "./chunks/preload-helper-b21cceae.js";
 function normalize_path(path, trailing_slash) {
   if (path === "/" || trailing_slash === "ignore")
@@ -691,8 +691,8 @@ class Root extends SvelteComponent {
 const matchers = {};
 const nodes = [
   () => __vitePreload(() => import("./chunks/0-c742a754.js"), true ? ["./chunks\\0-c742a754.js","./chunks\\_layout-8d2a742b.js","./components\\pages\\_layout.svelte-4f49aead.js","./chunks\\index-2b05990c.js","./assets\\_layout-52470aa5.css"] : void 0, import.meta.url),
-  () => __vitePreload(() => import("./chunks/1-c9d236df.js"), true ? ["./chunks\\1-c9d236df.js","./components\\error.svelte-248ee7ea.js","./chunks\\index-2b05990c.js","./chunks\\singletons-a89fff20.js"] : void 0, import.meta.url),
-  () => __vitePreload(() => import("./chunks/2-9ccb30c6.js"), true ? ["./chunks\\2-9ccb30c6.js","./components\\pages\\_page.svelte-24b6c850.js","./chunks\\index-2b05990c.js","./chunks\\preload-helper-b21cceae.js"] : void 0, import.meta.url)
+  () => __vitePreload(() => import("./chunks/1-fd9c6c21.js"), true ? ["./chunks\\1-fd9c6c21.js","./components\\error.svelte-eb8f1694.js","./chunks\\index-2b05990c.js","./chunks\\singletons-db33a9b0.js"] : void 0, import.meta.url),
+  () => __vitePreload(() => import("./chunks/2-fcd51282.js"), true ? ["./chunks\\2-fcd51282.js","./components\\pages\\_page.svelte-a531996f.js","./chunks\\index-2b05990c.js","./chunks\\preload-helper-b21cceae.js"] : void 0, import.meta.url)
 ];
 const server_loads = [];
 const dictionary = {
@@ -1966,4 +1966,4 @@ async function start({ env, hydrate, paths, target, trailing_slash }) {
 export {
   start
 };
-//# sourceMappingURL=start-0a352c21.js.map
+//# sourceMappingURL=start-30e679fa.js.map
