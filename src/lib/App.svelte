@@ -5,7 +5,12 @@
 
 	import Button from './atomic/Button.svelte';
 
-	const myWorker = {}; // { workerUrl: 'https://p2pcf.douganderson444.workers.dev/' };
+	const myWorker = {
+		workerUrl: 'https://p2pcf.douganderson444.workers.dev/',
+		stateHeartbeatWindowMs: 60000, // 1 minutes
+		fastPollingRateMs: 1000, // 1 second
+		slowPollingRateMs: 5000 // 5 seconds
+	};
 
 	let P2PCF;
 	let stream;
@@ -87,7 +92,7 @@
 
 	function handleMsg(peer, msg) {
 		console.log('Peer msg', peer.id, peer, msg);
-		addMessage(peer.id.substring(0, 5) + ': ' + new TextDecoder('utf-8').decode(data));
+		addMessage(peer.id.substring(0, 5) + ': ' + new TextDecoder('utf-8').decode(msg));
 	}
 
 	function addMessage(message) {
