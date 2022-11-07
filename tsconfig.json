@@ -12,7 +12,9 @@
 		"moduleResolution": "NodeNext",
 		"paths": {
 			"$lib": ["src/lib"],
-			"$lib/*": ["src/lib/*"]
+			"$lib/*": ["src/lib/*"],
+			"@douganderson444/tiny-browser-connect": ["src/lib"],
+			"@douganderson444/tiny-browser-connect/*": ["src/lib/*"]
 		}
 	}
 }
