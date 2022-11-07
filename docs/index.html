@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="/tiny-browser-connect/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta http-equiv="content-security-policy" content="">
+		<link href="/tiny-browser-connect/_app/immutable/assets/_layout-52470aa5.css" rel="stylesheet">
+		<link rel="modulepreload" href="/tiny-browser-connect/_app/immutable/start-0a352c21.js">
+		<link rel="modulepreload" href="/tiny-browser-connect/_app/immutable/chunks/index-2b05990c.js">
+		<link rel="modulepreload" href="/tiny-browser-connect/_app/immutable/chunks/singletons-a89fff20.js">
+		<link rel="modulepreload" href="/tiny-browser-connect/_app/immutable/chunks/preload-helper-b21cceae.js">
+		<link rel="modulepreload" href="/tiny-browser-connect/_app/immutable/components/pages/_layout.svelte-4f49aead.js">
+		<link rel="modulepreload" href="/tiny-browser-connect/_app/immutable/modules/pages/_layout.js-7b9cbfbc.js">
+		<link rel="modulepreload" href="/tiny-browser-connect/_app/immutable/chunks/_layout-8d2a742b.js">
+		<link rel="modulepreload" href="/tiny-browser-connect/_app/immutable/components/pages/_page.svelte-24b6c850.js">
+	</head>
+	<body>
+		<div>
+
+
+<main class="p-4"><h3 class="pt-2 m-0" style="padding-top: 8px; margin: 0;">P2PCF example</h3>
+	<h6 style="padding-top: 8px; padding-bottom: 24px; margin: 0;">Share this URL to connect via P2PCF + WebRTC
+	</h6>
+
+	<div style="display: flex; flex-direction: row;"><div style="display: flex; flex-direction: column; min-width: 200px;">Peers:
+			<div id="peers" style="display: flex; flex-direction: column;"></div></div>
+		<div style="display: flex; flex-direction: column;">Messages:
+			<div id="messages" style="display: flex; flex-direction: column;"></div></div></div>
+	<div id="videos" style="display: flex; flex-direction: row;"></div>
+	<div style="padding-top: 24px; display: flex; flex-direction: row;"><div style="padding-right: 4px; " id="session-id"></div>
+		<form onsubmit="return false;"><input class="border" id="send-box" type="text">
+			<button class="border p-2 rounded bg-neutral-200" type="submit" id="send-button">Send</button></form></div>
+	<button class="border w-24 bg-neutral-200 p-2 rounded" style="width: 100px;" type="submit" id="video-button">Enable Video</button></main>
+
+
+
+
+		<script type="module" data-sveltekit-hydrate="17gjcs8">
+			import { start } from "/tiny-browser-connect/_app/immutable/start-0a352c21.js";
+
+			start({
+				env: {},
+				hydrate: {
+					status: 200,
+					error: null,
+					node_ids: [0, 2],
+					params: {},
+					route: {"id":"/"},
+					data: [null,null],
+					form: null
+				},
+				paths: {"base":"/tiny-browser-connect","assets":"/tiny-browser-connect"},
+				target: document.querySelector('[data-sveltekit-hydrate="17gjcs8"]').parentNode,
+				trailing_slash: "never"
+			});
+		</script>
+	</div>
+	</body>
+</html>
