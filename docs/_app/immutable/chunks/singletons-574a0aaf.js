@@ -1,4 +1,4 @@
-import { A as noop, s as safe_not_equal } from "./index-2b05990c.js";
+import { A as noop, s as safe_not_equal } from "./index-19948bc8.js";
 const subscriber_queue = [];
 function writable(value, start = noop) {
   let stop;
@@ -134,7 +134,7 @@ function create_updated_store() {
     });
     if (res.ok) {
       const { version } = await res.json();
-      const updated = version !== "1667854661919";
+      const updated = version !== "1667942283498";
       if (updated) {
         set(true);
         clearTimeout(timeout);
@@ -166,4 +166,4 @@ export {
   init as i,
   stores as s
 };
-//# sourceMappingURL=singletons-db33a9b0.js.map
+//# sourceMappingURL=singletons-574a0aaf.js.map

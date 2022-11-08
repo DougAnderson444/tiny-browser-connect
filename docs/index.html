@@ -5,40 +5,39 @@
 		<link rel="icon" href="/tiny-browser-connect/favicon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta http-equiv="content-security-policy" content="">
-		<link href="/tiny-browser-connect/_app/immutable/assets/_layout-52470aa5.css" rel="stylesheet">
-		<link rel="modulepreload" href="/tiny-browser-connect/_app/immutable/start-30e679fa.js">
-		<link rel="modulepreload" href="/tiny-browser-connect/_app/immutable/chunks/index-2b05990c.js">
-		<link rel="modulepreload" href="/tiny-browser-connect/_app/immutable/chunks/singletons-db33a9b0.js">
+		<link href="/tiny-browser-connect/_app/immutable/assets/_layout-536c3b5f.css" rel="stylesheet">
+		<link href="/tiny-browser-connect/_app/immutable/assets/index-da57bcef.css" rel="stylesheet">
+		<link rel="modulepreload" href="/tiny-browser-connect/_app/immutable/start-f2c2dd5e.js">
+		<link rel="modulepreload" href="/tiny-browser-connect/_app/immutable/chunks/index-19948bc8.js">
+		<link rel="modulepreload" href="/tiny-browser-connect/_app/immutable/chunks/singletons-574a0aaf.js">
 		<link rel="modulepreload" href="/tiny-browser-connect/_app/immutable/chunks/preload-helper-b21cceae.js">
-		<link rel="modulepreload" href="/tiny-browser-connect/_app/immutable/components/pages/_layout.svelte-4f49aead.js">
+		<link rel="modulepreload" href="/tiny-browser-connect/_app/immutable/components/pages/_layout.svelte-91e65102.js">
 		<link rel="modulepreload" href="/tiny-browser-connect/_app/immutable/modules/pages/_layout.js-7b9cbfbc.js">
 		<link rel="modulepreload" href="/tiny-browser-connect/_app/immutable/chunks/_layout-8d2a742b.js">
-		<link rel="modulepreload" href="/tiny-browser-connect/_app/immutable/components/pages/_page.svelte-a531996f.js">
+		<link rel="modulepreload" href="/tiny-browser-connect/_app/immutable/components/pages/_page.svelte-38214ab0.js">
+		<link rel="modulepreload" href="/tiny-browser-connect/_app/immutable/chunks/_page-6eedf73c.js">
 	</head>
 	<body>
 		<div>
 
 
-<main class="p-4"><h3 class="pt-2 m-0" style="padding-top: 8px; margin: 0;">P2PCF example</h3>
-	<h6 style="padding-top: 8px; padding-bottom: 24px; margin: 0;">Share this URL to connect via P2PCF + WebRTC
-	</h6>
-
-	<div style="display: flex; flex-direction: row;"><div style="display: flex; flex-direction: column; min-width: 200px;">Peers:
-			<div id="peers" style="display: flex; flex-direction: column;"></div></div>
-		<div style="display: flex; flex-direction: column;">Messages:
-			<div id="messages" style="display: flex; flex-direction: column;"></div></div></div>
-	<div id="videos" style="display: flex; flex-direction: row;"></div>
-	<div style="padding-top: 24px; display: flex; flex-direction: row;"><div style="padding-right: 4px; " id="session-id"></div>
-		<form onsubmit="return false;"><input class="border" id="send-box" type="text">
-			<button class="border p-2 rounded bg-neutral-200" type="submit" id="send-button">Send</button></form></div>
-	<button class="border w-24 bg-neutral-200 p-2 rounded" style="width: 100px;" type="submit" id="video-button">Enable Video</button></main>
 
 
 
+<div class="flex flex-row h-screen"><section class="flex flex-col bg-neutral-100 h-full w-1/3 break-words break-all justify-left"><div class="flex flex-col items-left">My Stuff
+		</div>
+	<div class="flex flex-col items-left">My Contacts</div>
+	<div class="flex flex-col items-left">Online</div></section>
+	<div class="flex-1 bg-neutral-700 text-neutral-200">
 
 
-		<script type="module" data-sveltekit-hydrate="19epn0y">
-			import { start } from "/tiny-browser-connect/_app/immutable/start-30e679fa.js";
+
+<div class="m-4 p-4">Showing roots
+		<div class="font-mono text-xs overflow-auto"></div></div></div></div>
+
+
+		<script type="module" data-sveltekit-hydrate="biaxsn">
+			import { start } from "/tiny-browser-connect/_app/immutable/start-f2c2dd5e.js";
 
 			start({
 				env: {},
@@ -52,7 +51,7 @@
 					form: null
 				},
 				paths: {"base":"/tiny-browser-connect","assets":"/tiny-browser-connect"},
-				target: document.querySelector('[data-sveltekit-hydrate="19epn0y"]').parentNode,
+				target: document.querySelector('[data-sveltekit-hydrate="biaxsn"]').parentNode,
 				trailing_slash: "never"
 			});
 		</script>
