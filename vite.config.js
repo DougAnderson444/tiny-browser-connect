@@ -23,7 +23,8 @@ const config = {
 		minimize: false
 	},
 	optimizeDeps: {
-		include: ['immortal-db', 'p2pcf']
+		include: ['immortal-db', 'p2pcf'],
+		force: true
 	}
 };
 
