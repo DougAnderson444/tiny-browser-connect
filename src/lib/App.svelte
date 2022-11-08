@@ -16,23 +16,24 @@
 	let stream;
 	let username, publicKey, room;
 
-	let sessionId;
+	let peerId;
+	let video;
 
-	const removePeerUi = (clientId) => {
-		document.getElementById(clientId)?.remove();
-		document.getElementById(`${clientId}-video`)?.remove();
+	const removePeerUi = (peerId) => {
+		document.getElementById(peerId)?.remove();
+		document.getElementById(`${peerId}-video`)?.remove();
 	};
 
-	const addPeerUi = (sessionId) => {
-		if (document.getElementById(sessionId)) return;
+	const addPeerUi = (peerId) => {
+		if (document.getElementById(peerId)) return;
 
 		const peerEl = document.createElement('div');
 		peerEl.style = 'display: flex;';
 
 		const name = document.createElement('div');
-		name.innerText = sessionId.substring(0, 5);
+		name.innerText = peerId.substring(0, 5);
 
-		peerEl.id = sessionId;
+		peerEl.id = peerId;
 		peerEl.appendChild(name);
 
 		document.getElementById('peers').appendChild(peerEl);
@@ -57,7 +58,7 @@
 		});
 
 		document.getElementById('video-button').addEventListener('click', async () => {
-			stream = await navigator.mediaDevices.getUserMedia({ video: true });
+			stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
 
 			for (const peer of p2pcf.peers.values()) {
 				peer.addStream(stream);
@@ -68,30 +69,44 @@
 	});
 
 	function handleConnect(peer) {
-		console.log('Peer connect', peer.id, peer);
+		console.log(
+			'Peer connect',
+			peer.id
+			// peer
+		);
 		if (stream) {
 			peer.addStream(stream);
 		}
 
 		peer.on('track', (track, stream) => {
 			console.log('got track', track);
-			const video = document.createElement('video');
+			video = document.createElement('video');
 			video.id = `${peer.id}-video`;
 			video.srcObject = stream;
 			video.setAttribute('playsinline', true);
 			document.getElementById('videos').appendChild(video);
+			video.muted = true;
 			video.play();
 		});
 
 		addPeerUi(peer.id);
 	}
 	function handleClose(peer) {
-		console.log('Peer close', peer.id, peer);
+		console.log(
+			'Peer close',
+			peer.id
+			// peer
+		);
 		removePeerUi(peer.id);
 	}
 
 	function handleMsg(peer, msg) {
-		console.log('Peer msg', peer.id, peer, msg);
+		console.log(
+			'Peer msg',
+			peer.id
+			// msg
+			// peer,
+		);
 		addMessage(peer.id.substring(0, 5) + ': ' + new TextDecoder('utf-8').decode(msg));
 	}
 
@@ -121,16 +136,20 @@
 	</h6>
 
 	<div style="display: flex; flex-direction: row;">
-		<div style="display: flex; flex-direction: column; min-width: 200px;">
+		<div
+			class="border shadow rounded-lg p-4 m-2"
+			style="display: flex; flex-direction: column; min-width: 200px;"
+		>
 			Peers:
 			<div id="peers" style="display: flex; flex-direction: column;" />
 		</div>
-		<div style="display: flex; flex-direction: column;">
+		<div class="border shadow rounded-lg p-4 m-2" style="display: flex; flex-direction: column;">
 			Messages:
 			<div id="messages" style="display: flex; flex-direction: column;" />
 		</div>
 	</div>
 	<div id="videos" style="display: flex; flex-direction: row;" />
+	<div class="bg-neutral-200 rounded-lg shadow" on:click={(e) => (video.muted = false)}>Unmute</div>
 	<div style="padding-top: 24px; display: flex; flex-direction: row;">
 		<div style="padding-right: 4px; " id="session-id" />
 		<form onsubmit="return false;">

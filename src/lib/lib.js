@@ -1,97 +1,62 @@
-import P2PCF from './p2pcf.js';
+/**
+ * Must be imported in the browser env due to webrtc
+ */
+import P2PCF from 'p2pcf';
+import { createDagRepo } from '@douganderson444/ipld-car-txs';
+import contactCard from './Apps/ContactCard.svelte.js?raw';
 
-if (!document.location.hash) {
-	document.location =
-		document.location.toString() + `#room-example-${Math.floor(Math.random() * 100000)}`;
-}
+let dag;
+let p2pcf;
 
-const p2pcf = new P2PCF(
-	'user-' + Math.floor(Math.random() * 100000),
-	document.location.hash.substring(1)
-);
-window.p2pcf = p2pcf;
-
-const removePeerUi = (clientId) => {
-	document.getElementById(clientId)?.remove();
-	document.getElementById(`${clientId}-video`)?.remove();
+const defaultOptions = {
+	stateHeartbeatWindowMs: 90000, // 1.5 minutes
+	fastPollingRateMs: 1000, // 1 second
+	slowPollingRateMs: 60000, // 5 seconds
+	workerUrl: 'https://p2pcf.douganderson444.workers.dev'
 };
 
-const addPeerUi = (sessionId) => {
-	if (document.getElementById(sessionId)) return;
+export const connect = ({
+	username = 'user-' + Math.floor(Math.random() * 100000),
+	topic = 'peerpiper',
+	options = defaultOptions,
+	handleConnect = () => {},
+	handleClose = () => {},
+	handleMsg = () => {}
+}) => {
+	p2pcf = new P2PCF(username, topic, options);
+	window.p2pcf = p2pcf;
 
-	const peerEl = document.createElement('div');
-	peerEl.style = 'display: flex;';
-
-	const name = document.createElement('div');
-	name.innerText = sessionId.substring(0, 5);
-
-	peerEl.id = sessionId;
-	peerEl.appendChild(name);
-
-	document.getElementById('peers').appendChild(peerEl);
+	p2pcf.on('peerconnect', handleConnect);
+	p2pcf.on('peerclose', handleClose);
+	p2pcf.on('msg', handleMsg);
+	// p2pcf.start(); // polling
 };
 
-const addMessage = (message) => {
-	const messageEl = document.createElement('div');
-	messageEl.innerText = message;
-
-	document.getElementById('messages').appendChild(messageEl);
+export const disconnect = () => {
+	p2pcf.destroy();
+	console.log('Disconnected.');
 };
 
-let stream;
-
-p2pcf.on('peerconnect', (peer) => {
-	console.log('Peer connect', peer.id, peer);
-	if (stream) {
-		peer.addStream(stream);
+export const createDag = async ({ persist } = { persist: true }) => {
+	if (!dag && !globalThis.dag) {
+		dag = await createDagRepo({ persist });
+		globalThis.dag = dag;
+	} else {
+		dag = globalThis.dag;
 	}
-
-	peer.on('track', (track, stream) => {
-		console.log('got track', track);
-		const video = document.createElement('video');
-		video.id = `${peer.id}-video`;
-		video.srcObject = stream;
-		video.setAttribute('playsinline', true);
-		document.getElementById('videos').appendChild(video);
-		video.play();
-	});
-
-	addPeerUi(peer.id);
-});
-
-p2pcf.on('peerclose', (peer) => {
-	console.log('Peer close', peer.id, peer);
-	removePeerUi(peer.id);
-});
-
-p2pcf.on('msg', (peer, data) => {
-	addMessage(peer.id.substring(0, 5) + ': ' + new TextDecoder('utf-8').decode(data));
-});
-
-const go = () => {
-	document.getElementById('session-id').innerText =
-		p2pcf.sessionId.substring(0, 5) + '@' + p2pcf.roomId + ':';
-
-	document.getElementById('send-button').addEventListener('click', () => {
-		const box = document.getElementById('send-box');
-		addMessage(p2pcf.sessionId.substring(0, 5) + ': ' + box.value);
-		p2pcf.broadcast(new TextEncoder().encode(box.value));
-		box.value = '';
-	});
-
-	document.getElementById('video-button').addEventListener('click', async () => {
-		stream = await navigator.mediaDevices.getUserMedia({ video: true });
-
-		for (const peer of p2pcf.peers.values()) {
-			peer.addStream(stream);
-		}
-	});
-
-	p2pcf.start();
+	return dag;
 };
 
-if (document.readyState === 'complete' || document.readyState === 'interactive') {
-	go();
-} else {
-	window.addEventListener('DOMContentLoaded', go, { once: true });
-}
+export const createContactCard = async (dag) => {
+	// save base app text to Repo
+	const tag = 'ContactCard';
+	const contactCardCid = await dag.tx.addData({ value: contactCard });
+	console.log('contactCardCid', contactCardCid.toString());
+	const tagNode = {
+		compiled: contactCardCid
+	};
+	const rootCID = await dag.tx.addTag(tag, tagNode);
+	const buffer = await dag.tx.commit(); // data not duplicated, only new data needs to be saved
+	console.log({ buffer });
+	return rootCID;
+};
