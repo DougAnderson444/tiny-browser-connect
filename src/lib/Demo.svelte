@@ -9,6 +9,7 @@
 	import Mount from './Mount.svelte';
 	import Peers from './Peers.svelte';
 	import { SideNav } from '@peerpiper/awesome-components-kit/utils';
+	import AppContext from './AppContext.svelte';
 
 	let wallet;
 	let ownerAddress;
@@ -39,6 +40,9 @@
 			handleMsg
 		});
 	}
+
+	const handleAddress = (e) => (ownerAddress = e.detail);
+
 	function handleConnect(peer) {
 		console.log('handleConnect', peer);
 		// add new peer peer.client_id to set
@@ -53,7 +57,11 @@
 	const handleWallet = (e) => (wallet = e.detail.wallet);
 </script>
 
-<WalletManager on:Ed25519PublicKey={keyConnect} on:wallet={handleWallet} />
+<WalletManager
+	on:ownerAddress={handleAddress}
+	on:Ed25519PublicKey={keyConnect}
+	on:wallet={handleWallet}
+/>
 
 <div class="text-white">
 	<SideNav let:hideNav>
@@ -67,11 +75,16 @@
 		</section>
 	</SideNav>
 </div>
-
-<div class="flex flex-row min-h-screen h-full">
-	<div class="flex-1 w-2/3 bg-neutral-700 text-neutral-200 pt-16">
-		<Repo let:esModule let:props let:handleChange {wallet}>
-			<Mount src={esModule} {props} on:change={handleChange} />
-		</Repo>
-	</div>
-</div>
+{#if wallet && ownerAddress}
+	<AppContext {wallet} {ownerAddress} local={true}>
+		<div class="flex flex-row min-h-screen h-full">
+			<div class="flex-1 w-2/3 bg-neutral-700 text-neutral-200 pt-16">
+				<Repo let:esModule let:props let:handleChange>
+					<Mount src={esModule} {props} on:change={handleChange} />
+				</Repo>
+			</div>
+		</div>
+	</AppContext>
+{:else}
+	<!-- Local only, no Publish  -->
+{/if}
