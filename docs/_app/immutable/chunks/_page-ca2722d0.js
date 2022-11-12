@@ -1,18 +1,18 @@
-import { S as SvelteComponent, i as init, s as safe_not_equal, e as empty, b as insert_hydration, f as transition_in, g as group_outros, t as transition_out, d as check_outros, h as detach, H as createEventDispatcher, o as onMount, v as create_component, a as space, w as claim_component, c as claim_space, x as mount_component, y as destroy_component, B as create_slot, C as update_slot_base, D as get_all_dirty_from_scope, E as get_slot_changes, k as element, q as text, l as claim_element, m as children, r as claim_text, n as attr, F as append_hydration, A as noop, I as listen, u as set_data, J as destroy_each, K as binding_callbacks, L as is_function } from "./index-19948bc8.js";
+import { S as SvelteComponent, i as init, s as safe_not_equal, e as empty, b as insert_hydration, f as transition_in, g as group_outros, t as transition_out, d as check_outros, h as detach, H as createEventDispatcher, o as onMount, v as create_component, a as space, w as claim_component, c as claim_space, x as mount_component, y as destroy_component, B as create_slot, C as update_slot_base, D as get_all_dirty_from_scope, E as get_slot_changes, k as element, q as text, l as claim_element, m as children, r as claim_text, n as attr, F as append_hydration, I as listen, u as set_data, J as destroy_each, A as noop, K as binding_callbacks, L as toggle_class, M as run_all, N as is_function } from "./index-a6b7f7ba.js";
 import { _ as __vitePreload } from "./preload-helper-b21cceae.js";
-const get_default_slot_changes$2 = (dirty) => ({
+const get_default_slot_changes$3 = (dirty) => ({
   wallet: dirty & 1,
   ownerAddress: dirty & 16,
   RSAPublicKey: dirty & 4,
   Ed25519PublicKey: dirty & 8
 });
-const get_default_slot_context$2 = (ctx) => ({
+const get_default_slot_context$3 = (ctx) => ({
   wallet: ctx[0],
   ownerAddress: ctx[4],
   RSAPublicKey: ctx[2],
   Ed25519PublicKey: ctx[3]
 });
-function create_if_block$1(ctx) {
+function create_if_block$3(ctx) {
   let switch_instance;
   let t;
   let if_block_anchor;
@@ -122,7 +122,7 @@ function create_if_block$1(ctx) {
 function create_if_block_1$1(ctx) {
   let current;
   const default_slot_template = ctx[7].default;
-  const default_slot = create_slot(default_slot_template, ctx, ctx[6], get_default_slot_context$2);
+  const default_slot = create_slot(default_slot_template, ctx, ctx[6], get_default_slot_context$3);
   return {
     c() {
       if (default_slot)
@@ -146,8 +146,8 @@ function create_if_block_1$1(ctx) {
             default_slot_template,
             ctx2,
             ctx2[6],
-            !current ? get_all_dirty_from_scope(ctx2[6]) : get_slot_changes(default_slot_template, ctx2[6], dirty, get_default_slot_changes$2),
-            get_default_slot_context$2
+            !current ? get_all_dirty_from_scope(ctx2[6]) : get_slot_changes(default_slot_template, ctx2[6], dirty, get_default_slot_changes$3),
+            get_default_slot_context$3
           );
         }
       }
@@ -168,10 +168,10 @@ function create_if_block_1$1(ctx) {
     }
   };
 }
-function create_fragment$6(ctx) {
+function create_fragment$7(ctx) {
   let if_block_anchor;
   let current;
-  let if_block = ctx[1] && create_if_block$1(ctx);
+  let if_block = ctx[1] && create_if_block$3(ctx);
   return {
     c() {
       if (if_block)
@@ -197,7 +197,7 @@ function create_fragment$6(ctx) {
             transition_in(if_block, 1);
           }
         } else {
-          if_block = create_if_block$1(ctx2);
+          if_block = create_if_block$3(ctx2);
           if_block.c();
           transition_in(if_block, 1);
           if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -228,7 +228,7 @@ function create_fragment$6(ctx) {
     }
   };
 }
-function instance$5($$self, $$props, $$invalidate) {
+function instance$6($$self, $$props, $$invalidate) {
   let { $$slots: slots = {}, $$scope } = $$props;
   let wallet;
   let Web3WalletMenu;
@@ -237,7 +237,7 @@ function instance$5($$self, $$props, $$invalidate) {
   let ownerAddress;
   const dispatch = createEventDispatcher();
   onMount(async () => {
-    $$invalidate(1, { Web3WalletMenu } = await __vitePreload(() => import("./index-69297dfe.js"), true ? ["./index-69297dfe.js","./index-19948bc8.js","./preload-helper-b21cceae.js","..\\assets\\index-da57bcef.css"] : void 0, import.meta.url), Web3WalletMenu);
+    $$invalidate(1, { Web3WalletMenu } = await __vitePreload(() => import("./index-98e6f1ed.js"), true ? ["./index-98e6f1ed.js","./index-a6b7f7ba.js","./preload-helper-b21cceae.js","..\\assets\\index-da57bcef.css"] : void 0, import.meta.url), Web3WalletMenu);
   });
   async function walletReady(e) {
     var _a;
@@ -267,10 +267,10 @@ function instance$5($$self, $$props, $$invalidate) {
 class WalletManager extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance$5, create_fragment$6, safe_not_equal, {});
+    init(this, options, instance$6, create_fragment$7, safe_not_equal, {});
   }
 }
-var commonjsGlobal = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : {};
+var commonjsGlobal = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof {} !== "undefined" ? {} : typeof self !== "undefined" ? self : {};
 function getDefaultExportFromCjs(x) {
   return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, "default") ? x["default"] : x;
 }
@@ -1111,92 +1111,6 @@ function getAddress(Ed25519PublicKey) {
   const hashB64 = encodeURLSafe_1(new Uint8Array(hashed)).replace("=", "");
   return hashB64;
 }
-function create_fragment$5(ctx) {
-  let section;
-  let div0;
-  let t0;
-  let t1;
-  let div1;
-  let t2;
-  let t3;
-  let div2;
-  let t4;
-  return {
-    c() {
-      section = element("section");
-      div0 = element("div");
-      t0 = text("My Stuff");
-      t1 = space();
-      div1 = element("div");
-      t2 = text("My Contacts");
-      t3 = space();
-      div2 = element("div");
-      t4 = text("Online");
-      this.h();
-    },
-    l(nodes) {
-      section = claim_element(nodes, "SECTION", { class: true });
-      var section_nodes = children(section);
-      div0 = claim_element(section_nodes, "DIV", { class: true });
-      var div0_nodes = children(div0);
-      t0 = claim_text(div0_nodes, "My Stuff");
-      div0_nodes.forEach(detach);
-      t1 = claim_space(section_nodes);
-      div1 = claim_element(section_nodes, "DIV", { class: true });
-      var div1_nodes = children(div1);
-      t2 = claim_text(div1_nodes, "My Contacts");
-      div1_nodes.forEach(detach);
-      t3 = claim_space(section_nodes);
-      div2 = claim_element(section_nodes, "DIV", { class: true });
-      var div2_nodes = children(div2);
-      t4 = claim_text(div2_nodes, "Online");
-      div2_nodes.forEach(detach);
-      section_nodes.forEach(detach);
-      this.h();
-    },
-    h() {
-      attr(div0, "class", "flex flex-col items-left");
-      attr(div1, "class", "flex flex-col items-left");
-      attr(div2, "class", "flex flex-col items-left");
-      attr(section, "class", "flex flex-col bg-neutral-100 h-full w-1/3 break-words break-all justify-left");
-    },
-    m(target, anchor) {
-      insert_hydration(target, section, anchor);
-      append_hydration(section, div0);
-      append_hydration(div0, t0);
-      append_hydration(section, t1);
-      append_hydration(section, div1);
-      append_hydration(div1, t2);
-      append_hydration(section, t3);
-      append_hydration(section, div2);
-      append_hydration(div2, t4);
-    },
-    p: noop,
-    i: noop,
-    o: noop,
-    d(detaching) {
-      if (detaching)
-        detach(section);
-    }
-  };
-}
-function instance$4($$self, $$props, $$invalidate) {
-  let { Ed25519PublicKey } = $$props;
-  let { username } = $$props;
-  $$self.$$set = ($$props2) => {
-    if ("Ed25519PublicKey" in $$props2)
-      $$invalidate(0, Ed25519PublicKey = $$props2.Ed25519PublicKey);
-    if ("username" in $$props2)
-      $$invalidate(1, username = $$props2.username);
-  };
-  return [Ed25519PublicKey, username];
-}
-class Contacts extends SvelteComponent {
-  constructor(options) {
-    super();
-    init(this, options, instance$4, create_fragment$5, safe_not_equal, { Ed25519PublicKey: 0, username: 1 });
-  }
-}
 var encode_1 = encode$1;
 var MSB = 128, REST = 127, MSBALL = ~REST, INT = Math.pow(2, 31);
 function encode$1(num, out, offset) {
@@ -1976,9 +1890,9 @@ const encodeCID = (version, code, multihash) => {
   return bytes;
 };
 const cidSymbol = Symbol.for("@ipld/js-cid/CID");
-const get_default_slot_changes$1 = (dirty) => ({});
-const get_default_slot_context$1 = (ctx) => ({ handleChange: ctx[3] });
-function create_fragment$4(ctx) {
+const get_default_slot_changes$2 = (dirty) => ({});
+const get_default_slot_context$2 = (ctx) => ({ handleChange: ctx[3] });
+function create_fragment$6(ctx) {
   let button;
   let t0_value = ctx[1] == "saving" ? "Saving" : ctx[1] == "saved" ? "Saved" : "Save";
   let t0;
@@ -1989,7 +1903,7 @@ function create_fragment$4(ctx) {
   let mounted;
   let dispose;
   const default_slot_template = ctx[8].default;
-  const default_slot = create_slot(default_slot_template, ctx, ctx[7], get_default_slot_context$1);
+  const default_slot = create_slot(default_slot_template, ctx, ctx[7], get_default_slot_context$2);
   return {
     c() {
       button = element("button");
@@ -2042,8 +1956,8 @@ function create_fragment$4(ctx) {
             default_slot_template,
             ctx2,
             ctx2[7],
-            !current ? get_all_dirty_from_scope(ctx2[7]) : get_slot_changes(default_slot_template, ctx2[7], dirty, get_default_slot_changes$1),
-            get_default_slot_context$1
+            !current ? get_all_dirty_from_scope(ctx2[7]) : get_slot_changes(default_slot_template, ctx2[7], dirty, get_default_slot_changes$2),
+            get_default_slot_context$2
           );
         }
       }
@@ -2070,13 +1984,13 @@ function create_fragment$4(ctx) {
     }
   };
 }
-function instance$3($$self, $$props, $$invalidate) {
+function instance$5($$self, $$props, $$invalidate) {
   let { $$slots: slots = {}, $$scope } = $$props;
   let { tag } = $$props;
   let { tagNode } = $$props;
   let { data } = $$props;
   let { dag } = $$props;
-  let state = null;
+  let state = "saved";
   async function handleSave() {
     $$invalidate(1, state = "saving");
     console.log(state, { data, tagNode });
@@ -2113,20 +2027,20 @@ function instance$3($$self, $$props, $$invalidate) {
 class Saver extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance$3, create_fragment$4, safe_not_equal, { tag: 6, tagNode: 4, data: 0, dag: 5 });
+    init(this, options, instance$5, create_fragment$6, safe_not_equal, { tag: 6, tagNode: 4, data: 0, dag: 5 });
   }
 }
-function get_each_context(ctx, list, i) {
+function get_each_context$1(ctx, list, i) {
   const child_ctx = ctx.slice();
   child_ctx[12] = list[i];
   return child_ctx;
 }
-const get_default_slot_changes = (dirty) => ({
+const get_default_slot_changes$1 = (dirty) => ({
   handleChange: dirty & 32768,
   esModule: dirty & 32,
   props: dirty & 64
 });
-const get_default_slot_context = (ctx) => ({
+const get_default_slot_context$1 = (ctx) => ({
   handleChange: ctx[15],
   esModule: ctx[5],
   props: ctx[6]
@@ -2306,7 +2220,7 @@ function create_if_block_1(ctx) {
 function create_default_slot$1(ctx) {
   let current;
   const default_slot_template = ctx[7].default;
-  const default_slot = create_slot(default_slot_template, ctx, ctx[9], get_default_slot_context);
+  const default_slot = create_slot(default_slot_template, ctx, ctx[9], get_default_slot_context$1);
   return {
     c() {
       if (default_slot)
@@ -2330,8 +2244,8 @@ function create_default_slot$1(ctx) {
             default_slot_template,
             ctx2,
             ctx2[9],
-            !current ? get_all_dirty_from_scope(ctx2[9]) : get_slot_changes(default_slot_template, ctx2[9], dirty, get_default_slot_changes),
-            get_default_slot_context
+            !current ? get_all_dirty_from_scope(ctx2[9]) : get_slot_changes(default_slot_template, ctx2[9], dirty, get_default_slot_changes$1),
+            get_default_slot_context$1
           );
         }
       }
@@ -2352,14 +2266,14 @@ function create_default_slot$1(ctx) {
     }
   };
 }
-function create_if_block(ctx) {
+function create_if_block$2(ctx) {
   let div1;
   let t;
   let div0;
   let each_value = ctx[1];
   let each_blocks = [];
   for (let i = 0; i < each_value.length; i += 1) {
-    each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
+    each_blocks[i] = create_each_block$1(get_each_context$1(ctx, each_value, i));
   }
   return {
     c() {
@@ -2401,11 +2315,11 @@ function create_if_block(ctx) {
         each_value = ctx2[1];
         let i;
         for (i = 0; i < each_value.length; i += 1) {
-          const child_ctx = get_each_context(ctx2, each_value, i);
+          const child_ctx = get_each_context$1(ctx2, each_value, i);
           if (each_blocks[i]) {
             each_blocks[i].p(child_ctx, dirty);
           } else {
-            each_blocks[i] = create_each_block(child_ctx);
+            each_blocks[i] = create_each_block$1(child_ctx);
             each_blocks[i].c();
             each_blocks[i].m(div0, null);
           }
@@ -2423,7 +2337,7 @@ function create_if_block(ctx) {
     }
   };
 }
-function create_each_block(ctx) {
+function create_each_block$1(ctx) {
   let div;
   let t0_value = ctx[12] + "";
   let t0;
@@ -2456,14 +2370,14 @@ function create_each_block(ctx) {
     }
   };
 }
-function create_fragment$3(ctx) {
+function create_fragment$5(ctx) {
   let t0;
   let t1;
   let if_block2_anchor;
   let current;
   let if_block0 = ctx[2] && create_if_block_2(ctx);
   let if_block1 = ctx[5] && ctx[3] && create_if_block_1(ctx);
-  let if_block2 = ctx[1] && create_if_block(ctx);
+  let if_block2 = ctx[1] && create_if_block$2(ctx);
   return {
     c() {
       if (if_block0)
@@ -2535,7 +2449,7 @@ function create_fragment$3(ctx) {
         if (if_block2) {
           if_block2.p(ctx2, dirty);
         } else {
-          if_block2 = create_if_block(ctx2);
+          if_block2 = create_if_block$2(ctx2);
           if_block2.c();
           if_block2.m(if_block2_anchor.parentNode, if_block2_anchor);
         }
@@ -2570,7 +2484,7 @@ function create_fragment$3(ctx) {
     }
   };
 }
-function instance$2($$self, $$props, $$invalidate) {
+function instance$4($$self, $$props, $$invalidate) {
   let { $$slots: slots = {}, $$scope } = $$props;
   let dag;
   let roots = [];
@@ -2580,7 +2494,7 @@ function instance$2($$self, $$props, $$invalidate) {
   let handleRootCIDChange;
   let saveToBrowser;
   onMount(async () => {
-    const { createDag, createContactCard } = await __vitePreload(() => import("./lib-0f40c9e3.js"), true ? [] : void 0, import.meta.url);
+    const { createDag, createContactCard } = await __vitePreload(() => import("./lib-cc382c34.js"), true ? [] : void 0, import.meta.url);
     $$invalidate(0, dag = await createDag());
     dag.on("rootCID", (val) => handleRootCIDChange());
     if (typeof localStorage !== "undefined") {
@@ -2663,18 +2577,23 @@ function instance$2($$self, $$props, $$invalidate) {
 class Repo extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance$2, create_fragment$3, safe_not_equal, {});
+    init(this, options, instance$4, create_fragment$5, safe_not_equal, {});
   }
 }
-function create_fragment$2(ctx) {
+function create_fragment$4(ctx) {
   let div;
   return {
     c() {
       div = element("div");
+      this.h();
     },
     l(nodes) {
-      div = claim_element(nodes, "DIV", {});
+      div = claim_element(nodes, "DIV", { class: true });
       children(div).forEach(detach);
+      this.h();
+    },
+    h() {
+      attr(div, "class", "z-10 p-2");
     },
     m(target, anchor) {
       insert_hydration(target, div, anchor);
@@ -2690,7 +2609,7 @@ function create_fragment$2(ctx) {
     }
   };
 }
-function instance$1($$self, $$props, $$invalidate) {
+function instance$3($$self, $$props, $$invalidate) {
   let { src: src2 } = $$props;
   let { props = null } = $$props;
   let target;
@@ -2736,21 +2655,519 @@ function instance$1($$self, $$props, $$invalidate) {
 class Mount extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance$1, create_fragment$2, safe_not_equal, { src: 1, props: 2 });
+    init(this, options, instance$3, create_fragment$4, safe_not_equal, { src: 1, props: 2 });
   }
+}
+function get_each_context(ctx, list, i) {
+  const child_ctx = ctx.slice();
+  child_ctx[1] = list[i];
+  return child_ctx;
+}
+function create_if_block$1(ctx) {
+  let div;
+  let t;
+  let each_value = ctx[0];
+  let each_blocks = [];
+  for (let i = 0; i < each_value.length; i += 1) {
+    each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
+  }
+  return {
+    c() {
+      div = element("div");
+      t = text("Peers\r\n		");
+      for (let i = 0; i < each_blocks.length; i += 1) {
+        each_blocks[i].c();
+      }
+      this.h();
+    },
+    l(nodes) {
+      div = claim_element(nodes, "DIV", { class: true });
+      var div_nodes = children(div);
+      t = claim_text(div_nodes, "Peers\r\n		");
+      for (let i = 0; i < each_blocks.length; i += 1) {
+        each_blocks[i].l(div_nodes);
+      }
+      div_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      attr(div, "class", "p-2 bg-neutral-900");
+    },
+    m(target, anchor) {
+      insert_hydration(target, div, anchor);
+      append_hydration(div, t);
+      for (let i = 0; i < each_blocks.length; i += 1) {
+        each_blocks[i].m(div, null);
+      }
+    },
+    p(ctx2, dirty) {
+      if (dirty & 1) {
+        each_value = ctx2[0];
+        let i;
+        for (i = 0; i < each_value.length; i += 1) {
+          const child_ctx = get_each_context(ctx2, each_value, i);
+          if (each_blocks[i]) {
+            each_blocks[i].p(child_ctx, dirty);
+          } else {
+            each_blocks[i] = create_each_block(child_ctx);
+            each_blocks[i].c();
+            each_blocks[i].m(div, null);
+          }
+        }
+        for (; i < each_blocks.length; i += 1) {
+          each_blocks[i].d(1);
+        }
+        each_blocks.length = each_value.length;
+      }
+    },
+    d(detaching) {
+      if (detaching)
+        detach(div);
+      destroy_each(each_blocks, detaching);
+    }
+  };
+}
+function create_each_block(ctx) {
+  let div;
+  let t0_value = ctx[1] + "";
+  let t0;
+  let t1;
+  return {
+    c() {
+      div = element("div");
+      t0 = text(t0_value);
+      t1 = space();
+      this.h();
+    },
+    l(nodes) {
+      div = claim_element(nodes, "DIV", { class: true });
+      var div_nodes = children(div);
+      t0 = claim_text(div_nodes, t0_value);
+      t1 = claim_space(div_nodes);
+      div_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      attr(div, "class", "m-1 p-1 flex flex-row items-left text-green-400 text-sm font-mono");
+    },
+    m(target, anchor) {
+      insert_hydration(target, div, anchor);
+      append_hydration(div, t0);
+      append_hydration(div, t1);
+    },
+    p(ctx2, dirty) {
+      if (dirty & 1 && t0_value !== (t0_value = ctx2[1] + ""))
+        set_data(t0, t0_value);
+    },
+    d(detaching) {
+      if (detaching)
+        detach(div);
+    }
+  };
+}
+function create_fragment$3(ctx) {
+  let if_block_anchor;
+  let if_block = ctx[0] && ctx[0].length && create_if_block$1(ctx);
+  return {
+    c() {
+      if (if_block)
+        if_block.c();
+      if_block_anchor = empty();
+    },
+    l(nodes) {
+      if (if_block)
+        if_block.l(nodes);
+      if_block_anchor = empty();
+    },
+    m(target, anchor) {
+      if (if_block)
+        if_block.m(target, anchor);
+      insert_hydration(target, if_block_anchor, anchor);
+    },
+    p(ctx2, [dirty]) {
+      if (ctx2[0] && ctx2[0].length) {
+        if (if_block) {
+          if_block.p(ctx2, dirty);
+        } else {
+          if_block = create_if_block$1(ctx2);
+          if_block.c();
+          if_block.m(if_block_anchor.parentNode, if_block_anchor);
+        }
+      } else if (if_block) {
+        if_block.d(1);
+        if_block = null;
+      }
+    },
+    i: noop,
+    o: noop,
+    d(detaching) {
+      if (if_block)
+        if_block.d(detaching);
+      if (detaching)
+        detach(if_block_anchor);
+    }
+  };
+}
+function instance$2($$self, $$props, $$invalidate) {
+  let { peers = [] } = $$props;
+  $$self.$$set = ($$props2) => {
+    if ("peers" in $$props2)
+      $$invalidate(0, peers = $$props2.peers);
+  };
+  return [peers];
+}
+class Peers extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance$2, create_fragment$3, safe_not_equal, { peers: 0 });
+  }
+}
+const Icon_svelte_svelte_type_style_lang = "";
+const Content_svelte_svelte_type_style_lang = "";
+const ContextMenu_svelte_svelte_type_style_lang = "";
+const Modal_svelte_svelte_type_style_lang = "";
+const SideNav_svelte_svelte_type_style_lang = "";
+const get_default_slot_changes = (dirty) => ({});
+const get_default_slot_context = (ctx) => ({ hideNav: ctx[4] });
+function create_if_block(ctx) {
+  let div;
+  let current;
+  const default_slot_template = ctx[6].default;
+  const default_slot = create_slot(default_slot_template, ctx, ctx[5], get_default_slot_context);
+  return {
+    c() {
+      div = element("div");
+      if (default_slot)
+        default_slot.c();
+      this.h();
+    },
+    l(nodes) {
+      div = claim_element(nodes, "DIV", { class: true });
+      var div_nodes = children(div);
+      if (default_slot)
+        default_slot.l(div_nodes);
+      div_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      attr(div, "class", "sidenav absolute top-0 left-0 h-[15%] w-0 z-30 bg-neutral-600 overflow-x-hidden pt-16 transition duration-500 svelte-18lepxh");
+      toggle_class(div, "open", ctx[1]);
+    },
+    m(target, anchor) {
+      insert_hydration(target, div, anchor);
+      if (default_slot) {
+        default_slot.m(div, null);
+      }
+      current = true;
+    },
+    p(ctx2, dirty) {
+      if (default_slot) {
+        if (default_slot.p && (!current || dirty & 32)) {
+          update_slot_base(
+            default_slot,
+            default_slot_template,
+            ctx2,
+            ctx2[5],
+            !current ? get_all_dirty_from_scope(ctx2[5]) : get_slot_changes(default_slot_template, ctx2[5], dirty, get_default_slot_changes),
+            get_default_slot_context
+          );
+        }
+      }
+      if (dirty & 2) {
+        toggle_class(div, "open", ctx2[1]);
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(default_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(default_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(div);
+      if (default_slot)
+        default_slot.d(detaching);
+    }
+  };
+}
+function create_fragment$2(ctx) {
+  let div4;
+  let div3;
+  let div0;
+  let t0;
+  let div1;
+  let t1;
+  let div2;
+  let t2;
+  let t3;
+  let div5;
+  let current;
+  let mounted;
+  let dispose;
+  let if_block = ctx[0] && create_if_block(ctx);
+  return {
+    c() {
+      div4 = element("div");
+      div3 = element("div");
+      div0 = element("div");
+      t0 = space();
+      div1 = element("div");
+      t1 = space();
+      div2 = element("div");
+      t2 = space();
+      if (if_block)
+        if_block.c();
+      t3 = space();
+      div5 = element("div");
+      this.h();
+    },
+    l(nodes) {
+      div4 = claim_element(nodes, "DIV", { class: true });
+      var div4_nodes = children(div4);
+      div3 = claim_element(div4_nodes, "DIV", { class: true });
+      var div3_nodes = children(div3);
+      div0 = claim_element(div3_nodes, "DIV", { class: true });
+      children(div0).forEach(detach);
+      t0 = claim_space(div3_nodes);
+      div1 = claim_element(div3_nodes, "DIV", { class: true });
+      children(div1).forEach(detach);
+      t1 = claim_space(div3_nodes);
+      div2 = claim_element(div3_nodes, "DIV", { class: true });
+      children(div2).forEach(detach);
+      div3_nodes.forEach(detach);
+      div4_nodes.forEach(detach);
+      t2 = claim_space(nodes);
+      if (if_block)
+        if_block.l(nodes);
+      t3 = claim_space(nodes);
+      div5 = claim_element(nodes, "DIV", { class: true });
+      children(div5).forEach(detach);
+      this.h();
+    },
+    h() {
+      attr(div0, "class", "bar1 svelte-18lepxh");
+      attr(div1, "class", "bar2 svelte-18lepxh");
+      attr(div2, "class", "bar3 svelte-18lepxh");
+      attr(div3, "class", "inline-block svelte-18lepxh");
+      attr(div4, "class", "flex absolute top-0 left-0 z-40 cursor-pointer m-6 opacity-90 w-auto svelte-18lepxh");
+      toggle_class(div4, "change", ctx[1]);
+      attr(div5, "class", "svelte-18lepxh");
+      toggle_class(div5, "mask", ctx[1]);
+    },
+    m(target, anchor) {
+      insert_hydration(target, div4, anchor);
+      append_hydration(div4, div3);
+      append_hydration(div3, div0);
+      append_hydration(div3, t0);
+      append_hydration(div3, div1);
+      append_hydration(div3, t1);
+      append_hydration(div3, div2);
+      insert_hydration(target, t2, anchor);
+      if (if_block)
+        if_block.m(target, anchor);
+      insert_hydration(target, t3, anchor);
+      insert_hydration(target, div5, anchor);
+      current = true;
+      if (!mounted) {
+        dispose = [
+          listen(div4, "keypress", ctx[2]),
+          listen(div4, "click", ctx[2]),
+          listen(div5, "keypress", ctx[3]),
+          listen(div5, "click", ctx[3])
+        ];
+        mounted = true;
+      }
+    },
+    p(ctx2, [dirty]) {
+      if (dirty & 2) {
+        toggle_class(div4, "change", ctx2[1]);
+      }
+      if (ctx2[0]) {
+        if (if_block) {
+          if_block.p(ctx2, dirty);
+          if (dirty & 1) {
+            transition_in(if_block, 1);
+          }
+        } else {
+          if_block = create_if_block(ctx2);
+          if_block.c();
+          transition_in(if_block, 1);
+          if_block.m(t3.parentNode, t3);
+        }
+      } else if (if_block) {
+        group_outros();
+        transition_out(if_block, 1, 1, () => {
+          if_block = null;
+        });
+        check_outros();
+      }
+      if (dirty & 2) {
+        toggle_class(div5, "mask", ctx2[1]);
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(if_block);
+      current = true;
+    },
+    o(local) {
+      transition_out(if_block);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(div4);
+      if (detaching)
+        detach(t2);
+      if (if_block)
+        if_block.d(detaching);
+      if (detaching)
+        detach(t3);
+      if (detaching)
+        detach(div5);
+      mounted = false;
+      run_all(dispose);
+    }
+  };
+}
+function instance$1($$self, $$props, $$invalidate) {
+  let { $$slots: slots = {}, $$scope } = $$props;
+  let ready;
+  let navOpen;
+  onMount(async () => {
+    $$invalidate(0, ready = true);
+  });
+  function handleNav() {
+    $$invalidate(1, navOpen = !navOpen);
+  }
+  function onClickOutside(event) {
+    $$invalidate(1, navOpen = false);
+  }
+  function hideNav() {
+    $$invalidate(1, navOpen = false);
+  }
+  $$self.$$set = ($$props2) => {
+    if ("$$scope" in $$props2)
+      $$invalidate(5, $$scope = $$props2.$$scope);
+  };
+  return [ready, navOpen, handleNav, onClickOutside, hideNav, $$scope, slots];
+}
+class SideNav extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance$1, create_fragment$2, safe_not_equal, {});
+  }
+}
+function create_default_slot_1(ctx) {
+  let section;
+  let div2;
+  let t0;
+  let div0;
+  let t1;
+  let t2;
+  let div1;
+  let t3;
+  let t4;
+  let peers_1;
+  let current;
+  peers_1 = new Peers({ props: { peers: ctx[1] } });
+  return {
+    c() {
+      section = element("section");
+      div2 = element("div");
+      t0 = text("My Stuff\r\n				");
+      div0 = element("div");
+      t1 = text("Username");
+      t2 = space();
+      div1 = element("div");
+      t3 = text(ctx[0]);
+      t4 = space();
+      create_component(peers_1.$$.fragment);
+      this.h();
+    },
+    l(nodes) {
+      section = claim_element(nodes, "SECTION", { class: true });
+      var section_nodes = children(section);
+      div2 = claim_element(section_nodes, "DIV", { class: true });
+      var div2_nodes = children(div2);
+      t0 = claim_text(div2_nodes, "My Stuff\r\n				");
+      div0 = claim_element(div2_nodes, "DIV", { class: true });
+      var div0_nodes = children(div0);
+      t1 = claim_text(div0_nodes, "Username");
+      div0_nodes.forEach(detach);
+      t2 = claim_space(div2_nodes);
+      div1 = claim_element(div2_nodes, "DIV", { class: true });
+      var div1_nodes = children(div1);
+      t3 = claim_text(div1_nodes, ctx[0]);
+      div1_nodes.forEach(detach);
+      div2_nodes.forEach(detach);
+      t4 = claim_space(section_nodes);
+      claim_component(peers_1.$$.fragment, section_nodes);
+      section_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      attr(div0, "class", "ml-2 text-sm");
+      attr(div1, "class", "ml-2 text-xs font-mono");
+      attr(div2, "class", "flex flex-col items-left");
+      attr(section, "class", "flex z-50 flex-col h-full break-words break-all justify-left");
+    },
+    m(target, anchor) {
+      insert_hydration(target, section, anchor);
+      append_hydration(section, div2);
+      append_hydration(div2, t0);
+      append_hydration(div2, div0);
+      append_hydration(div0, t1);
+      append_hydration(div2, t2);
+      append_hydration(div2, div1);
+      append_hydration(div1, t3);
+      append_hydration(section, t4);
+      mount_component(peers_1, section, null);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      if (!current || dirty & 1)
+        set_data(t3, ctx2[0]);
+      const peers_1_changes = {};
+      if (dirty & 2)
+        peers_1_changes.peers = ctx2[1];
+      peers_1.$set(peers_1_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(peers_1.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(peers_1.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(section);
+      destroy_component(peers_1);
+    }
+  };
 }
 function create_default_slot(ctx) {
   let mount;
   let current;
   mount = new Mount({
     props: {
-      src: ctx[9],
-      props: ctx[10]
+      src: ctx[13],
+      props: ctx[14]
     }
   });
   mount.$on("change", function() {
-    if (is_function(ctx[11]))
-      ctx[11].apply(this, arguments);
+    if (is_function(ctx[15]))
+      ctx[15].apply(this, arguments);
   });
   return {
     c() {
@@ -2766,10 +3183,10 @@ function create_default_slot(ctx) {
     p(new_ctx, dirty) {
       ctx = new_ctx;
       const mount_changes = {};
-      if (dirty & 512)
-        mount_changes.src = ctx[9];
-      if (dirty & 1024)
-        mount_changes.props = ctx[10];
+      if (dirty & 8192)
+        mount_changes.src = ctx[13];
+      if (dirty & 16384)
+        mount_changes.props = ctx[14];
       mount.$set(mount_changes);
     },
     i(local) {
@@ -2790,18 +3207,25 @@ function create_default_slot(ctx) {
 function create_fragment$1(ctx) {
   let walletmanager;
   let t0;
-  let div1;
-  let contacts;
-  let t1;
   let div0;
+  let sidenav;
+  let t1;
+  let div2;
+  let div1;
   let repo;
   let current;
   walletmanager = new WalletManager({});
   walletmanager.$on("Ed25519PublicKey", ctx[2]);
-  contacts = new Contacts({
+  sidenav = new SideNav({
     props: {
-      Ed25519PublicKey: ctx[0],
-      username: ctx[1]
+      $$slots: {
+        default: [
+          create_default_slot_1,
+          ({ hideNav }) => ({ 16: hideNav }),
+          ({ hideNav }) => hideNav ? 65536 : 0
+        ]
+      },
+      $$scope: { ctx }
     }
   });
   repo = new Repo({
@@ -2809,8 +3233,12 @@ function create_fragment$1(ctx) {
       $$slots: {
         default: [
           create_default_slot,
-          ({ esModule, props, handleChange }) => ({ 9: esModule, 10: props, 11: handleChange }),
-          ({ esModule, props, handleChange }) => (esModule ? 512 : 0) | (props ? 1024 : 0) | (handleChange ? 2048 : 0)
+          ({ esModule, props, handleChange }) => ({
+            13: esModule,
+            14: props,
+            15: handleChange
+          }),
+          ({ esModule, props, handleChange }) => (esModule ? 8192 : 0) | (props ? 16384 : 0) | (handleChange ? 32768 : 0)
         ]
       },
       $$scope: { ctx }
@@ -2820,50 +3248,55 @@ function create_fragment$1(ctx) {
     c() {
       create_component(walletmanager.$$.fragment);
       t0 = space();
-      div1 = element("div");
-      create_component(contacts.$$.fragment);
-      t1 = space();
       div0 = element("div");
+      create_component(sidenav.$$.fragment);
+      t1 = space();
+      div2 = element("div");
+      div1 = element("div");
       create_component(repo.$$.fragment);
       this.h();
     },
     l(nodes) {
       claim_component(walletmanager.$$.fragment, nodes);
       t0 = claim_space(nodes);
-      div1 = claim_element(nodes, "DIV", { class: true });
-      var div1_nodes = children(div1);
-      claim_component(contacts.$$.fragment, div1_nodes);
-      t1 = claim_space(div1_nodes);
-      div0 = claim_element(div1_nodes, "DIV", { class: true });
+      div0 = claim_element(nodes, "DIV", { class: true });
       var div0_nodes = children(div0);
-      claim_component(repo.$$.fragment, div0_nodes);
+      claim_component(sidenav.$$.fragment, div0_nodes);
       div0_nodes.forEach(detach);
+      t1 = claim_space(nodes);
+      div2 = claim_element(nodes, "DIV", { class: true });
+      var div2_nodes = children(div2);
+      div1 = claim_element(div2_nodes, "DIV", { class: true });
+      var div1_nodes = children(div1);
+      claim_component(repo.$$.fragment, div1_nodes);
       div1_nodes.forEach(detach);
+      div2_nodes.forEach(detach);
       this.h();
     },
     h() {
-      attr(div0, "class", "flex-1 bg-neutral-700 text-neutral-200");
-      attr(div1, "class", "flex flex-row h-screen");
+      attr(div0, "class", "text-white");
+      attr(div1, "class", "flex-1 w-2/3 bg-neutral-700 text-neutral-200 pt-16");
+      attr(div2, "class", "flex flex-row min-h-screen h-full");
     },
     m(target, anchor) {
       mount_component(walletmanager, target, anchor);
       insert_hydration(target, t0, anchor);
-      insert_hydration(target, div1, anchor);
-      mount_component(contacts, div1, null);
-      append_hydration(div1, t1);
-      append_hydration(div1, div0);
-      mount_component(repo, div0, null);
+      insert_hydration(target, div0, anchor);
+      mount_component(sidenav, div0, null);
+      insert_hydration(target, t1, anchor);
+      insert_hydration(target, div2, anchor);
+      append_hydration(div2, div1);
+      mount_component(repo, div1, null);
       current = true;
     },
     p(ctx2, [dirty]) {
-      const contacts_changes = {};
-      if (dirty & 1)
-        contacts_changes.Ed25519PublicKey = ctx2[0];
-      if (dirty & 2)
-        contacts_changes.username = ctx2[1];
-      contacts.$set(contacts_changes);
+      const sidenav_changes = {};
+      if (dirty & 131075) {
+        sidenav_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      sidenav.$set(sidenav_changes);
       const repo_changes = {};
-      if (dirty & 7680) {
+      if (dirty & 188416) {
         repo_changes.$$scope = { dirty, ctx: ctx2 };
       }
       repo.$set(repo_changes);
@@ -2872,13 +3305,13 @@ function create_fragment$1(ctx) {
       if (current)
         return;
       transition_in(walletmanager.$$.fragment, local);
-      transition_in(contacts.$$.fragment, local);
+      transition_in(sidenav.$$.fragment, local);
       transition_in(repo.$$.fragment, local);
       current = true;
     },
     o(local) {
       transition_out(walletmanager.$$.fragment, local);
-      transition_out(contacts.$$.fragment, local);
+      transition_out(sidenav.$$.fragment, local);
       transition_out(repo.$$.fragment, local);
       current = false;
     },
@@ -2887,15 +3320,15 @@ function create_fragment$1(ctx) {
       if (detaching)
         detach(t0);
       if (detaching)
-        detach(div1);
-      destroy_component(contacts);
+        detach(div0);
+      destroy_component(sidenav);
+      if (detaching)
+        detach(t1);
+      if (detaching)
+        detach(div2);
       destroy_component(repo);
     }
   };
-}
-function handleConnect() {
-}
-function handleClose() {
 }
 function handleMsg() {
 }
@@ -2903,12 +3336,13 @@ function instance($$self, $$props, $$invalidate) {
   let Ed25519PublicKey;
   let connect;
   let username;
+  let peers = /* @__PURE__ */ new Set();
   onMount(async () => {
-    ({ connect } = await __vitePreload(() => import("./lib-0f40c9e3.js"), true ? [] : void 0, import.meta.url));
+    ({ connect } = await __vitePreload(() => import("./lib-cc382c34.js"), true ? [] : void 0, import.meta.url));
   });
   function keyConnect(e) {
-    $$invalidate(0, Ed25519PublicKey = e.detail);
-    $$invalidate(1, username = getAddress(Ed25519PublicKey));
+    Ed25519PublicKey = e.detail;
+    $$invalidate(0, username = getAddress(Ed25519PublicKey));
     connect({
       username,
       topic: "peerpiper",
@@ -2917,7 +3351,15 @@ function instance($$self, $$props, $$invalidate) {
       handleMsg
     });
   }
-  return [Ed25519PublicKey, username, keyConnect];
+  function handleConnect(peer) {
+    console.log("handleConnect", peer);
+    $$invalidate(1, peers = peers.add(peer.client_id));
+  }
+  function handleClose(peer) {
+    console.log("handleClose", peer);
+    $$invalidate(1, peers = peers.delete(peer.client_id));
+  }
+  return [username, peers, keyConnect];
 }
 class Demo extends SvelteComponent {
   constructor(options) {
@@ -2980,4 +3422,4 @@ export {
   rfc4648 as r,
   toString as t
 };
-//# sourceMappingURL=_page-6eedf73c.js.map
+//# sourceMappingURL=_page-ca2722d0.js.map

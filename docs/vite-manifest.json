@@ -1,11 +1,11 @@
 {
   "node_modules/@sveltejs/kit/src/runtime/client/start.js": {
-    "file": "_app/immutable/start-f2c2dd5e.js",
+    "file": "_app/immutable/start-da801873.js",
     "src": "node_modules/@sveltejs/kit/src/runtime/client/start.js",
     "isEntry": true,
     "imports": [
-      "_index-19948bc8.js",
-      "_singletons-574a0aaf.js",
+      "_index-a6b7f7ba.js",
+      "_singletons-037c1a50.js",
       "_preload-helper-b21cceae.js"
     ],
     "dynamicImports": [
@@ -15,23 +15,23 @@
     ]
   },
   "src/routes/+layout.svelte": {
-    "file": "_app/immutable/components/pages/_layout.svelte-91e65102.js",
+    "file": "_app/immutable/components/pages/_layout.svelte-738c0b9a.js",
     "src": "src/routes/+layout.svelte",
     "isEntry": true,
     "imports": [
-      "_index-19948bc8.js"
+      "_index-a6b7f7ba.js"
     ],
     "css": [
-      "_app/immutable/assets/_layout-536c3b5f.css"
+      "_app/immutable/assets/_layout-f8dc2d95.css"
     ]
   },
   "node_modules/@sveltejs/kit/src/runtime/components/error.svelte": {
-    "file": "_app/immutable/components/error.svelte-79149fe9.js",
+    "file": "_app/immutable/components/error.svelte-0d4c9ff2.js",
     "src": "node_modules/@sveltejs/kit/src/runtime/components/error.svelte",
     "isEntry": true,
     "imports": [
-      "_index-19948bc8.js",
-      "_singletons-574a0aaf.js"
+      "_index-a6b7f7ba.js",
+      "_singletons-037c1a50.js"
     ]
   },
   "src/routes/+layout.js": {
@@ -43,23 +43,23 @@
     ]
   },
   "src/routes/+page.svelte": {
-    "file": "_app/immutable/components/pages/_page.svelte-38214ab0.js",
+    "file": "_app/immutable/components/pages/_page.svelte-5b97b29d.js",
     "src": "src/routes/+page.svelte",
     "isEntry": true,
     "imports": [
-      "_index-19948bc8.js",
+      "_index-a6b7f7ba.js",
       "_preload-helper-b21cceae.js",
-      "__page-6eedf73c.js"
+      "__page-ca2722d0.js"
     ]
   },
-  "_singletons-574a0aaf.js": {
-    "file": "_app/immutable/chunks/singletons-574a0aaf.js",
+  "_singletons-037c1a50.js": {
+    "file": "_app/immutable/chunks/singletons-037c1a50.js",
     "imports": [
-      "_index-19948bc8.js"
+      "_index-a6b7f7ba.js"
     ]
   },
-  "_index-19948bc8.js": {
-    "file": "_app/immutable/chunks/index-19948bc8.js"
+  "_index-a6b7f7ba.js": {
+    "file": "_app/immutable/chunks/index-a6b7f7ba.js"
   },
   "_preload-helper-b21cceae.js": {
     "file": "_app/immutable/chunks/preload-helper-b21cceae.js"
@@ -67,19 +67,22 @@
   "__layout-8d2a742b.js": {
     "file": "_app/immutable/chunks/_layout-8d2a742b.js"
   },
-  "__page-6eedf73c.js": {
-    "file": "_app/immutable/chunks/_page-6eedf73c.js",
+  "__page-ca2722d0.js": {
+    "file": "_app/immutable/chunks/_page-ca2722d0.js",
     "imports": [
-      "_index-19948bc8.js",
+      "_index-a6b7f7ba.js",
       "_preload-helper-b21cceae.js"
     ],
     "dynamicImports": [
       "node_modules/@peerpiper/web3-wallet-connector/index.js",
       "src/lib/lib.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page-f9f0bcbc.css"
     ]
   },
   ".svelte-kit/generated/nodes/0.js": {
-    "file": "_app/immutable/chunks/0-3e943ccd.js",
+    "file": "_app/immutable/chunks/0-de2b26dd.js",
     "src": ".svelte-kit/generated/nodes/0.js",
     "isDynamicEntry": true,
     "imports": [
@@ -88,7 +91,7 @@
     ]
   },
   ".svelte-kit/generated/nodes/1.js": {
-    "file": "_app/immutable/chunks/1-5107ba24.js",
+    "file": "_app/immutable/chunks/1-8a28eed8.js",
     "src": ".svelte-kit/generated/nodes/1.js",
     "isDynamicEntry": true,
     "imports": [
@@ -96,27 +99,27 @@
     ]
   },
   ".svelte-kit/generated/nodes/2.js": {
-    "file": "_app/immutable/chunks/2-a2bd8fc3.js",
+    "file": "_app/immutable/chunks/2-1c9d5fac.js",
     "src": ".svelte-kit/generated/nodes/2.js",
     "isDynamicEntry": true,
     "imports": [
-      "__page-6eedf73c.js"
+      "__page-ca2722d0.js"
     ]
   },
   "src/lib/lib.js": {
-    "file": "_app/immutable/chunks/lib-0f40c9e3.js",
+    "file": "_app/immutable/chunks/lib-cc382c34.js",
     "src": "src/lib/lib.js",
     "isDynamicEntry": true,
     "imports": [
-      "__page-6eedf73c.js"
+      "__page-ca2722d0.js"
     ]
   },
   "node_modules/@peerpiper/web3-wallet-connector/index.js": {
-    "file": "_app/immutable/chunks/index-69297dfe.js",
+    "file": "_app/immutable/chunks/index-98e6f1ed.js",
     "src": "node_modules/@peerpiper/web3-wallet-connector/index.js",
     "isDynamicEntry": true,
     "imports": [
-      "_index-19948bc8.js",
+      "_index-a6b7f7ba.js",
       "_preload-helper-b21cceae.js"
     ],
     "dynamicImports": [
@@ -132,8 +135,12 @@
     "isDynamicEntry": true
   },
   "src/routes/+layout.css": {
-    "file": "_app/immutable/assets/_layout-536c3b5f.css",
+    "file": "_app/immutable/assets/_layout-f8dc2d95.css",
     "src": "src/routes/+layout.css"
+  },
+  "_page.css": {
+    "file": "_app/immutable/assets/_page-f9f0bcbc.css",
+    "src": "_page.css"
   },
   "node_modules/@peerpiper/web3-wallet-connector/index.css": {
     "file": "_app/immutable/assets/index-da57bcef.css",

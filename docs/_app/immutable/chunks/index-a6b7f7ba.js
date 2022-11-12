@@ -739,7 +739,7 @@ function create_bidirectional_transition(node, fn, params, intro) {
     }
   };
 }
-const globals = typeof window !== "undefined" ? window : typeof globalThis !== "undefined" ? globalThis : global;
+const globals = typeof window !== "undefined" ? window : typeof globalThis !== "undefined" ? globalThis : {};
 function bind(component, name, callback) {
   const index = component.$$.props[name];
   if (index !== void 0) {
@@ -875,15 +875,15 @@ export {
   listen as I,
   destroy_each as J,
   binding_callbacks as K,
-  is_function as L,
-  svg_element as M,
-  claim_svg_element as N,
-  xlink_attr as O,
-  toggle_class as P,
-  action_destroyer as Q,
-  run_all as R,
+  toggle_class as L,
+  run_all as M,
+  is_function as N,
+  identity as O,
+  svg_element as P,
+  claim_svg_element as Q,
+  xlink_attr as R,
   SvelteComponent as S,
-  identity as T,
+  action_destroyer as T,
   add_render_callback as U,
   create_bidirectional_transition as V,
   null_to_empty as W,
@@ -920,4 +920,4 @@ export {
   destroy_component as y,
   tick as z
 };
-//# sourceMappingURL=index-19948bc8.js.map
+//# sourceMappingURL=index-a6b7f7ba.js.map
