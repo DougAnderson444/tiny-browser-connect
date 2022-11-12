@@ -227,12 +227,12 @@ A tiny WebRTC App
 
 <Button clickHandler={connect}>Connect</Button> -->
 <style>
-	#peers div {
+	/* #peers div {
 		padding: 8px;
 		font-size: 18px;
 	}
 	#messages div {
 		padding: 8px;
 		font-size: 18px;
-	}
+	} */
 </style>
