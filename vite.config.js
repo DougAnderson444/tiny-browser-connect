@@ -6,15 +6,19 @@ const config = {
 	plugins: [sveltekit()],
 	resolve: {
 		alias: {
-			'@douganderson444/tiny-browser-connect': path.resolve('src/lib')
+			'@douganderson444/tiny-browser-connect': path.resolve('src/lib'),
+			process: 'process/browser',
+			util: 'util',
+			buffer: 'buffer'
 		}
 	},
 	define: {
-		global: {}
+		global: {},
+		'process.env': { NODE_DEBUG: false }
 	},
 	build: {
 		commonjsOptions: {
-			include: [/node_modules/, /p2pt/]
+			include: [/node_modules/, /p2pt/, /ardag/]
 		},
 		minify: false,
 		sourcemap: true,
@@ -26,7 +30,7 @@ const config = {
 		minimize: false
 	},
 	optimizeDeps: {
-		include: ['immortal-db', 'p2pcf', 'p2pt'],
+		include: ['immortal-db', 'js-cookie', '@douganderson444/ardag', 'p2pcf', 'ar-gql'],
 		force: true
 	}
 };
