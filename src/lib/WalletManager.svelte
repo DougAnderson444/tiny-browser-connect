@@ -21,6 +21,7 @@
 		dispatch('RSAPublicKey', RSAPublicKey);
 		dispatch('Ed25519PublicKey', Ed25519PublicKey);
 		dispatch('ownerAddress', ownerAddress);
+		dispatch('wallet', { wallet });
 	}
 </script>
 

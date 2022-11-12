@@ -5,6 +5,8 @@
 
 	import ContactCard from '../../../awesome-components-kit/src/lib/compiled/ContactCard.svelte.js?raw';
 
+	export let wallet;
+
 	let dag;
 	let roots = [];
 	let rootObj;
@@ -106,7 +108,7 @@
 {/if}
 
 {#if esModule && selectedTag}
-	<Saver let:handleChange tag={selectedTag} {dag} {tagNode}>
+	<Saver let:handleChange tag={selectedTag} {dag} {tagNode} {wallet}>
 		<slot {handleChange} {esModule} {props} />
 	</Saver>
 {/if}

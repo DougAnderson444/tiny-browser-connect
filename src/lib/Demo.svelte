@@ -50,9 +50,10 @@
 		peers = peers.delete(peer.client_id);
 	}
 	function handleMsg() {}
+	const handleWallet = (e) => (wallet = e.detail.wallet);
 </script>
 
-<WalletManager let:wallet let:ownerAddress let:RSAPublicKey on:Ed25519PublicKey={keyConnect} />
+<WalletManager on:Ed25519PublicKey={keyConnect} on:wallet={handleWallet} />
 
 <div class="text-white">
 	<SideNav let:hideNav>
@@ -69,7 +70,7 @@
 
 <div class="flex flex-row min-h-screen h-full">
 	<div class="flex-1 w-2/3 bg-neutral-700 text-neutral-200 pt-16">
-		<Repo let:esModule let:props let:handleChange>
+		<Repo let:esModule let:props let:handleChange {wallet}>
 			<Mount src={esModule} {props} on:change={handleChange} />
 		</Repo>
 	</div>
