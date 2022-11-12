@@ -3,7 +3,7 @@
 	import Publish from './Publish.svelte';
 	import { fly } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
-	import localforage from 'localforage';
+	import * as b64 from '@stablelib/base64';
 
 	export let tag;
 	export let tagNode;
@@ -22,22 +22,16 @@
 
 	onMount(async () => {
 		// set unpublishedBuffers to cache save din localStorage, if any
-		try {
-			const value = await localforage.getItem('unpublishedBuffers');
-			// This code runs once the value has been loaded
-			// from the offline store.
-			console.log('Got', value);
-			unpublishedBuffers = value ? value : [];
-		} catch (err) {
-			// This code runs if there were any errors.
-			console.log(err);
+		const res = localStorage.getItem('unpublishedBuffers');
+		console.log('localStorage res', res);
+		if (res) {
+			const arr = JSON.parse(res);
+			// for each element in arr, decode b64 into Uint8Array
+			unpublishedBuffers = arr.map((b64str) => b64.decode(b64str));
+		} else {
+			unpublishedBuffers = [];
 		}
-
-		// loop through each in the array and cast the type to new Uint8Array
-		unpublishedBuffers = unpublishedBuffers.length
-			? unpublishedBuffers.map((buffer: any) => new Uint8Array(buffer))
-			: [];
-		console.log('LS: unpublishedBuffers', unpublishedBuffers);
+		console.log('unpublishedBuffers', unpublishedBuffers);
 	});
 
 	async function handleSave() {
@@ -50,7 +44,7 @@
 		await dag.tx.add(tag, tagNode);
 		const buffer = await dag.tx.commit();
 		unpublishedBuffers = [...unpublishedBuffers, new Uint8Array(buffer)];
-		cache();
+		cache(unpublishedBuffers);
 		dag = dag; // refresh svelte UI
 		console.log('saved tagNode', dag.rootCID.toString());
 
@@ -61,21 +55,17 @@
 		console.log(e.detail);
 		data = e.detail;
 		state = null;
+		// save data as props to tag
 	}
 	function handlePublished() {
 		unpublishedBuffers = [];
 		clearCache();
 	}
 
-	function cache() {
-		localforage
-			.setItem('unpublishedBuffers', unpublishedBuffers)
-			.then(function (value) {
-				console.log('Saved', value);
-			})
-			.catch(function (err) {
-				console.log(err);
-			});
+	function cache(buffers: Uint8Array[]) {
+		// foreach item in buffers, b64 encode
+		const b64Buffers = buffers.map((buffer) => b64.encode(buffer));
+		localStorage.setItem('unpublishedBuffers', JSON.stringify(b64Buffers));
 	}
 	function clearCache() {
 		localStorage.removeItem('unpublishedBuffers');
