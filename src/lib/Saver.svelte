@@ -8,11 +8,11 @@
 
 	let states = {
 		saving: 'saving',
-		saveed: 'saved',
+		saved: 'saved',
 		ready: null
 	};
 
-	let state = null;
+	let state = 'saved';
 
 	async function handleSave() {
 		state = 'saving';
