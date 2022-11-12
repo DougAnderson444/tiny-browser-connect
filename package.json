@@ -29,6 +29,7 @@
 	"type": "module",
 	"dependencies": {
 		"@douganderson444/ipld-car-txs": "^0.0.25",
+		"@peerpiper/awesome-components-kit": "^0.0.23",
 		"@peerpiper/web3-wallet-connector": "^0.1.7",
 		"@stablelib/base64": "^1.0.1",
 		"@stablelib/sha256": "^1.0.1",
