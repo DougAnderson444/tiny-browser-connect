@@ -1,11 +1,11 @@
 {
   "node_modules/@sveltejs/kit/src/runtime/client/start.js": {
-    "file": "_app/immutable/start-da801873.js",
+    "file": "_app/immutable/start-f1bc2705.js",
     "src": "node_modules/@sveltejs/kit/src/runtime/client/start.js",
     "isEntry": true,
     "imports": [
-      "_index-a6b7f7ba.js",
-      "_singletons-037c1a50.js",
+      "_index-44914e8a.js",
+      "_singletons-2d197b20.js",
       "_preload-helper-b21cceae.js"
     ],
     "dynamicImports": [
@@ -15,23 +15,23 @@
     ]
   },
   "src/routes/+layout.svelte": {
-    "file": "_app/immutable/components/pages/_layout.svelte-738c0b9a.js",
+    "file": "_app/immutable/components/pages/_layout.svelte-534a2e6e.js",
     "src": "src/routes/+layout.svelte",
     "isEntry": true,
     "imports": [
-      "_index-a6b7f7ba.js"
+      "_index-44914e8a.js"
     ],
     "css": [
-      "_app/immutable/assets/_layout-f8dc2d95.css"
+      "_app/immutable/assets/_layout-7152f027.css"
     ]
   },
   "node_modules/@sveltejs/kit/src/runtime/components/error.svelte": {
-    "file": "_app/immutable/components/error.svelte-0d4c9ff2.js",
+    "file": "_app/immutable/components/error.svelte-56a46503.js",
     "src": "node_modules/@sveltejs/kit/src/runtime/components/error.svelte",
     "isEntry": true,
     "imports": [
-      "_index-a6b7f7ba.js",
-      "_singletons-037c1a50.js"
+      "_index-44914e8a.js",
+      "_singletons-2d197b20.js"
     ]
   },
   "src/routes/+layout.js": {
@@ -43,23 +43,23 @@
     ]
   },
   "src/routes/+page.svelte": {
-    "file": "_app/immutable/components/pages/_page.svelte-5b97b29d.js",
+    "file": "_app/immutable/components/pages/_page.svelte-0a473fdb.js",
     "src": "src/routes/+page.svelte",
     "isEntry": true,
     "imports": [
-      "_index-a6b7f7ba.js",
+      "_index-44914e8a.js",
       "_preload-helper-b21cceae.js",
-      "__page-ca2722d0.js"
+      "__page-c4e5a7f2.js"
     ]
   },
-  "_singletons-037c1a50.js": {
-    "file": "_app/immutable/chunks/singletons-037c1a50.js",
+  "_singletons-2d197b20.js": {
+    "file": "_app/immutable/chunks/singletons-2d197b20.js",
     "imports": [
-      "_index-a6b7f7ba.js"
+      "_index-44914e8a.js"
     ]
   },
-  "_index-a6b7f7ba.js": {
-    "file": "_app/immutable/chunks/index-a6b7f7ba.js"
+  "_index-44914e8a.js": {
+    "file": "_app/immutable/chunks/index-44914e8a.js"
   },
   "_preload-helper-b21cceae.js": {
     "file": "_app/immutable/chunks/preload-helper-b21cceae.js"
@@ -67,14 +67,17 @@
   "__layout-8d2a742b.js": {
     "file": "_app/immutable/chunks/_layout-8d2a742b.js"
   },
-  "__page-ca2722d0.js": {
-    "file": "_app/immutable/chunks/_page-ca2722d0.js",
+  "__page-c4e5a7f2.js": {
+    "file": "_app/immutable/chunks/_page-c4e5a7f2.js",
     "imports": [
-      "_index-a6b7f7ba.js",
+      "_index-44914e8a.js",
       "_preload-helper-b21cceae.js"
     ],
     "dynamicImports": [
       "node_modules/@peerpiper/web3-wallet-connector/index.js",
+      "node_modules/@douganderson444/ardag/index.js",
+      "node_modules/@douganderson444/ardag/bundlrHelpers/index.js",
+      "_index-54bf89e1.js",
       "src/lib/lib.js"
     ],
     "css": [
@@ -82,7 +85,7 @@
     ]
   },
   ".svelte-kit/generated/nodes/0.js": {
-    "file": "_app/immutable/chunks/0-de2b26dd.js",
+    "file": "_app/immutable/chunks/0-38335aa5.js",
     "src": ".svelte-kit/generated/nodes/0.js",
     "isDynamicEntry": true,
     "imports": [
@@ -91,7 +94,7 @@
     ]
   },
   ".svelte-kit/generated/nodes/1.js": {
-    "file": "_app/immutable/chunks/1-8a28eed8.js",
+    "file": "_app/immutable/chunks/1-a24a5af3.js",
     "src": ".svelte-kit/generated/nodes/1.js",
     "isDynamicEntry": true,
     "imports": [
@@ -99,28 +102,47 @@
     ]
   },
   ".svelte-kit/generated/nodes/2.js": {
-    "file": "_app/immutable/chunks/2-1c9d5fac.js",
+    "file": "_app/immutable/chunks/2-1ab42b62.js",
     "src": ".svelte-kit/generated/nodes/2.js",
     "isDynamicEntry": true,
     "imports": [
-      "__page-ca2722d0.js"
+      "__page-c4e5a7f2.js"
     ]
   },
   "src/lib/lib.js": {
-    "file": "_app/immutable/chunks/lib-cc382c34.js",
+    "file": "_app/immutable/chunks/lib-cb7b85fe.js",
     "src": "src/lib/lib.js",
     "isDynamicEntry": true,
     "imports": [
-      "__page-ca2722d0.js"
+      "_index-3f3061f9.js",
+      "_base32-9988a49b.js",
+      "__page-c4e5a7f2.js"
     ]
   },
+  "_base32-9988a49b.js": {
+    "file": "_app/immutable/chunks/base32-9988a49b.js",
+    "imports": [
+      "__page-c4e5a7f2.js",
+      "_index-3f3061f9.js"
+    ]
+  },
+  "_index-3f3061f9.js": {
+    "file": "_app/immutable/chunks/index-3f3061f9.js",
+    "imports": [
+      "_index-bfa8ea01.js"
+    ]
+  },
+  "_index-bfa8ea01.js": {
+    "file": "_app/immutable/chunks/index-bfa8ea01.js"
+  },
   "node_modules/@peerpiper/web3-wallet-connector/index.js": {
-    "file": "_app/immutable/chunks/index-98e6f1ed.js",
+    "file": "_app/immutable/chunks/index-783738d2.js",
     "src": "node_modules/@peerpiper/web3-wallet-connector/index.js",
     "isDynamicEntry": true,
     "imports": [
-      "_index-a6b7f7ba.js",
-      "_preload-helper-b21cceae.js"
+      "_index-44914e8a.js",
+      "_preload-helper-b21cceae.js",
+      "__page-c4e5a7f2.js"
     ],
     "dynamicImports": [
       "node_modules/immortal-db/src/index.js"
@@ -129,13 +151,41 @@
       "_app/immutable/assets/index-da57bcef.css"
     ]
   },
+  "node_modules/@douganderson444/ardag/index.js": {
+    "file": "_app/immutable/chunks/index-4e3a0990.js",
+    "src": "node_modules/@douganderson444/ardag/index.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_base32-9988a49b.js",
+      "__page-c4e5a7f2.js"
+    ]
+  },
+  "node_modules/@douganderson444/ardag/bundlrHelpers/index.js": {
+    "file": "_app/immutable/chunks/index-fec0c7b6.js",
+    "src": "node_modules/@douganderson444/ardag/bundlrHelpers/index.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "__page-c4e5a7f2.js",
+      "_index-bfa8ea01.js",
+      "_index-54bf89e1.js",
+      "_index-3f3061f9.js"
+    ]
+  },
+  "_index-54bf89e1.js": {
+    "file": "_app/immutable/chunks/index-54bf89e1.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "__page-c4e5a7f2.js",
+      "_index-bfa8ea01.js"
+    ]
+  },
   "node_modules/immortal-db/src/index.js": {
     "file": "_app/immutable/chunks/index-f3824ee7.js",
     "src": "node_modules/immortal-db/src/index.js",
     "isDynamicEntry": true
   },
   "src/routes/+layout.css": {
-    "file": "_app/immutable/assets/_layout-f8dc2d95.css",
+    "file": "_app/immutable/assets/_layout-7152f027.css",
     "src": "src/routes/+layout.css"
   },
   "_page.css": {

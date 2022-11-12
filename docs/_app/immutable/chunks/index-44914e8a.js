@@ -522,6 +522,13 @@ function createEventDispatcher() {
     return true;
   };
 }
+function setContext(key, context) {
+  get_current_component().$$.context.set(key, context);
+  return context;
+}
+function getContext(key) {
+  return get_current_component().$$.context.get(key);
+}
 function bubble(component, event) {
   const callbacks = component.$$.callbacks[event.type];
   if (callbacks) {
@@ -863,7 +870,7 @@ class SvelteComponent {
   }
 }
 export {
-  bind as $,
+  add_resize_listener as $,
   noop as A,
   create_slot as B,
   update_slot_base as C,
@@ -873,27 +880,29 @@ export {
   component_subscribe as G,
   createEventDispatcher as H,
   listen as I,
-  destroy_each as J,
-  binding_callbacks as K,
-  toggle_class as L,
-  run_all as M,
-  is_function as N,
-  identity as O,
-  svg_element as P,
-  claim_svg_element as Q,
-  xlink_attr as R,
+  getContext as J,
+  identity as K,
+  add_render_callback as L,
+  create_bidirectional_transition as M,
+  destroy_each as N,
+  binding_callbacks as O,
+  toggle_class as P,
+  run_all as Q,
+  setContext as R,
   SvelteComponent as S,
-  action_destroyer as T,
-  add_render_callback as U,
-  create_bidirectional_transition as V,
-  null_to_empty as W,
-  src_url_equal as X,
-  set_input_value as Y,
-  add_resize_listener as Z,
-  globals as _,
+  is_function as T,
+  svg_element as U,
+  claim_svg_element as V,
+  xlink_attr as W,
+  action_destroyer as X,
+  null_to_empty as Y,
+  src_url_equal as Z,
+  set_input_value as _,
   space as a,
-  add_flush_callback as a0,
-  bubble as a1,
+  globals as a0,
+  bind as a1,
+  add_flush_callback as a2,
+  bubble as a3,
   insert_hydration as b,
   claim_space as c,
   check_outros as d,
@@ -920,4 +929,4 @@ export {
   destroy_component as y,
   tick as z
 };
-//# sourceMappingURL=index-a6b7f7ba.js.map
+//# sourceMappingURL=index-44914e8a.js.map
