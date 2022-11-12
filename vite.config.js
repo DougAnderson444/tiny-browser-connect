@@ -9,9 +9,12 @@ const config = {
 			'@douganderson444/tiny-browser-connect': path.resolve('src/lib')
 		}
 	},
+	define: {
+		global: {}
+	},
 	build: {
 		commonjsOptions: {
-			include: [/node_modules/, /p2pcf/]
+			include: [/node_modules/, /p2pt/]
 		},
 		minify: false,
 		sourcemap: true,
@@ -23,7 +26,7 @@ const config = {
 		minimize: false
 	},
 	optimizeDeps: {
-		include: ['immortal-db', 'p2pcf'],
+		include: ['immortal-db', 'p2pcf', 'p2pt'],
 		force: true
 	}
 };
