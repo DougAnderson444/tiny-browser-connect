@@ -40,4 +40,4 @@
 	}
 </script>
 
-<div bind:this={target} />
+<div bind:this={target} class="z-10 p-2" />
