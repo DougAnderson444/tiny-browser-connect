@@ -23,7 +23,7 @@ const config = {
 		minify: false,
 		sourcemap: true,
 		optimization: {
-			minimize: false
+			minimize: true
 		}
 	},
 	optimization: {
