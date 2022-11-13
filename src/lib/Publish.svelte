@@ -16,8 +16,6 @@
 	let myArDag;
 	let arweave;
 
-	$: if (bytes) console.log('bytes', bytes);
-
 	onMount(async () => {
 		const Buffer = await import('buffer/');
 		window.Buffer = Buffer.Buffer;
@@ -74,6 +72,30 @@
 		}
 		dispatch('published', true);
 	}
+
+	$: if (bytes && bytes.length) maxSize();
+
+	function maxSize(arr: Uint8Array[] = bytes) {
+		if (!arr || !arr.length) return;
+		const max = arr.reduce((acc, curr) => {
+			if (curr.length > acc) return curr.length;
+			return acc;
+		}, 0);
+		return max;
+	}
+
+	function renderSize(value) {
+		if (null == value || value == '') {
+			return '0 Bytes';
+		}
+		const unitArr = new Array('Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
+		let index = 0;
+		let srcsize = parseFloat(value);
+		index = Math.floor(Math.log(srcsize) / Math.log(1024));
+		let size = srcsize / Math.pow(1024, index);
+		size = size.toFixed(0); //Number of decimal places reserved
+		return size + unitArr[index];
+	}
 </script>
 
 <button
@@ -82,5 +104,6 @@
 	class="flex-0 w-fit -m-3 pl-4 p-2 shadow-lg rounded-r-lg text-white font-semibold select-none
 		{state == 'saved' && bytes.length > 0
 		? 'cursor-pointer bg-blue-500'
-		: 'cursor-not-allowed bg-gray-400'}">Publish{bytes.length == 0 ? 'ed' : ''}</button
+		: 'cursor-not-allowed bg-gray-400'}"
+	>Publish{bytes.length == 0 ? 'ed' : ''} ({renderSize(maxSize())})</button
 >

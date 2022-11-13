@@ -23,7 +23,6 @@
 	onMount(async () => {
 		// set unpublishedBuffers to cache save din localStorage, if any
 		const res = localStorage.getItem('unpublishedBuffers');
-		console.log('localStorage res', res);
 		if (res) {
 			const arr = JSON.parse(res);
 			// for each element in arr, decode b64 into Uint8Array
@@ -70,7 +69,6 @@
 	function clearCache() {
 		localStorage.removeItem('unpublishedBuffers');
 	}
-	$: if (unpublishedBuffers) console.log('unpublishedBuffers', unpublishedBuffers);
 </script>
 
 <div class="relative">

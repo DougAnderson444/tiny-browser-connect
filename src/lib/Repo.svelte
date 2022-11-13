@@ -36,10 +36,8 @@
 		}
 
 		handleRootCIDChange = async () => {
-			console.log('handleRootCIDChange', dag.rootCID.toString());
 			if (!dag.rootCID) return;
 			const cid = CID.asCID(dag.rootCID) || CID.parse(dag.rootCID);
-			console.log('cid', cid);
 			if (!cid) return;
 
 			// update rootObj
@@ -49,8 +47,6 @@
 			if (saveToBrowser) saveToBrowser('ROOT_CID', cid.toString());
 
 			roots = [...roots, cid.toString()];
-
-			console.log('roots', roots);
 		};
 
 		// check if tag 'contactCard' already exists in the dag
