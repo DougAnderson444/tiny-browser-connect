@@ -4,8 +4,9 @@ var __publicField = (obj, key, value) => {
   __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
   return value;
 };
-import { f as from$c, t as toString$7, a as fromString$7, r as rfc4648$8, e as baseX$8, g as create$8, h as coerce$8, i as base32$a, j as base58$2, c as commonjsGlobal, k as getDefaultExportFromCjs, d as decode$z, l as base58btc$8, C as CID$6, b as base32$b } from "./_page-c4e5a7f2.js";
-import { b as buffer$1, e as events$1 } from "./index-3f3061f9.js";
+import { f as from$c, t as toString$7, a as fromString$7, r as rfc4648$8, e as baseX$8, g as create$8, h as coerce$8, i as base32$a, j as base58$2, c as commonjsGlobal, k as getDefaultExportFromCjs, d as decode$z, l as base58btc$8, C as CID$6, b as base32$b } from "./_page-b852fbc6.js";
+import { b as buffer$1 } from "./index-fcbc46b5.js";
+import { e as events$1 } from "./events-4b10efcd.js";
 var browser = { exports: {} };
 var ms;
 var hasRequiredMs;
@@ -423,7 +424,7 @@ var common$1 = setup;
     } catch (error) {
     }
     if (!r && typeof process !== "undefined" && "env" in process) {
-      r = process.env.DEBUG;
+      r = { "NODE_DEBUG": false }.DEBUG;
     }
     return r;
   }
@@ -20400,4 +20401,4 @@ export {
   decode$s as y,
   mitt as z
 };
-//# sourceMappingURL=base32-9988a49b.js.map
+//# sourceMappingURL=base32-977b94ac.js.map

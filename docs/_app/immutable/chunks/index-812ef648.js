@@ -1,4 +1,4 @@
-import { c as commonjsGlobal, k as getDefaultExportFromCjs } from "./_page-c4e5a7f2.js";
+import { c as commonjsGlobal, k as getDefaultExportFromCjs } from "./_page-b852fbc6.js";
 import { b as base64Js } from "./index-bfa8ea01.js";
 function _mergeNamespaces(n, m) {
   for (var i = 0; i < m.length; i++) {
@@ -1322,11 +1322,6 @@ function requireUtil() {
     };
     var debugs = {};
     var debugEnvRegex = /^$/;
-    if (process.env.NODE_DEBUG) {
-      var debugEnv = process.env.NODE_DEBUG;
-      debugEnv = debugEnv.replace(/[|\\{}()[\]^$+?.]/g, "\\$&").replace(/\*/g, ".*").replace(/,/g, "$|^").toUpperCase();
-      debugEnvRegex = new RegExp("^" + debugEnv + "$", "i");
-    }
     exports.debuglog = function(set) {
       set = set.toUpperCase();
       if (!debugs[set]) {
@@ -6340,4 +6335,4 @@ export {
   requireUtil as r,
   web as w
 };
-//# sourceMappingURL=index-54bf89e1.js.map
+//# sourceMappingURL=index-812ef648.js.map

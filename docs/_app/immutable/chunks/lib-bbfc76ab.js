@@ -1,6 +1,6 @@
-import { e as events } from "./index-3f3061f9.js";
-import { b as browser, q as queueMicrotask_1, e as errCode$1, i as itAll, a as itDrain, c as itFilter, n as notFoundError$1, K as Key, d as browserLevel, f as dbOpenFailedError, g as dbWriteFailedError, h as dbDeleteFailedError, j as coerce$1, k as equals$4, l as base32$2, m as base58btc$1, p as pushable, o as base32pad$1, r as createRepo$1, M as MemoryLock, s as base64url$1, t as coerce$2, u as equals$5, v as base32$3, w as base58btc$2, x as encode$e, y as decode$i, z as mitt, C as CarReader, A as headerLength, B as blockLength, D as createWriter, E as dagCBOR, F as dagJSON } from "./base32-9988a49b.js";
-import { c as commonjsGlobal, b as base32$4, C as CID$3, d as decode$j } from "./_page-c4e5a7f2.js";
+import { e as events } from "./events-4b10efcd.js";
+import { b as browser, q as queueMicrotask_1, e as errCode$1, i as itAll, a as itDrain, c as itFilter, n as notFoundError$1, K as Key, d as browserLevel, f as dbOpenFailedError, g as dbWriteFailedError, h as dbDeleteFailedError, j as coerce$1, k as equals$4, l as base32$2, m as base58btc$1, p as pushable, o as base32pad$1, r as createRepo$1, M as MemoryLock, s as base64url$1, t as coerce$2, u as equals$5, v as base32$3, w as base58btc$2, x as encode$e, y as decode$i, z as mitt, C as CarReader, A as headerLength, B as blockLength, D as createWriter, E as dagCBOR, F as dagJSON } from "./base32-977b94ac.js";
+import { c as commonjsGlobal, b as base32$4, C as CID$3, d as decode$j } from "./_page-b852fbc6.js";
 var getBrowserRtc = function getBrowserRTC() {
   if (typeof globalThis === "undefined")
     return null;
@@ -9864,4 +9864,4 @@ export {
   createDag,
   disconnect
 };
-//# sourceMappingURL=lib-cb7b85fe.js.map
+//# sourceMappingURL=lib-bbfc76ab.js.map

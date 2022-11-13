@@ -12,7 +12,7 @@ const get_default_slot_context$3 = (ctx) => ({
   RSAPublicKey: ctx[2],
   Ed25519PublicKey: ctx[3]
 });
-function create_if_block$4(ctx) {
+function create_if_block$5(ctx) {
   let switch_instance;
   let t;
   let if_block_anchor;
@@ -171,7 +171,7 @@ function create_if_block_1$1(ctx) {
 function create_fragment$9(ctx) {
   let if_block_anchor;
   let current;
-  let if_block = ctx[1] && create_if_block$4(ctx);
+  let if_block = ctx[1] && create_if_block$5(ctx);
   return {
     c() {
       if (if_block)
@@ -197,7 +197,7 @@ function create_fragment$9(ctx) {
             transition_in(if_block, 1);
           }
         } else {
-          if_block = create_if_block$4(ctx2);
+          if_block = create_if_block$5(ctx2);
           if_block.c();
           transition_in(if_block, 1);
           if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -237,7 +237,7 @@ function instance$8($$self, $$props, $$invalidate) {
   let ownerAddress;
   const dispatch = createEventDispatcher();
   onMount(async () => {
-    $$invalidate(1, { Web3WalletMenu } = await __vitePreload(() => import("./index-783738d2.js"), true ? ["./index-783738d2.js","./index-44914e8a.js","./preload-helper-b21cceae.js","..\\assets\\index-da57bcef.css"] : void 0, import.meta.url), Web3WalletMenu);
+    $$invalidate(1, { Web3WalletMenu } = await __vitePreload(() => import("./index-d12ec70e.js"), true ? ["./index-d12ec70e.js","./index-44914e8a.js","./preload-helper-b21cceae.js","..\\assets\\index-da57bcef.css"] : void 0, import.meta.url), Web3WalletMenu);
   });
   async function walletReady(e) {
     var _a;
@@ -450,11 +450,11 @@ var stdCoder = new Coder();
 function encode$2(data) {
   return stdCoder.encode(data);
 }
-base64.encode = encode$2;
+var encode_1$1 = base64.encode = encode$2;
 function decode$4(s) {
   return stdCoder.decode(s);
 }
-base64.decode = decode$4;
+var decode_1 = base64.decode = decode$4;
 var URLSafeCoder = function(_super) {
   __extends(URLSafeCoder2, _super);
   function URLSafeCoder2() {
@@ -1639,12 +1639,12 @@ const format = (link, base2) => {
       );
   }
 };
-const cache$1 = /* @__PURE__ */ new WeakMap();
+const cache = /* @__PURE__ */ new WeakMap();
 const baseCache = (cid) => {
-  const baseCache2 = cache$1.get(cid);
+  const baseCache2 = cache.get(cid);
   if (baseCache2 == null) {
     const baseCache3 = /* @__PURE__ */ new Map();
-    cache$1.set(cid, baseCache3);
+    cache.set(cid, baseCache3);
     return baseCache3;
   }
   return baseCache2;
@@ -1917,6 +1917,10 @@ function create_fragment$8(ctx) {
   let t0;
   let t1_value = ctx[1].length == 0 ? "ed" : "";
   let t1;
+  let t2;
+  let t3_value = renderSize(ctx[3]()) + "";
+  let t3;
+  let t4;
   let button_disabled_value;
   let button_class_value;
   let mounted;
@@ -1926,6 +1930,9 @@ function create_fragment$8(ctx) {
       button = element("button");
       t0 = text("Publish");
       t1 = text(t1_value);
+      t2 = text(" (");
+      t3 = text(t3_value);
+      t4 = text(")");
       this.h();
     },
     l(nodes) {
@@ -1933,6 +1940,9 @@ function create_fragment$8(ctx) {
       var button_nodes = children(button);
       t0 = claim_text(button_nodes, "Publish");
       t1 = claim_text(button_nodes, t1_value);
+      t2 = claim_text(button_nodes, " (");
+      t3 = claim_text(button_nodes, t3_value);
+      t4 = claim_text(button_nodes, ")");
       button_nodes.forEach(detach);
       this.h();
     },
@@ -1944,6 +1954,9 @@ function create_fragment$8(ctx) {
       insert_hydration(target, button, anchor);
       append_hydration(button, t0);
       append_hydration(button, t1);
+      append_hydration(button, t2);
+      append_hydration(button, t3);
+      append_hydration(button, t4);
       if (!mounted) {
         dispose = listen(button, "click", ctx[2]);
         mounted = true;
@@ -1969,21 +1982,31 @@ function create_fragment$8(ctx) {
     }
   };
 }
-function publish(bytes) {
-  console.log("publishing", { bytes });
+function renderSize(value) {
+  if (null == value || value == "") {
+    return "0 Bytes";
+  }
+  const unitArr = new Array("Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB");
+  let index = 0;
+  let srcsize = parseFloat(value);
+  index = Math.floor(Math.log(srcsize) / Math.log(1024));
+  let size = srcsize / Math.pow(1024, index);
+  size = size.toFixed(0);
+  return size + unitArr[index];
 }
 function instance$7($$self, $$props, $$invalidate) {
   let { state = "saved" } = $$props;
   let { bytes } = $$props;
-  let { local = false } = $$props;
-  let { dag } = $$props;
+  let { local = getContext("local") } = $$props;
   const ownerAddress = getContext("ownerAddress");
   const dispatch = createEventDispatcher();
-  let ardag;
+  let ardag = null;
   onMount(async () => {
-    const { initializeArDag } = await __vitePreload(() => import("./index-4e3a0990.js"), true ? ["./index-4e3a0990.js","./base32-9988a49b.js","./index-3f3061f9.js","./index-bfa8ea01.js"] : void 0, import.meta.url);
-    const { post: bundlrPost } = await __vitePreload(() => import("./index-fec0c7b6.js"), true ? ["./index-fec0c7b6.js","./index-bfa8ea01.js","./index-54bf89e1.js","./index-3f3061f9.js"] : void 0, import.meta.url);
-    const Arweave = (await __vitePreload(() => import("./index-54bf89e1.js").then((n) => n.i), true ? ["./index-54bf89e1.js","./index-bfa8ea01.js"] : void 0, import.meta.url)).default;
+    const Buffer = await __vitePreload(() => import("./index-fcbc46b5.js").then((n) => n.i), true ? ["./index-fcbc46b5.js","./index-bfa8ea01.js"] : void 0, import.meta.url);
+    window.Buffer = Buffer.Buffer;
+    const { initializeArDag } = await __vitePreload(() => import("./index-27eb8209.js"), true ? ["./index-27eb8209.js","./base32-977b94ac.js","./index-fcbc46b5.js","./index-bfa8ea01.js","./events-4b10efcd.js"] : void 0, import.meta.url);
+    const { post: bundlrPost } = await __vitePreload(() => import("./index-94fa359c.js"), true ? ["./index-94fa359c.js","./index-bfa8ea01.js","./index-812ef648.js","./index-fcbc46b5.js","./events-4b10efcd.js"] : void 0, import.meta.url);
+    const Arweave = (await __vitePreload(() => import("./index-812ef648.js").then((n) => n.i), true ? ["./index-812ef648.js","./index-bfa8ea01.js"] : void 0, import.meta.url)).default;
     let arweave;
     let post = null;
     if (local) {
@@ -1994,22 +2017,45 @@ function instance$7($$self, $$props, $$invalidate) {
         timeout: 2e4,
         logging: false
       });
+      await arweave.api.get(`/mint/${ownerAddress}/1000000000000000`);
+      const mine = async () => await arweave.api.get(`/mine`);
+      const doPost = arweave.transactions.post;
+      const p = doPost.bind(arweave.transactions);
+      post = async (tx) => {
+        const resp = await p(tx);
+        await mine();
+        return resp;
+      };
     } else {
       arweave = Arweave.init({});
       post = bundlrPost;
     }
     ardag = await initializeArDag({ arweave, post });
-    await ardag.getInstance({
-      dag,
-      wallet: "use_wallet",
-      dagOwner: ownerAddress
-    });
   });
   async function handlePublish(e) {
-    if (!bytes)
+    console.log("local?", local, { bytes });
+    if (!bytes || !bytes.length)
       return;
-    const url = publish(bytes);
-    dispatch("published", url);
+    for (let i = 0; i < bytes.length; i++) {
+      const buffer = new Uint8Array(bytes[i]);
+      console.log("saving", buffer);
+      const rootCID = await ardag.persist({ buffer, tags: [] });
+      console.log("Published rootCID", rootCID.toString());
+    }
+    dispatch("published", true);
+  }
+  function maxSize(arr = bytes) {
+    if (!arr || !arr.length)
+      return;
+    const max = arr.reduce(
+      (acc, curr) => {
+        if (curr.length > acc)
+          return curr.length;
+        return acc;
+      },
+      0
+    );
+    return max;
   }
   $$self.$$set = ($$props2) => {
     if ("state" in $$props2)
@@ -2017,16 +2063,20 @@ function instance$7($$self, $$props, $$invalidate) {
     if ("bytes" in $$props2)
       $$invalidate(1, bytes = $$props2.bytes);
     if ("local" in $$props2)
-      $$invalidate(3, local = $$props2.local);
-    if ("dag" in $$props2)
-      $$invalidate(4, dag = $$props2.dag);
+      $$invalidate(4, local = $$props2.local);
   };
-  return [state, bytes, handlePublish, local, dag];
+  $$self.$$.update = () => {
+    if ($$self.$$.dirty & 2) {
+      if (bytes && bytes.length)
+        maxSize();
+    }
+  };
+  return [state, bytes, handlePublish, maxSize, local];
 }
 class Publish extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance$7, create_fragment$8, safe_not_equal, { state: 0, bytes: 1, local: 3, dag: 4 });
+    init(this, options, instance$7, create_fragment$8, safe_not_equal, { state: 0, bytes: 1, local: 4 });
   }
 }
 function cubicOut(t) {
@@ -2061,29 +2111,29 @@ function fly(node, { delay = 0, duration = 400, easing = cubicOut, x = 0, y = 0,
 }
 const get_default_slot_changes$2 = (dirty) => ({});
 const get_default_slot_context$2 = (ctx) => ({ handleChange: ctx[5] });
-function create_if_block$3(ctx) {
+function create_if_block$4(ctx) {
   let div;
-  let publish2;
+  let publish;
   let div_transition;
   let current;
-  publish2 = new Publish({
+  publish = new Publish({
     props: {
       dag: ctx[1],
       state: ctx[2],
       bytes: ctx[3]
     }
   });
-  publish2.$on("published", ctx[6]);
+  publish.$on("published", ctx[6]);
   return {
     c() {
       div = element("div");
-      create_component(publish2.$$.fragment);
+      create_component(publish.$$.fragment);
       this.h();
     },
     l(nodes) {
       div = claim_element(nodes, "DIV", { class: true });
       var div_nodes = children(div);
-      claim_component(publish2.$$.fragment, div_nodes);
+      claim_component(publish.$$.fragment, div_nodes);
       div_nodes.forEach(detach);
       this.h();
     },
@@ -2092,7 +2142,7 @@ function create_if_block$3(ctx) {
     },
     m(target, anchor) {
       insert_hydration(target, div, anchor);
-      mount_component(publish2, div, null);
+      mount_component(publish, div, null);
       current = true;
     },
     p(new_ctx, dirty) {
@@ -2104,12 +2154,12 @@ function create_if_block$3(ctx) {
         publish_changes.state = ctx[2];
       if (dirty & 8)
         publish_changes.bytes = ctx[3];
-      publish2.$set(publish_changes);
+      publish.$set(publish_changes);
     },
     i(local) {
       if (current)
         return;
-      transition_in(publish2.$$.fragment, local);
+      transition_in(publish.$$.fragment, local);
       add_render_callback(() => {
         if (!div_transition)
           div_transition = create_bidirectional_transition(
@@ -2130,7 +2180,7 @@ function create_if_block$3(ctx) {
       current = true;
     },
     o(local) {
-      transition_out(publish2.$$.fragment, local);
+      transition_out(publish.$$.fragment, local);
       if (!div_transition)
         div_transition = create_bidirectional_transition(
           div,
@@ -2151,7 +2201,7 @@ function create_if_block$3(ctx) {
     d(detaching) {
       if (detaching)
         detach(div);
-      destroy_component(publish2);
+      destroy_component(publish);
       if (detaching && div_transition)
         div_transition.end();
     }
@@ -2169,7 +2219,7 @@ function create_fragment$7(ctx) {
   let current;
   let mounted;
   let dispose;
-  let if_block = ctx[2] == "saved" && create_if_block$3(ctx);
+  let if_block = ctx[2] == "saved" && ctx[3].length > 0 && create_if_block$4(ctx);
   const default_slot_template = ctx[10].default;
   const default_slot = create_slot(default_slot_template, ctx, ctx[9], get_default_slot_context$2);
   return {
@@ -2232,14 +2282,14 @@ function create_fragment$7(ctx) {
       if (!current || dirty & 5 && button_disabled_value !== (button_disabled_value = !ctx2[0] || ctx2[2] == "saved")) {
         button.disabled = button_disabled_value;
       }
-      if (ctx2[2] == "saved") {
+      if (ctx2[2] == "saved" && ctx2[3].length > 0) {
         if (if_block) {
           if_block.p(ctx2, dirty);
-          if (dirty & 4) {
+          if (dirty & 12) {
             transition_in(if_block, 1);
           }
         } else {
-          if_block = create_if_block$3(ctx2);
+          if_block = create_if_block$4(ctx2);
           if_block.c();
           transition_in(if_block, 1);
           if_block.m(div, null);
@@ -2290,9 +2340,6 @@ function create_fragment$7(ctx) {
     }
   };
 }
-function cache(buffers) {
-  localStorage.setItem("unpublishedBuffers", JSON.stringify(buffers));
-}
 function clearCache() {
   localStorage.removeItem("unpublishedBuffers");
 }
@@ -2305,7 +2352,14 @@ function instance$6($$self, $$props, $$invalidate) {
   let state = "saved";
   let unpublishedBuffers = [];
   onMount(async () => {
-    $$invalidate(3, unpublishedBuffers = JSON.parse(localStorage.getItem("unpublishedBuffers")) || []);
+    const res = localStorage.getItem("unpublishedBuffers");
+    if (res) {
+      const arr = JSON.parse(res);
+      $$invalidate(3, unpublishedBuffers = arr.map((b64str) => decode_1(b64str)));
+    } else {
+      $$invalidate(3, unpublishedBuffers = []);
+    }
+    console.log("unpublishedBuffers", unpublishedBuffers);
   });
   async function handleSave() {
     $$invalidate(2, state = "saving");
@@ -2317,8 +2371,8 @@ function instance$6($$self, $$props, $$invalidate) {
     console.log("saving tagNode", tagNode);
     await dag.tx.add(tag, tagNode);
     const buffer = await dag.tx.commit();
-    $$invalidate(3, unpublishedBuffers = [...unpublishedBuffers, buffer]);
-    cache(unpublishedBuffers);
+    $$invalidate(3, unpublishedBuffers = [...unpublishedBuffers, new Uint8Array(buffer)]);
+    cache2(unpublishedBuffers);
     $$invalidate(1, dag);
     console.log("saved tagNode", dag.rootCID.toString());
     $$invalidate(2, state = "saved");
@@ -2328,9 +2382,13 @@ function instance$6($$self, $$props, $$invalidate) {
     $$invalidate(0, data = e.detail);
     $$invalidate(2, state = null);
   }
-  function clearBuffer() {
+  function handlePublished() {
     $$invalidate(3, unpublishedBuffers = []);
     clearCache();
+  }
+  function cache2(buffers) {
+    const b64Buffers = buffers.map((buffer) => encode_1$1(buffer));
+    localStorage.setItem("unpublishedBuffers", JSON.stringify(b64Buffers));
   }
   $$self.$$set = ($$props2) => {
     if ("tag" in $$props2)
@@ -2351,7 +2409,7 @@ function instance$6($$self, $$props, $$invalidate) {
     unpublishedBuffers,
     handleSave,
     handleChange,
-    clearBuffer,
+    handlePublished,
     tagNode,
     tag,
     $$scope,
@@ -2600,7 +2658,7 @@ function create_default_slot$1(ctx) {
     }
   };
 }
-function create_if_block$2(ctx) {
+function create_if_block$3(ctx) {
   let div1;
   let div0;
   let each_value = ctx[1];
@@ -2707,7 +2765,7 @@ function create_fragment$6(ctx) {
   let current;
   let if_block0 = ctx[2] && create_if_block_2(ctx);
   let if_block1 = ctx[5] && ctx[3] && create_if_block_1(ctx);
-  let if_block2 = ctx[1] && create_if_block$2(ctx);
+  let if_block2 = ctx[1] && create_if_block$3(ctx);
   return {
     c() {
       if (if_block0)
@@ -2779,7 +2837,7 @@ function create_fragment$6(ctx) {
         if (if_block2) {
           if_block2.p(ctx2, dirty);
         } else {
-          if_block2 = create_if_block$2(ctx2);
+          if_block2 = create_if_block$3(ctx2);
           if_block2.c();
           if_block2.m(if_block2_anchor.parentNode, if_block2_anchor);
         }
@@ -2824,7 +2882,7 @@ function instance$5($$self, $$props, $$invalidate) {
   let handleRootCIDChange;
   let saveToBrowser;
   onMount(async () => {
-    const { createDag, createContactCard } = await __vitePreload(() => import("./lib-cb7b85fe.js"), true ? ["./lib-cb7b85fe.js","./index-3f3061f9.js","./index-bfa8ea01.js","./base32-9988a49b.js"] : void 0, import.meta.url);
+    const { createDag, createContactCard } = await __vitePreload(() => import("./lib-bbfc76ab.js"), true ? ["./lib-bbfc76ab.js","./events-4b10efcd.js","./base32-977b94ac.js","./index-fcbc46b5.js","./index-bfa8ea01.js"] : void 0, import.meta.url);
     $$invalidate(0, dag = await createDag());
     dag.on("rootCID", (val) => handleRootCIDChange());
     if (typeof localStorage !== "undefined") {
@@ -2841,18 +2899,15 @@ function instance$5($$self, $$props, $$invalidate) {
       }
     }
     handleRootCIDChange = async () => {
-      console.log("handleRootCIDChange", dag.rootCID.toString());
       if (!dag.rootCID)
         return;
       const cid = CID.asCID(dag.rootCID) || CID.parse(dag.rootCID);
-      console.log("cid", cid);
       if (!cid)
         return;
       $$invalidate(2, rootObj = (await dag.get(cid)).value);
       if (saveToBrowser)
         saveToBrowser("ROOT_CID", cid.toString());
       $$invalidate(1, roots = [...roots, cid.toString()]);
-      console.log("roots", roots);
     };
     let exists = false;
     try {
@@ -2993,7 +3048,7 @@ function get_each_context(ctx, list, i) {
   child_ctx[1] = list[i];
   return child_ctx;
 }
-function create_if_block$1(ctx) {
+function create_if_block$2(ctx) {
   let div;
   let t;
   let each_value = ctx[0];
@@ -3097,7 +3152,7 @@ function create_each_block(ctx) {
 }
 function create_fragment$4(ctx) {
   let if_block_anchor;
-  let if_block = ctx[0] && ctx[0].length && create_if_block$1(ctx);
+  let if_block = ctx[0] && ctx[0].length && create_if_block$2(ctx);
   return {
     c() {
       if (if_block)
@@ -3119,7 +3174,7 @@ function create_fragment$4(ctx) {
         if (if_block) {
           if_block.p(ctx2, dirty);
         } else {
-          if_block = create_if_block$1(ctx2);
+          if_block = create_if_block$2(ctx2);
           if_block.c();
           if_block.m(if_block_anchor.parentNode, if_block_anchor);
         }
@@ -3159,7 +3214,7 @@ const Modal_svelte_svelte_type_style_lang = "";
 const SideNav_svelte_svelte_type_style_lang = "";
 const get_default_slot_changes = (dirty) => ({});
 const get_default_slot_context = (ctx) => ({ hideNav: ctx[4] });
-function create_if_block(ctx) {
+function create_if_block$1(ctx) {
   let div;
   let current;
   const default_slot_template = ctx[6].default;
@@ -3239,7 +3294,7 @@ function create_fragment$3(ctx) {
   let current;
   let mounted;
   let dispose;
-  let if_block = ctx[0] && create_if_block(ctx);
+  let if_block = ctx[0] && create_if_block$1(ctx);
   return {
     c() {
       div4 = element("div");
@@ -3324,7 +3379,7 @@ function create_fragment$3(ctx) {
             transition_in(if_block, 1);
           }
         } else {
-          if_block = create_if_block(ctx2);
+          if_block = create_if_block$1(ctx2);
           if_block.c();
           transition_in(if_block, 1);
           if_block.m(t3.parentNode, t3);
@@ -3396,8 +3451,8 @@ class SideNav extends SvelteComponent {
 }
 function create_fragment$2(ctx) {
   let current;
-  const default_slot_template = ctx[3].default;
-  const default_slot = create_slot(default_slot_template, ctx, ctx[2], null);
+  const default_slot_template = ctx[4].default;
+  const default_slot = create_slot(default_slot_template, ctx, ctx[3], null);
   return {
     c() {
       if (default_slot)
@@ -3415,13 +3470,13 @@ function create_fragment$2(ctx) {
     },
     p(ctx2, [dirty]) {
       if (default_slot) {
-        if (default_slot.p && (!current || dirty & 4)) {
+        if (default_slot.p && (!current || dirty & 8)) {
           update_slot_base(
             default_slot,
             default_slot_template,
             ctx2,
-            ctx2[2],
-            !current ? get_all_dirty_from_scope(ctx2[2]) : get_slot_changes(default_slot_template, ctx2[2], dirty, null),
+            ctx2[3],
+            !current ? get_all_dirty_from_scope(ctx2[3]) : get_slot_changes(default_slot_template, ctx2[3], dirty, null),
             null
           );
         }
@@ -3447,22 +3502,26 @@ function instance$1($$self, $$props, $$invalidate) {
   let { $$slots: slots = {}, $$scope } = $$props;
   let { wallet } = $$props;
   let { ownerAddress } = $$props;
+  let { local = false } = $$props;
   setContext("wallet", wallet);
+  setContext("local", local);
   setContext("ownerAddress", ownerAddress);
   $$self.$$set = ($$props2) => {
     if ("wallet" in $$props2)
       $$invalidate(0, wallet = $$props2.wallet);
     if ("ownerAddress" in $$props2)
       $$invalidate(1, ownerAddress = $$props2.ownerAddress);
+    if ("local" in $$props2)
+      $$invalidate(2, local = $$props2.local);
     if ("$$scope" in $$props2)
-      $$invalidate(2, $$scope = $$props2.$$scope);
+      $$invalidate(3, $$scope = $$props2.$$scope);
   };
-  return [wallet, ownerAddress, $$scope, slots];
+  return [wallet, ownerAddress, local, $$scope, slots];
 }
 class AppContext extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance$1, create_fragment$2, safe_not_equal, { wallet: 0, ownerAddress: 1 });
+    init(this, options, instance$1, create_fragment$2, safe_not_equal, { wallet: 0, ownerAddress: 1, local: 2 });
   }
 }
 function create_default_slot_2(ctx) {
@@ -3554,6 +3613,66 @@ function create_default_slot_2(ctx) {
       if (detaching)
         detach(section);
       destroy_component(peers_1);
+    }
+  };
+}
+function create_else_block(ctx) {
+  return {
+    c: noop,
+    l: noop,
+    m: noop,
+    p: noop,
+    i: noop,
+    o: noop,
+    d: noop
+  };
+}
+function create_if_block(ctx) {
+  let appcontext;
+  let current;
+  appcontext = new AppContext({
+    props: {
+      wallet: ctx[0],
+      ownerAddress: ctx[1],
+      local: true,
+      $$slots: { default: [create_default_slot] },
+      $$scope: { ctx }
+    }
+  });
+  return {
+    c() {
+      create_component(appcontext.$$.fragment);
+    },
+    l(nodes) {
+      claim_component(appcontext.$$.fragment, nodes);
+    },
+    m(target, anchor) {
+      mount_component(appcontext, target, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      const appcontext_changes = {};
+      if (dirty & 1)
+        appcontext_changes.wallet = ctx2[0];
+      if (dirty & 2)
+        appcontext_changes.ownerAddress = ctx2[1];
+      if (dirty & 524288) {
+        appcontext_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      appcontext.$set(appcontext_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(appcontext.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(appcontext.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(appcontext, detaching);
     }
   };
 }
@@ -3683,7 +3802,9 @@ function create_fragment$1(ctx) {
   let div;
   let sidenav;
   let t1;
-  let appcontext;
+  let current_block_type_index;
+  let if_block;
+  let if_block_anchor;
   let current;
   walletmanager = new WalletManager({});
   walletmanager.$on("ownerAddress", ctx[5]);
@@ -3701,14 +3822,15 @@ function create_fragment$1(ctx) {
       $$scope: { ctx }
     }
   });
-  appcontext = new AppContext({
-    props: {
-      wallet: ctx[0],
-      ownerAddress: ctx[1],
-      $$slots: { default: [create_default_slot] },
-      $$scope: { ctx }
-    }
-  });
+  const if_block_creators = [create_if_block, create_else_block];
+  const if_blocks = [];
+  function select_block_type(ctx2, dirty) {
+    if (ctx2[0] && ctx2[1])
+      return 0;
+    return 1;
+  }
+  current_block_type_index = select_block_type(ctx);
+  if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
   return {
     c() {
       create_component(walletmanager.$$.fragment);
@@ -3716,7 +3838,8 @@ function create_fragment$1(ctx) {
       div = element("div");
       create_component(sidenav.$$.fragment);
       t1 = space();
-      create_component(appcontext.$$.fragment);
+      if_block.c();
+      if_block_anchor = empty();
       this.h();
     },
     l(nodes) {
@@ -3727,7 +3850,8 @@ function create_fragment$1(ctx) {
       claim_component(sidenav.$$.fragment, div_nodes);
       div_nodes.forEach(detach);
       t1 = claim_space(nodes);
-      claim_component(appcontext.$$.fragment, nodes);
+      if_block.l(nodes);
+      if_block_anchor = empty();
       this.h();
     },
     h() {
@@ -3739,7 +3863,8 @@ function create_fragment$1(ctx) {
       insert_hydration(target, div, anchor);
       mount_component(sidenav, div, null);
       insert_hydration(target, t1, anchor);
-      mount_component(appcontext, target, anchor);
+      if_blocks[current_block_type_index].m(target, anchor);
+      insert_hydration(target, if_block_anchor, anchor);
       current = true;
     },
     p(ctx2, [dirty]) {
@@ -3748,28 +3873,39 @@ function create_fragment$1(ctx) {
         sidenav_changes.$$scope = { dirty, ctx: ctx2 };
       }
       sidenav.$set(sidenav_changes);
-      const appcontext_changes = {};
-      if (dirty & 1)
-        appcontext_changes.wallet = ctx2[0];
-      if (dirty & 2)
-        appcontext_changes.ownerAddress = ctx2[1];
-      if (dirty & 524288) {
-        appcontext_changes.$$scope = { dirty, ctx: ctx2 };
+      let previous_block_index = current_block_type_index;
+      current_block_type_index = select_block_type(ctx2);
+      if (current_block_type_index === previous_block_index) {
+        if_blocks[current_block_type_index].p(ctx2, dirty);
+      } else {
+        group_outros();
+        transition_out(if_blocks[previous_block_index], 1, 1, () => {
+          if_blocks[previous_block_index] = null;
+        });
+        check_outros();
+        if_block = if_blocks[current_block_type_index];
+        if (!if_block) {
+          if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx2);
+          if_block.c();
+        } else {
+          if_block.p(ctx2, dirty);
+        }
+        transition_in(if_block, 1);
+        if_block.m(if_block_anchor.parentNode, if_block_anchor);
       }
-      appcontext.$set(appcontext_changes);
     },
     i(local) {
       if (current)
         return;
       transition_in(walletmanager.$$.fragment, local);
       transition_in(sidenav.$$.fragment, local);
-      transition_in(appcontext.$$.fragment, local);
+      transition_in(if_block);
       current = true;
     },
     o(local) {
       transition_out(walletmanager.$$.fragment, local);
       transition_out(sidenav.$$.fragment, local);
-      transition_out(appcontext.$$.fragment, local);
+      transition_out(if_block);
       current = false;
     },
     d(detaching) {
@@ -3781,7 +3917,9 @@ function create_fragment$1(ctx) {
       destroy_component(sidenav);
       if (detaching)
         detach(t1);
-      destroy_component(appcontext, detaching);
+      if_blocks[current_block_type_index].d(detaching);
+      if (detaching)
+        detach(if_block_anchor);
     }
   };
 }
@@ -3795,7 +3933,7 @@ function instance($$self, $$props, $$invalidate) {
   let username;
   let peers = /* @__PURE__ */ new Set();
   onMount(async () => {
-    ({ connect } = await __vitePreload(() => import("./lib-cb7b85fe.js"), true ? ["./lib-cb7b85fe.js","./index-3f3061f9.js","./index-bfa8ea01.js","./base32-9988a49b.js"] : void 0, import.meta.url));
+    ({ connect } = await __vitePreload(() => import("./lib-bbfc76ab.js"), true ? ["./lib-bbfc76ab.js","./events-4b10efcd.js","./base32-977b94ac.js","./index-fcbc46b5.js","./index-bfa8ea01.js"] : void 0, import.meta.url));
   });
   function keyConnect(e) {
     Ed25519PublicKey = e.detail;
@@ -3883,4 +4021,4 @@ export {
   rfc4648 as r,
   toString as t
 };
-//# sourceMappingURL=_page-c4e5a7f2.js.map
+//# sourceMappingURL=_page-b852fbc6.js.map
