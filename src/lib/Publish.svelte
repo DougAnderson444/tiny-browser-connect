@@ -1,7 +1,5 @@
 <script lang="ts">
 	import { onMount, createEventDispatcher, getContext } from 'svelte';
-	import type { DagRepo } from '@douganderson444/ipld-car-txs';
-	import type { ArDag } from '@douganderson444/ardag';
 	import Error from './Error.svelte';
 
 	export let state = 'saved';
@@ -53,7 +51,6 @@
 		}
 
 		ardag = await initializeArDag({ arweave, post });
-		console.log('ardag', ardag);
 	});
 
 	// Publishes the dag tag to Arweave, gives you a URL to see the compponent and data if you have access
@@ -77,7 +74,7 @@
 
 	$: if (commits && commits.length) maxSize();
 
-	function maxSize(arr: Uint8Array[] = commits) {
+	function maxSize(arr: Uint8Array[] | null = commits) {
 		if (!arr || !arr.length) return;
 		const max = arr.reduce((acc, curr) => {
 			if (curr.length > acc) return curr.length;
@@ -86,7 +83,7 @@
 		return max;
 	}
 
-	function renderSize(value) {
+	function renderSize(value: string): string {
 		if (null == value || value == '') {
 			return '0 Bytes';
 		}
@@ -94,7 +91,7 @@
 		let index = 0;
 		let srcsize = parseFloat(value);
 		index = Math.floor(Math.log(srcsize) / Math.log(1024));
-		let size = srcsize / Math.pow(1024, index);
+		let size: number | string = srcsize / Math.pow(1024, index);
 		size = size.toFixed(0); //Number of decimal places reserved
 		return size + unitArr[index];
 	}
@@ -106,10 +103,10 @@
 	disabled={!commits || publishing}
 	on:click={handlePublish}
 	class="flex-0 w-fit -m-3 pl-4 p-2 shadow-lg rounded-r-lg text-white font-semibold select-none
-		{state == 'saved' && commits.length > 0 && !publishing
+		{state == 'saved' && commits && commits?.length > 0 && !publishing
 		? 'cursor-pointer bg-blue-500'
 		: 'cursor-not-allowed bg-gray-400'}"
-	>Publish{commits.length == 0 ? 'ed' : ''} ({renderSize(maxSize())})</button
+	>Publish{commits?.length == 0 ? 'ed' : ''} ({renderSize(maxSize())})</button
 >
 
 <!-- Link to Arweave Loader -->
