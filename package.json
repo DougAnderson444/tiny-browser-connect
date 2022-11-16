@@ -1,6 +1,6 @@
 {
 	"name": "@douganderson444/tiny-browser-connect",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "svelte-kit sync && svelte-package && vite build",
