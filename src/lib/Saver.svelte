@@ -88,7 +88,7 @@
 			class="inline-block"
 			transition:fly={{ delay: 0, duration: 300, x: -100, y: 0, opacity: 0.5, easing: quintOut }}
 		>
-			<Publish {dag} {state} bytes={unpublishedBuffers} on:published={handlePublished} />
+			<Publish {dag} {state} commits={unpublishedBuffers} on:published={handlePublished} />
 		</div>
 	{/if}
 </div>
