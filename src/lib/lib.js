@@ -3,7 +3,6 @@
  */
 import P2PCF from 'p2pcf';
 import { createDagRepo } from '@douganderson444/ipld-car-txs';
-import contactCard from './Apps/ContactCard.svelte.js?raw';
 
 let dag;
 let p2pcf;
@@ -47,16 +46,19 @@ export const createDag = async ({ persist } = { persist: true }) => {
 	return dag;
 };
 
-export const createContactCard = async (dag) => {
+export const commitTagData = async ({ dag, tag, data, key = 'compiled', tagNode = {} }) => {
+	// throw if params no good
+	if (!dag) throw new Error('No dag repo');
+	if (!tag) throw new Error('No tag');
+	if (!data) throw new Error('No value');
+
 	// save base app text to Repo
-	const tag = 'ContactCard';
-	const contactCardCid = await dag.tx.addData({ value: contactCard });
-	console.log('contactCardCid', contactCardCid.toString());
-	const tagNode = {
-		compiled: contactCardCid
+	const cid = await dag.tx.addData({ value: data });
+	const newTagNode = {
+		...tagNode,
+		[key]: cid
 	};
-	const rootCID = await dag.tx.addTag(tag, tagNode);
+	const rootCID = await dag.tx.addTag(tag, newTagNode);
 	const buffer = await dag.tx.commit(); // data not duplicated, only new data needs to be saved
-	console.log({ buffer });
-	return rootCID;
+	return buffer;
 };
