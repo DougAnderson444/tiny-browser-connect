@@ -134,7 +134,7 @@ function create_updated_store() {
     });
     if (res.ok) {
       const { version } = await res.json();
-      const updated = version !== "1668371035664";
+      const updated = version !== "1668560042156";
       if (updated) {
         set(true);
         clearTimeout(timeout);
@@ -166,4 +166,4 @@ export {
   init as i,
   stores as s
 };
-//# sourceMappingURL=singletons-d360b40c.js.map
+//# sourceMappingURL=singletons-9e6fe39e.js.map

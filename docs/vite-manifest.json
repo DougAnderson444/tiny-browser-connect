@@ -1,11 +1,11 @@
 {
   "node_modules/@sveltejs/kit/src/runtime/client/start.js": {
-    "file": "_app/immutable/start-8f4fa97b.js",
+    "file": "_app/immutable/start-0c91f5a4.js",
     "src": "node_modules/@sveltejs/kit/src/runtime/client/start.js",
     "isEntry": true,
     "imports": [
       "_index-44914e8a.js",
-      "_singletons-d360b40c.js",
+      "_singletons-9e6fe39e.js",
       "_preload-helper-b21cceae.js"
     ],
     "dynamicImports": [
@@ -22,16 +22,16 @@
       "_index-44914e8a.js"
     ],
     "css": [
-      "_app/immutable/assets/_layout-7152f027.css"
+      "_app/immutable/assets/_layout-2b198235.css"
     ]
   },
   "node_modules/@sveltejs/kit/src/runtime/components/error.svelte": {
-    "file": "_app/immutable/components/error.svelte-66800a64.js",
+    "file": "_app/immutable/components/error.svelte-9a414f71.js",
     "src": "node_modules/@sveltejs/kit/src/runtime/components/error.svelte",
     "isEntry": true,
     "imports": [
       "_index-44914e8a.js",
-      "_singletons-d360b40c.js"
+      "_singletons-9e6fe39e.js"
     ]
   },
   "src/routes/+layout.js": {
@@ -43,17 +43,17 @@
     ]
   },
   "src/routes/+page.svelte": {
-    "file": "_app/immutable/components/pages/_page.svelte-8968880a.js",
+    "file": "_app/immutable/components/pages/_page.svelte-e3b3b0a2.js",
     "src": "src/routes/+page.svelte",
     "isEntry": true,
     "imports": [
       "_index-44914e8a.js",
       "_preload-helper-b21cceae.js",
-      "__page-b852fbc6.js"
+      "__page-dd37122a.js"
     ]
   },
-  "_singletons-d360b40c.js": {
-    "file": "_app/immutable/chunks/singletons-d360b40c.js",
+  "_singletons-9e6fe39e.js": {
+    "file": "_app/immutable/chunks/singletons-9e6fe39e.js",
     "imports": [
       "_index-44914e8a.js"
     ]
@@ -67,8 +67,8 @@
   "__layout-8d2a742b.js": {
     "file": "_app/immutable/chunks/_layout-8d2a742b.js"
   },
-  "__page-b852fbc6.js": {
-    "file": "_app/immutable/chunks/_page-b852fbc6.js",
+  "__page-dd37122a.js": {
+    "file": "_app/immutable/chunks/_page-dd37122a.js",
     "imports": [
       "_index-44914e8a.js",
       "_preload-helper-b21cceae.js"
@@ -78,7 +78,7 @@
       "_index-fcbc46b5.js",
       "node_modules/@douganderson444/ardag/index.js",
       "node_modules/@douganderson444/ardag/bundlrHelpers/index.js",
-      "_index-812ef648.js",
+      "_index-b269a514.js",
       "src/lib/lib.js"
     ],
     "css": [
@@ -95,7 +95,7 @@
     ]
   },
   ".svelte-kit/generated/nodes/1.js": {
-    "file": "_app/immutable/chunks/1-34ac74f0.js",
+    "file": "_app/immutable/chunks/1-9324f333.js",
     "src": ".svelte-kit/generated/nodes/1.js",
     "isDynamicEntry": true,
     "imports": [
@@ -103,27 +103,27 @@
     ]
   },
   ".svelte-kit/generated/nodes/2.js": {
-    "file": "_app/immutable/chunks/2-e5a12a26.js",
+    "file": "_app/immutable/chunks/2-991be1b1.js",
     "src": ".svelte-kit/generated/nodes/2.js",
     "isDynamicEntry": true,
     "imports": [
-      "__page-b852fbc6.js"
+      "__page-dd37122a.js"
     ]
   },
   "src/lib/lib.js": {
-    "file": "_app/immutable/chunks/lib-bbfc76ab.js",
+    "file": "_app/immutable/chunks/lib-612ab5b5.js",
     "src": "src/lib/lib.js",
     "isDynamicEntry": true,
     "imports": [
       "_events-4b10efcd.js",
-      "_base32-977b94ac.js",
-      "__page-b852fbc6.js"
+      "_base32-4c9972d0.js",
+      "__page-dd37122a.js"
     ]
   },
-  "_base32-977b94ac.js": {
-    "file": "_app/immutable/chunks/base32-977b94ac.js",
+  "_base32-4c9972d0.js": {
+    "file": "_app/immutable/chunks/base32-4c9972d0.js",
     "imports": [
-      "__page-b852fbc6.js",
+      "__page-dd37122a.js",
       "_index-fcbc46b5.js",
       "_events-4b10efcd.js"
     ]
@@ -142,47 +142,47 @@
     "file": "_app/immutable/chunks/index-bfa8ea01.js"
   },
   "node_modules/@peerpiper/web3-wallet-connector/index.js": {
-    "file": "_app/immutable/chunks/index-d12ec70e.js",
+    "file": "_app/immutable/chunks/index-2e08d745.js",
     "src": "node_modules/@peerpiper/web3-wallet-connector/index.js",
     "isDynamicEntry": true,
     "imports": [
-      "_index-44914e8a.js",
       "_preload-helper-b21cceae.js",
-      "__page-b852fbc6.js"
+      "_index-44914e8a.js",
+      "__page-dd37122a.js"
     ],
     "dynamicImports": [
       "node_modules/immortal-db/src/index.js"
     ],
     "css": [
-      "_app/immutable/assets/index-da57bcef.css"
+      "_app/immutable/assets/index-e42c8a49.css"
     ]
   },
   "node_modules/@douganderson444/ardag/index.js": {
-    "file": "_app/immutable/chunks/index-27eb8209.js",
+    "file": "_app/immutable/chunks/index-f5af3a35.js",
     "src": "node_modules/@douganderson444/ardag/index.js",
     "isDynamicEntry": true,
     "imports": [
-      "_base32-977b94ac.js",
-      "__page-b852fbc6.js"
+      "_base32-4c9972d0.js",
+      "__page-dd37122a.js"
     ]
   },
   "node_modules/@douganderson444/ardag/bundlrHelpers/index.js": {
-    "file": "_app/immutable/chunks/index-94fa359c.js",
+    "file": "_app/immutable/chunks/index-c3fd133b.js",
     "src": "node_modules/@douganderson444/ardag/bundlrHelpers/index.js",
     "isDynamicEntry": true,
     "imports": [
-      "__page-b852fbc6.js",
+      "__page-dd37122a.js",
       "_index-bfa8ea01.js",
-      "_index-812ef648.js",
+      "_index-b269a514.js",
       "_index-fcbc46b5.js",
       "_events-4b10efcd.js"
     ]
   },
-  "_index-812ef648.js": {
-    "file": "_app/immutable/chunks/index-812ef648.js",
+  "_index-b269a514.js": {
+    "file": "_app/immutable/chunks/index-b269a514.js",
     "isDynamicEntry": true,
     "imports": [
-      "__page-b852fbc6.js",
+      "__page-dd37122a.js",
       "_index-bfa8ea01.js"
     ]
   },
@@ -192,7 +192,7 @@
     "isDynamicEntry": true
   },
   "src/routes/+layout.css": {
-    "file": "_app/immutable/assets/_layout-7152f027.css",
+    "file": "_app/immutable/assets/_layout-2b198235.css",
     "src": "src/routes/+layout.css"
   },
   "_page.css": {
@@ -200,7 +200,7 @@
     "src": "_page.css"
   },
   "node_modules/@peerpiper/web3-wallet-connector/index.css": {
-    "file": "_app/immutable/assets/index-da57bcef.css",
+    "file": "_app/immutable/assets/index-e42c8a49.css",
     "src": "node_modules/@peerpiper/web3-wallet-connector/index.css"
   }
 }

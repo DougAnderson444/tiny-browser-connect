@@ -1,5 +1,5 @@
-import { z as mitt, C as CarReader, A as headerLength, B as blockLength, D as createWriter, E as dagCBOR, i as itAll } from "./base32-977b94ac.js";
-import { k as getDefaultExportFromCjs } from "./_page-b852fbc6.js";
+import { z as mitt, C as CarReader, A as headerLength, B as blockLength, D as createWriter, E as dagCBOR, i as itAll } from "./base32-4c9972d0.js";
+import { k as getDefaultExportFromCjs } from "./_page-dd37122a.js";
 var encode_1 = encode$7;
 var MSB = 128, REST = 127, MSBALL = ~REST, INT = Math.pow(2, 31);
 function encode$7(num, out, offset) {
@@ -6472,4 +6472,4 @@ export {
   load,
   persist
 };
-//# sourceMappingURL=index-27eb8209.js.map
+//# sourceMappingURL=index-f5af3a35.js.map

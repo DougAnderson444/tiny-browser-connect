@@ -1,7 +1,287 @@
 var _a, _b, _c;
-import { S as SvelteComponent, i as init, s as safe_not_equal, k as element, U as svg_element, l as claim_element, m as children, V as claim_svg_element, h as detach, n as attr, W as xlink_attr, b as insert_hydration, F as append_hydration, A as noop, v as create_component, a as space, e as empty, w as claim_component, c as claim_space, P as toggle_class, x as mount_component, I as listen, X as action_destroyer, f as transition_in, g as group_outros, t as transition_out, d as check_outros, y as destroy_component, Q as run_all, o as onMount, B as create_slot, C as update_slot_base, D as get_all_dirty_from_scope, E as get_slot_changes, H as createEventDispatcher, L as add_render_callback, M as create_bidirectional_transition, Y as null_to_empty, p as set_style, Z as src_url_equal, _ as set_input_value, $ as add_resize_listener, a0 as globals, q as text, r as claim_text, u as set_data, O as binding_callbacks, a1 as bind, T as is_function, a2 as add_flush_callback, a3 as bubble } from "./index-44914e8a.js";
 import { _ as __vitePreload } from "./preload-helper-b21cceae.js";
-import { m as fade } from "./_page-b852fbc6.js";
+import { S as SvelteComponent, i as init, s as safe_not_equal, k as element, l as claim_element, m as children, h as detach, n as attr, b as insert_hydration, f as transition_in, g as group_outros, t as transition_out, d as check_outros, H as createEventDispatcher, o as onMount, v as create_component, a as space, e as empty, w as claim_component, c as claim_space, x as mount_component, y as destroy_component, B as create_slot, C as update_slot_base, D as get_all_dirty_from_scope, E as get_slot_changes, U as svg_element, V as claim_svg_element, W as xlink_attr, F as append_hydration, A as noop, P as toggle_class, I as listen, X as action_destroyer, Q as run_all, L as add_render_callback, M as create_bidirectional_transition, Y as null_to_empty, p as set_style, Z as src_url_equal, _ as set_input_value, $ as add_resize_listener, a0 as globals, q as text, r as claim_text, u as set_data, O as binding_callbacks, a1 as bind, T as is_function, a2 as add_flush_callback, a3 as bubble } from "./index-44914e8a.js";
+import { m as fade } from "./_page-dd37122a.js";
+const WalletManager_svelte_svelte_type_style_lang = "";
+const get_default_slot_changes$1 = (dirty) => ({
+  wallet: dirty & 1,
+  ownerAddress: dirty & 16,
+  RSAPublicKey: dirty & 4,
+  Ed25519PublicKey: dirty & 8
+});
+const get_default_slot_context$1 = (ctx) => ({
+  wallet: ctx[0],
+  ownerAddress: ctx[4],
+  RSAPublicKey: ctx[2],
+  Ed25519PublicKey: ctx[3]
+});
+function create_if_block$3(ctx) {
+  let switch_instance;
+  let t2;
+  let if_block_anchor;
+  let current;
+  var switch_value = ctx[1];
+  function switch_props(ctx2) {
+    return {};
+  }
+  if (switch_value) {
+    switch_instance = new switch_value(switch_props());
+    switch_instance.$on("walletReady", ctx[5]);
+  }
+  let if_block = ctx[0] && ctx[2] && ctx[3] && create_if_block_1$1(ctx);
+  return {
+    c() {
+      if (switch_instance)
+        create_component(switch_instance.$$.fragment);
+      t2 = space();
+      if (if_block)
+        if_block.c();
+      if_block_anchor = empty();
+    },
+    l(nodes) {
+      if (switch_instance)
+        claim_component(switch_instance.$$.fragment, nodes);
+      t2 = claim_space(nodes);
+      if (if_block)
+        if_block.l(nodes);
+      if_block_anchor = empty();
+    },
+    m(target, anchor) {
+      if (switch_instance) {
+        mount_component(switch_instance, target, anchor);
+      }
+      insert_hydration(target, t2, anchor);
+      if (if_block)
+        if_block.m(target, anchor);
+      insert_hydration(target, if_block_anchor, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      if (switch_value !== (switch_value = ctx2[1])) {
+        if (switch_instance) {
+          group_outros();
+          const old_component = switch_instance;
+          transition_out(old_component.$$.fragment, 1, 0, () => {
+            destroy_component(old_component, 1);
+          });
+          check_outros();
+        }
+        if (switch_value) {
+          switch_instance = new switch_value(switch_props());
+          switch_instance.$on("walletReady", ctx2[5]);
+          create_component(switch_instance.$$.fragment);
+          transition_in(switch_instance.$$.fragment, 1);
+          mount_component(switch_instance, t2.parentNode, t2);
+        } else {
+          switch_instance = null;
+        }
+      }
+      if (ctx2[0] && ctx2[2] && ctx2[3]) {
+        if (if_block) {
+          if_block.p(ctx2, dirty);
+          if (dirty & 13) {
+            transition_in(if_block, 1);
+          }
+        } else {
+          if_block = create_if_block_1$1(ctx2);
+          if_block.c();
+          transition_in(if_block, 1);
+          if_block.m(if_block_anchor.parentNode, if_block_anchor);
+        }
+      } else if (if_block) {
+        group_outros();
+        transition_out(if_block, 1, 1, () => {
+          if_block = null;
+        });
+        check_outros();
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      if (switch_instance)
+        transition_in(switch_instance.$$.fragment, local);
+      transition_in(if_block);
+      current = true;
+    },
+    o(local) {
+      if (switch_instance)
+        transition_out(switch_instance.$$.fragment, local);
+      transition_out(if_block);
+      current = false;
+    },
+    d(detaching) {
+      if (switch_instance)
+        destroy_component(switch_instance, detaching);
+      if (detaching)
+        detach(t2);
+      if (if_block)
+        if_block.d(detaching);
+      if (detaching)
+        detach(if_block_anchor);
+    }
+  };
+}
+function create_if_block_1$1(ctx) {
+  let current;
+  const default_slot_template = ctx[7].default;
+  const default_slot = create_slot(default_slot_template, ctx, ctx[6], get_default_slot_context$1);
+  return {
+    c() {
+      if (default_slot)
+        default_slot.c();
+    },
+    l(nodes) {
+      if (default_slot)
+        default_slot.l(nodes);
+    },
+    m(target, anchor) {
+      if (default_slot) {
+        default_slot.m(target, anchor);
+      }
+      current = true;
+    },
+    p(ctx2, dirty) {
+      if (default_slot) {
+        if (default_slot.p && (!current || dirty & 93)) {
+          update_slot_base(
+            default_slot,
+            default_slot_template,
+            ctx2,
+            ctx2[6],
+            !current ? get_all_dirty_from_scope(ctx2[6]) : get_slot_changes(default_slot_template, ctx2[6], dirty, get_default_slot_changes$1),
+            get_default_slot_context$1
+          );
+        }
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(default_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(default_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (default_slot)
+        default_slot.d(detaching);
+    }
+  };
+}
+function create_fragment$5(ctx) {
+  let section;
+  let current;
+  let if_block = ctx[1] && create_if_block$3(ctx);
+  return {
+    c() {
+      section = element("section");
+      if (if_block)
+        if_block.c();
+      this.h();
+    },
+    l(nodes) {
+      section = claim_element(nodes, "SECTION", { class: true });
+      var section_nodes = children(section);
+      if (if_block)
+        if_block.l(section_nodes);
+      section_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      attr(section, "class", "m-0 svelte-7sl4wr");
+    },
+    m(target, anchor) {
+      insert_hydration(target, section, anchor);
+      if (if_block)
+        if_block.m(section, null);
+      current = true;
+    },
+    p(ctx2, [dirty]) {
+      if (ctx2[1]) {
+        if (if_block) {
+          if_block.p(ctx2, dirty);
+          if (dirty & 2) {
+            transition_in(if_block, 1);
+          }
+        } else {
+          if_block = create_if_block$3(ctx2);
+          if_block.c();
+          transition_in(if_block, 1);
+          if_block.m(section, null);
+        }
+      } else if (if_block) {
+        group_outros();
+        transition_out(if_block, 1, 1, () => {
+          if_block = null;
+        });
+        check_outros();
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(if_block);
+      current = true;
+    },
+    o(local) {
+      transition_out(if_block);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(section);
+      if (if_block)
+        if_block.d();
+    }
+  };
+}
+function instance$4($$self, $$props, $$invalidate) {
+  let { $$slots: slots = {}, $$scope } = $$props;
+  let wallet;
+  let Web3WalletMenu2;
+  let RSAPublicKey;
+  let Ed25519PublicKey;
+  let ownerAddress;
+  const dispatch = createEventDispatcher();
+  onMount(async () => {
+    $$invalidate(1, Web3WalletMenu2 = await __vitePreload(() => Promise.resolve().then(() => Web3WalletMenu$2), true ? void 0 : void 0, import.meta.url));
+  });
+  async function walletReady(e2) {
+    var _a2;
+    $$invalidate(0, wallet = e2.detail.wallet);
+    console.log("walletReady", wallet);
+    $$invalidate(4, ownerAddress = await ((_a2 = wallet == null ? void 0 : wallet.arweaveWalletAPI) == null ? void 0 : _a2.getActiveAddress()));
+    $$invalidate(2, RSAPublicKey = await wallet.arweaveWalletAPI.getActivePublicKey());
+    $$invalidate(3, Ed25519PublicKey = await wallet.proxcryptor.getPublicKey());
+    dispatch("RSAPublicKey", RSAPublicKey);
+    dispatch("Ed25519PublicKey", Ed25519PublicKey);
+    dispatch("ownerAddress", ownerAddress);
+  }
+  $$self.$$set = ($$props2) => {
+    if ("$$scope" in $$props2)
+      $$invalidate(6, $$scope = $$props2.$$scope);
+  };
+  return [
+    wallet,
+    Web3WalletMenu2,
+    RSAPublicKey,
+    Ed25519PublicKey,
+    ownerAddress,
+    walletReady,
+    $$scope,
+    slots
+  ];
+}
+class WalletManager extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance$4, create_fragment$5, safe_not_equal, {});
+  }
+}
+const WalletManager$1 = WalletManager;
 function e(e2, t2, n2, o2) {
   var r2, i2 = null == (r2 = o2) || "number" == typeof r2 || "boolean" == typeof r2 ? o2 : n2(o2), a2 = t2.get(i2);
   return void 0 === a2 && (a2 = e2.call(this, o2), t2.set(i2, a2)), a2;
@@ -281,15 +561,15 @@ class Logo extends SvelteComponent {
 const MenuWrapper_svelte_svelte_type_style_lang = "";
 const get_default_slot_changes = (dirty) => ({
   saveInputURL: dirty & 8,
-  inputUrl: dirty & 1
+  url: dirty & 1
 });
 const get_default_slot_context = (ctx) => ({
   openNav: ctx[7],
   hideNav: ctx[6],
   saveInputURL: ctx[3],
-  inputUrl: ctx[0]
+  url: ctx[0]
 });
-function create_if_block$3(ctx) {
+function create_if_block$2(ctx) {
   let div;
   let current;
   const default_slot_template = ctx[9].default;
@@ -310,7 +590,7 @@ function create_if_block$3(ctx) {
       this.h();
     },
     h() {
-      attr(div, "class", "sidenav svelte-1cubva3");
+      attr(div, "class", "sidenav svelte-1aua2m3");
       toggle_class(div, "open", ctx[2]);
     },
     m(target, anchor) {
@@ -373,7 +653,7 @@ function create_fragment$3(ctx) {
   let mounted;
   let dispose;
   logo = new Logo({});
-  let if_block = ctx[1] && create_if_block$3(ctx);
+  let if_block = ctx[1] && create_if_block$2(ctx);
   return {
     c() {
       div4 = element("div");
@@ -420,13 +700,13 @@ function create_fragment$3(ctx) {
       this.h();
     },
     h() {
-      attr(div0, "class", "bar1 svelte-1cubva3");
-      attr(div1, "class", "bar2 svelte-1cubva3");
-      attr(div2, "class", "bar3 svelte-1cubva3");
-      attr(div3, "class", "menu-icon svelte-1cubva3");
-      attr(div4, "class", "container svelte-1cubva3");
+      attr(div0, "class", "bar1 svelte-1aua2m3");
+      attr(div1, "class", "bar2 svelte-1aua2m3");
+      attr(div2, "class", "bar3 svelte-1aua2m3");
+      attr(div3, "class", "menu-icon svelte-1aua2m3");
+      attr(div4, "class", "container svelte-1aua2m3");
       toggle_class(div4, "change", ctx[2]);
-      attr(div5, "class", "svelte-1cubva3");
+      attr(div5, "class", "w-screen svelte-1aua2m3");
       toggle_class(div5, "mask", ctx[2]);
     },
     m(target, anchor) {
@@ -471,7 +751,7 @@ function create_fragment$3(ctx) {
             transition_in(if_block, 1);
           }
         } else {
-          if_block = create_if_block$3(ctx2);
+          if_block = create_if_block$2(ctx2);
           if_block.c();
           transition_in(if_block, 1);
           if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -538,7 +818,7 @@ function instance$3($$self, $$props, $$invalidate) {
     });
     try {
       const storedValue = await ImmortalDB.get(INPUT_URL, null);
-      if (storedValue && !inputUrl) {
+      if (storedValue) {
         $$invalidate(0, inputUrl = storedValue);
       }
     } catch (error) {
@@ -965,7 +1245,6 @@ const connectToChild = (options) => {
     }
   };
 };
-const WalletSelectorIcons_svelte_svelte_type_style_lang = "";
 function create_if_block_3(ctx) {
   let div;
   let svg;
@@ -985,12 +1264,10 @@ function create_if_block_3(ctx) {
       div = claim_element(nodes, "DIV", {});
       var div_nodes = children(div);
       svg = claim_svg_element(div_nodes, "svg", {
-        "v-if": true,
         xmlns: true,
         "enable-background": true,
         viewBox: true,
-        fill: true,
-        class: true
+        fill: true
       });
       var svg_nodes = children(svg);
       rect = claim_svg_element(svg_nodes, "rect", { fill: true, height: true, width: true });
@@ -1006,12 +1283,10 @@ function create_if_block_3(ctx) {
       attr(rect, "height", "24");
       attr(rect, "width", "24");
       attr(path, "d", "M3,3v18h18V3H3z M17,15.59L15.59,17L12,13.41L8.41,17L7,15.59L10.59,12L7,8.41L8.41,7L12,10.59L15.59,7L17,8.41L13.41,12 L17,15.59z");
-      attr(svg, "v-if", "icon === 'close'");
       attr(svg, "xmlns", "http://www.w3.org/2000/svg");
       attr(svg, "enable-background", "new 0 0 24 24");
       attr(svg, "viewBox", "0 0 24 24");
       attr(svg, "fill", "currentColor");
-      attr(svg, "class", "svelte-1c05l0n");
     },
     m(target, anchor) {
       insert_hydration(target, div, anchor);
@@ -1062,13 +1337,7 @@ function create_if_block_2(ctx) {
     l(nodes) {
       div = claim_element(nodes, "DIV", {});
       var div_nodes = children(div);
-      svg = claim_svg_element(div_nodes, "svg", {
-        "v-else-if": true,
-        xmlns: true,
-        viewBox: true,
-        fill: true,
-        class: true
-      });
+      svg = claim_svg_element(div_nodes, "svg", { xmlns: true, viewBox: true, fill: true });
       var svg_nodes = children(svg);
       path0 = claim_svg_element(svg_nodes, "path", { d: true, fill: true });
       children(path0).forEach(detach);
@@ -1082,11 +1351,9 @@ function create_if_block_2(ctx) {
       attr(path0, "d", "M0 0h24v24H0z");
       attr(path0, "fill", "none");
       attr(path1, "d", "M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z");
-      attr(svg, "v-else-if", "icon === 'launch'");
       attr(svg, "xmlns", "http://www.w3.org/2000/svg");
       attr(svg, "viewBox", "0 0 24 24");
       attr(svg, "fill", "currentColor");
-      attr(svg, "class", "svelte-1c05l0n");
     },
     m(target, anchor) {
       insert_hydration(target, div, anchor);
@@ -1137,13 +1404,7 @@ function create_if_block_1(ctx) {
     l(nodes) {
       div = claim_element(nodes, "DIV", {});
       var div_nodes = children(div);
-      svg = claim_svg_element(div_nodes, "svg", {
-        "v-else-if": true,
-        xmlns: true,
-        viewBox: true,
-        fill: true,
-        class: true
-      });
+      svg = claim_svg_element(div_nodes, "svg", { xmlns: true, viewBox: true, fill: true });
       var svg_nodes = children(svg);
       path0 = claim_svg_element(svg_nodes, "path", { d: true, fill: true });
       children(path0).forEach(detach);
@@ -1157,11 +1418,9 @@ function create_if_block_1(ctx) {
       attr(path0, "d", "M0 0h24v24H0z");
       attr(path0, "fill", "none");
       attr(path1, "d", "M16.01 7L16 3h-2v4h-4V3H8v4h-.01C7 6.99 6 7.99 6 8.99v5.49L9.5 18v3h5v-3l3.5-3.51v-5.5c0-1-1-2-1.99-1.99z");
-      attr(svg, "v-else-if", "icon === 'plug'");
       attr(svg, "xmlns", "http://www.w3.org/2000/svg");
       attr(svg, "viewBox", "0 0 24 24");
       attr(svg, "fill", "currentColor");
-      attr(svg, "class", "svelte-1c05l0n");
     },
     m(target, anchor) {
       insert_hydration(target, div, anchor);
@@ -1194,7 +1453,7 @@ function create_if_block_1(ctx) {
     }
   };
 }
-function create_if_block$2(ctx) {
+function create_if_block$1(ctx) {
   let div;
   let svg;
   let path0;
@@ -1212,13 +1471,7 @@ function create_if_block$2(ctx) {
     l(nodes) {
       div = claim_element(nodes, "DIV", {});
       var div_nodes = children(div);
-      svg = claim_svg_element(div_nodes, "svg", {
-        "v-else-if": true,
-        xmlns: true,
-        viewBox: true,
-        fill: true,
-        class: true
-      });
+      svg = claim_svg_element(div_nodes, "svg", { xmlns: true, viewBox: true, fill: true });
       var svg_nodes = children(svg);
       path0 = claim_svg_element(svg_nodes, "path", { d: true, fill: true });
       children(path0).forEach(detach);
@@ -1232,11 +1485,9 @@ function create_if_block$2(ctx) {
       attr(path0, "d", "M0 0h24v24H0V0z");
       attr(path0, "fill", "none");
       attr(path1, "d", "M18 14.49V9c0-1-1.01-2.01-2-2V3h-2v4h-4V3H8v2.48l9.51 9.5.49-.49zm-1.76 1.77L7.2 7.2l-.01.01L3.98 4 2.71 5.25l3.36 3.36C6.04 8.74 6 8.87 6 9v5.48L9.5 18v3h5v-3l.48-.48L19.45 22l1.26-1.28-4.47-4.46z");
-      attr(svg, "v-else-if", "icon === 'unplug'");
       attr(svg, "xmlns", "http://www.w3.org/2000/svg");
       attr(svg, "viewBox", "0 0 24 24");
       attr(svg, "fill", "currentColor");
-      attr(svg, "class", "svelte-1c05l0n");
     },
     m(target, anchor) {
       insert_hydration(target, div, anchor);
@@ -1282,7 +1533,7 @@ function create_fragment$2(ctx) {
   let if_block0 = ctx[0] === "close" && create_if_block_3();
   let if_block1 = ctx[0] === "launch" && create_if_block_2();
   let if_block2 = ctx[0] === "plug" && create_if_block_1();
-  let if_block3 = ctx[0] === "unplug" && create_if_block$2();
+  let if_block3 = ctx[0] === "unplug" && create_if_block$1();
   const default_slot_template = ctx[3].default;
   const default_slot = create_slot(default_slot_template, ctx, ctx[2], null);
   return {
@@ -1306,7 +1557,7 @@ function create_fragment$2(ctx) {
       this.h();
     },
     l(nodes) {
-      button = claim_element(nodes, "BUTTON", { class: true });
+      button = claim_element(nodes, "BUTTON", {});
       var button_nodes = children(button);
       div = claim_element(button_nodes, "DIV", { class: true });
       var div_nodes = children(div);
@@ -1329,8 +1580,7 @@ function create_fragment$2(ctx) {
       this.h();
     },
     h() {
-      attr(div, "class", "img-container svelte-1c05l0n");
-      attr(button, "class", "svelte-1c05l0n");
+      attr(div, "class", "img-container");
     },
     m(target, anchor) {
       insert_hydration(target, button, anchor);
@@ -1420,7 +1670,7 @@ function create_fragment$2(ctx) {
             transition_in(if_block3, 1);
           }
         } else {
-          if_block3 = create_if_block$2();
+          if_block3 = create_if_block$1();
           if_block3.c();
           transition_in(if_block3, 1);
           if_block3.m(div, null);
@@ -1503,74 +1753,6 @@ class WalletSelectorIcons extends SvelteComponent {
 }
 const ConnectorInside_svelte_svelte_type_style_lang = "";
 const { window: window_1 } = globals;
-function create_if_block$1(ctx) {
-  let div;
-  let iconbutton;
-  let div_class_value;
-  let div_transition;
-  let current;
-  iconbutton = new WalletSelectorIcons({ props: { icon: ctx[11] } });
-  iconbutton.$on("keypress", ctx[14]);
-  iconbutton.$on("click", ctx[14]);
-  return {
-    c() {
-      div = element("div");
-      create_component(iconbutton.$$.fragment);
-      this.h();
-    },
-    l(nodes) {
-      div = claim_element(nodes, "DIV", { class: true });
-      var div_nodes = children(div);
-      claim_component(iconbutton.$$.fragment, div_nodes);
-      div_nodes.forEach(detach);
-      this.h();
-    },
-    h() {
-      var _a2;
-      attr(div, "class", div_class_value = null_to_empty(!((_a2 = ctx[0]) == null ? void 0 : _a2.keepPopup) ? "action dim" : "action") + " svelte-147j65k");
-    },
-    m(target, anchor) {
-      insert_hydration(target, div, anchor);
-      mount_component(iconbutton, div, null);
-      current = true;
-    },
-    p(ctx2, dirty) {
-      var _a2;
-      const iconbutton_changes = {};
-      if (dirty & 2048)
-        iconbutton_changes.icon = ctx2[11];
-      iconbutton.$set(iconbutton_changes);
-      if (!current || dirty & 1 && div_class_value !== (div_class_value = null_to_empty(!((_a2 = ctx2[0]) == null ? void 0 : _a2.keepPopup) ? "action dim" : "action") + " svelte-147j65k")) {
-        attr(div, "class", div_class_value);
-      }
-    },
-    i(local) {
-      if (current)
-        return;
-      transition_in(iconbutton.$$.fragment, local);
-      add_render_callback(() => {
-        if (!div_transition)
-          div_transition = create_bidirectional_transition(div, fade, { delay: 100, duration: 100 }, true);
-        div_transition.run(1);
-      });
-      current = true;
-    },
-    o(local) {
-      transition_out(iconbutton.$$.fragment, local);
-      if (!div_transition)
-        div_transition = create_bidirectional_transition(div, fade, { delay: 100, duration: 100 }, false);
-      div_transition.run(0);
-      current = false;
-    },
-    d(detaching) {
-      if (detaching)
-        detach(div);
-      destroy_component(iconbutton);
-      if (detaching && div_transition)
-        div_transition.end();
-    }
-  };
-}
 function create_default_slot$1(ctx) {
   let span;
   let t_value = ctx[9].loading || !ctx[7] ? "Loading..." : "Load";
@@ -1591,7 +1773,7 @@ function create_default_slot$1(ctx) {
     },
     h() {
       var _a2;
-      attr(span, "class", span_class_value = null_to_empty(((_a2 = ctx[0]) == null ? void 0 : _a2.address) ? " connected " : " disconnected ") + " svelte-147j65k");
+      attr(span, "class", span_class_value = (((_a2 = ctx[0]) == null ? void 0 : _a2.address) ? " connected " : " disconnected ") + " hidden sm:flex svelte-nu5b3h");
     },
     m(target, anchor) {
       insert_hydration(target, span, anchor);
@@ -1601,7 +1783,7 @@ function create_default_slot$1(ctx) {
       var _a2;
       if (dirty & 640 && t_value !== (t_value = ctx2[9].loading || !ctx2[7] ? "Loading..." : "Load"))
         set_data(t2, t_value);
-      if (dirty & 1 && span_class_value !== (span_class_value = null_to_empty(((_a2 = ctx2[0]) == null ? void 0 : _a2.address) ? " connected " : " disconnected ") + " svelte-147j65k")) {
+      if (dirty & 1 && span_class_value !== (span_class_value = (((_a2 = ctx2[0]) == null ? void 0 : _a2.address) ? " connected " : " disconnected ") + " hidden sm:flex svelte-nu5b3h")) {
         attr(span, "class", span_class_value);
       }
     },
@@ -1612,7 +1794,6 @@ function create_default_slot$1(ctx) {
   };
 }
 function create_fragment$1(ctx) {
-  var _a2;
   let div6;
   let div4;
   let a2;
@@ -1625,12 +1806,11 @@ function create_fragment$1(ctx) {
   let span;
   let t2;
   let div3;
-  let t3;
   let div2;
   let iconbutton;
   let div2_class_value;
   let div4_resize_listener;
-  let t4;
+  let t3;
   let div5;
   let iframe_1;
   let iframe_1_src_value;
@@ -1639,7 +1819,6 @@ function create_fragment$1(ctx) {
   let mounted;
   let dispose;
   logo = new Logo({});
-  let if_block = (((_a2 = ctx[0]) == null ? void 0 : _a2.address) || ctx[1]) && create_if_block$1(ctx);
   iconbutton = new WalletSelectorIcons({
     props: {
       icon: ctx[10],
@@ -1647,8 +1826,8 @@ function create_fragment$1(ctx) {
       $$scope: { ctx }
     }
   });
-  iconbutton.$on("keypress", ctx[22]);
-  iconbutton.$on("click", ctx[23]);
+  iconbutton.$on("keypress", ctx[20]);
+  iconbutton.$on("click", ctx[21]);
   return {
     c() {
       div6 = element("div");
@@ -1663,12 +1842,9 @@ function create_fragment$1(ctx) {
       span = element("span");
       t2 = space();
       div3 = element("div");
-      if (if_block)
-        if_block.c();
-      t3 = space();
       div2 = element("div");
       create_component(iconbutton.$$.fragment);
-      t4 = space();
+      t3 = space();
       div5 = element("div");
       iframe_1 = element("iframe");
       this.h();
@@ -1678,7 +1854,12 @@ function create_fragment$1(ctx) {
       var div6_nodes = children(div6);
       div4 = claim_element(div6_nodes, "DIV", { class: true, style: true });
       var div4_nodes = children(div4);
-      a2 = claim_element(div4_nodes, "A", { href: true, target: true, rel: true });
+      a2 = claim_element(div4_nodes, "A", {
+        class: true,
+        href: true,
+        target: true,
+        rel: true
+      });
       var a_nodes = children(a2);
       div0 = claim_element(a_nodes, "DIV", { class: true });
       var div0_nodes = children(div0);
@@ -1696,23 +1877,20 @@ function create_fragment$1(ctx) {
       t2 = claim_space(div4_nodes);
       div3 = claim_element(div4_nodes, "DIV", { class: true });
       var div3_nodes = children(div3);
-      if (if_block)
-        if_block.l(div3_nodes);
-      t3 = claim_space(div3_nodes);
       div2 = claim_element(div3_nodes, "DIV", { class: true });
       var div2_nodes = children(div2);
       claim_component(iconbutton.$$.fragment, div2_nodes);
       div2_nodes.forEach(detach);
       div3_nodes.forEach(detach);
       div4_nodes.forEach(detach);
-      t4 = claim_space(div6_nodes);
+      t3 = claim_space(div6_nodes);
       div5 = claim_element(div6_nodes, "DIV", { class: true, style: true });
       var div5_nodes = children(div5);
       iframe_1 = claim_element(div5_nodes, "IFRAME", {
         title: true,
+        class: true,
         src: true,
-        allow: true,
-        class: true
+        allow: true
       });
       children(iframe_1).forEach(detach);
       div5_nodes.forEach(detach);
@@ -1720,29 +1898,30 @@ function create_fragment$1(ctx) {
       this.h();
     },
     h() {
-      var _a3, _b2;
-      attr(div0, "class", "actions logo svelte-147j65k");
+      var _a2, _b2;
+      attr(div0, "class", "actions logo svelte-nu5b3h");
+      attr(a2, "class", "flex-0 hidden md:flex svelte-nu5b3h");
       attr(a2, "href", "https://PeerPiper.io");
       attr(a2, "target", "_blank");
       attr(a2, "rel", "noreferrer");
-      attr(input, "class", "url svelte-147j65k");
+      attr(input, "class", "border-b-4 border-toxic url pl-0 p-2 pr-0 m-2 text-white bg-none border-none text-sm sm:text-base outline-none svelte-nu5b3h");
       attr(input, "placeholder", placeholder);
-      attr(span, "class", "green-line svelte-147j65k");
-      attr(div1, "class", "url-input-container svelte-147j65k");
-      attr(div2, "class", div2_class_value = null_to_empty(((_a3 = ctx[9]) == null ? void 0 : _a3.loading) ? "action dim" : ((_b2 = ctx[0]) == null ? void 0 : _b2.address) ? " connected " : " disconnected ") + " svelte-147j65k");
-      attr(div3, "class", "actions svelte-147j65k");
-      attr(div4, "class", "top svelte-147j65k");
+      attr(span, "class", "border-b-4 border-toxic flex-1 relative -top-2 svelte-nu5b3h");
+      attr(div1, "class", "flex-shrink flex flex-col w-full pl-2 md:p-2 svelte-nu5b3h");
+      attr(div2, "class", div2_class_value = null_to_empty(((_a2 = ctx[9]) == null ? void 0 : _a2.loading) ? "action dim" : ((_b2 = ctx[0]) == null ? void 0 : _b2.address) ? " connected " : " disconnected ") + " svelte-nu5b3h");
+      attr(div3, "class", "hidden md:flex svelte-nu5b3h");
+      attr(div4, "class", "flex flex-row space-between items-center svelte-nu5b3h");
       set_style(div4, "--topOffsetHeight", ctx[2]);
-      add_render_callback(() => ctx[24].call(div4));
+      add_render_callback(() => ctx[22].call(div4));
       attr(iframe_1, "title", "Web Wallet");
+      attr(iframe_1, "class", "w-full h-full border-none min-h-full svelte-nu5b3h");
       if (!src_url_equal(iframe_1.src, iframe_1_src_value = ctx[7]))
         attr(iframe_1, "src", iframe_1_src_value);
       attr(iframe_1, "allow", "clipboard-read 'self' 'src'; clipboard-write 'self' 'src';");
-      attr(iframe_1, "class", "svelte-147j65k");
-      attr(div5, "class", "iframe svelte-147j65k");
+      attr(div5, "class", "iframe flex w-full h-full border-none min-h-full svelte-nu5b3h");
       set_style(div5, "height", "calc(" + ctx[4] + "px + 18px)");
-      add_render_callback(() => ctx[26].call(div5));
-      attr(div6, "class", "connector-container svelte-147j65k");
+      add_render_callback(() => ctx[24].call(div5));
+      attr(div6, "class", "flex flex-col m-2 max-w-full h-screen svelte-nu5b3h");
     },
     m(target, anchor) {
       insert_hydration(target, div6, anchor);
@@ -1758,51 +1937,29 @@ function create_fragment$1(ctx) {
       append_hydration(div1, span);
       append_hydration(div4, t2);
       append_hydration(div4, div3);
-      if (if_block)
-        if_block.m(div3, null);
-      append_hydration(div3, t3);
       append_hydration(div3, div2);
       mount_component(iconbutton, div2, null);
-      div4_resize_listener = add_resize_listener(div4, ctx[24].bind(div4));
-      append_hydration(div6, t4);
+      div4_resize_listener = add_resize_listener(div4, ctx[22].bind(div4));
+      append_hydration(div6, t3);
       append_hydration(div6, div5);
       append_hydration(div5, iframe_1);
-      ctx[25](iframe_1);
-      div5_resize_listener = add_resize_listener(div5, ctx[26].bind(div5));
+      ctx[23](iframe_1);
+      div5_resize_listener = add_resize_listener(div5, ctx[24].bind(div5));
       current = true;
       if (!mounted) {
         dispose = [
-          listen(window_1, "keydown", ctx[15]),
-          listen(input, "focus", ctx[19]),
-          listen(input, "blur", ctx[20]),
-          listen(input, "input", ctx[21])
+          listen(window_1, "keydown", ctx[13]),
+          listen(input, "focus", ctx[17]),
+          listen(input, "blur", ctx[18]),
+          listen(input, "input", ctx[19])
         ];
         mounted = true;
       }
     },
     p(ctx2, [dirty]) {
-      var _a3, _b2, _c2;
+      var _a2, _b2;
       if (dirty & 2 && input.value !== ctx2[1]) {
         set_input_value(input, ctx2[1]);
-      }
-      if (((_a3 = ctx2[0]) == null ? void 0 : _a3.address) || ctx2[1]) {
-        if (if_block) {
-          if_block.p(ctx2, dirty);
-          if (dirty & 3) {
-            transition_in(if_block, 1);
-          }
-        } else {
-          if_block = create_if_block$1(ctx2);
-          if_block.c();
-          transition_in(if_block, 1);
-          if_block.m(div3, t3);
-        }
-      } else if (if_block) {
-        group_outros();
-        transition_out(if_block, 1, 1, () => {
-          if_block = null;
-        });
-        check_outros();
       }
       const iconbutton_changes = {};
       if (dirty & 1024)
@@ -1811,7 +1968,7 @@ function create_fragment$1(ctx) {
         iconbutton_changes.$$scope = { dirty, ctx: ctx2 };
       }
       iconbutton.$set(iconbutton_changes);
-      if (!current || dirty & 513 && div2_class_value !== (div2_class_value = null_to_empty(((_b2 = ctx2[9]) == null ? void 0 : _b2.loading) ? "action dim" : ((_c2 = ctx2[0]) == null ? void 0 : _c2.address) ? " connected " : " disconnected ") + " svelte-147j65k")) {
+      if (!current || dirty & 513 && div2_class_value !== (div2_class_value = null_to_empty(((_a2 = ctx2[9]) == null ? void 0 : _a2.loading) ? "action dim" : ((_b2 = ctx2[0]) == null ? void 0 : _b2.address) ? " connected " : " disconnected ") + " svelte-nu5b3h")) {
         attr(div2, "class", div2_class_value);
       }
       if (!current || dirty & 4) {
@@ -1828,13 +1985,11 @@ function create_fragment$1(ctx) {
       if (current)
         return;
       transition_in(logo.$$.fragment, local);
-      transition_in(if_block);
       transition_in(iconbutton.$$.fragment, local);
       current = true;
     },
     o(local) {
       transition_out(logo.$$.fragment, local);
-      transition_out(if_block);
       transition_out(iconbutton.$$.fragment, local);
       current = false;
     },
@@ -1842,11 +1997,9 @@ function create_fragment$1(ctx) {
       if (detaching)
         detach(div6);
       destroy_component(logo);
-      if (if_block)
-        if_block.d();
       destroy_component(iconbutton);
       div4_resize_listener();
-      ctx[25](null);
+      ctx[23](null);
       div5_resize_listener();
       mounted = false;
       run_all(dispose);
@@ -1855,7 +2008,6 @@ function create_fragment$1(ctx) {
 }
 let placeholder = "Enter Wallet Url";
 function instance$1($$self, $$props, $$invalidate) {
-  let popupIcon;
   let connectionIcon;
   let { wallet = null } = $$props;
   let { inputUrl = "https://peerpiper.github.io/iframe-wallet-sdk/" } = $$props;
@@ -1886,7 +2038,7 @@ function instance$1($$self, $$props, $$invalidate) {
           $$invalidate(4, iframeParentHeight = height);
         },
         setIframeParentWidth(width) {
-          $$invalidate(16, iframeParentWidth = width);
+          $$invalidate(14, iframeParentWidth = width);
         },
         show() {
           show();
@@ -1923,7 +2075,6 @@ function instance$1($$self, $$props, $$invalidate) {
     dispatch("inputUrl", inputUrl);
   };
   const disconnect = () => wallet.disconnect();
-  const togglePopup = () => window.open(inputUrl);
   function handleKeydown(event) {
     if (event.key === "Enter" && focused)
       connect();
@@ -1968,18 +2119,18 @@ function instance$1($$self, $$props, $$invalidate) {
     if ("iframeParentHeight" in $$props2)
       $$invalidate(4, iframeParentHeight = $$props2.iframeParentHeight);
     if ("iframeParentWidth" in $$props2)
-      $$invalidate(16, iframeParentWidth = $$props2.iframeParentWidth);
+      $$invalidate(14, iframeParentWidth = $$props2.iframeParentWidth);
     if ("show" in $$props2)
-      $$invalidate(17, show = $$props2.show);
+      $$invalidate(15, show = $$props2.show);
     if ("hide" in $$props2)
-      $$invalidate(18, hide = $$props2.hide);
+      $$invalidate(16, hide = $$props2.hide);
   };
   $$self.$$.update = () => {
     if ($$self.$$.dirty & 64) {
       iframe && iframe.addEventListener("load", handleIframeLoad);
     }
     if ($$self.$$.dirty & 1) {
-      $$invalidate(11, popupIcon = (wallet == null ? void 0 : wallet.keepPopup) ? "close" : "launch");
+      (wallet == null ? void 0 : wallet.keepPopup) ? "close" : "launch";
     }
     if ($$self.$$.dirty & 1) {
       $$invalidate(10, connectionIcon = (wallet == null ? void 0 : wallet.address) ? "unplug" : "plug");
@@ -2000,10 +2151,8 @@ function instance$1($$self, $$props, $$invalidate) {
     focused,
     data,
     connectionIcon,
-    popupIcon,
     connect,
     disconnect,
-    togglePopup,
     handleKeydown,
     iframeParentWidth,
     show,
@@ -2027,12 +2176,13 @@ class ConnectorInside extends SvelteComponent {
       topOffsetHeight: 2,
       topOffsetWidth: 3,
       iframeParentHeight: 4,
-      iframeParentWidth: 16,
-      show: 17,
-      hide: 18
+      iframeParentWidth: 14,
+      show: 15,
+      hide: 16
     });
   }
 }
+const Web3WalletMenu_svelte_svelte_type_style_lang = "";
 function create_if_block(ctx) {
   let menuwrapper;
   let current;
@@ -2042,13 +2192,13 @@ function create_if_block(ctx) {
       $$slots: {
         default: [
           create_default_slot,
-          ({ openNav, hideNav, saveInputURL, inputUrl }) => ({
+          ({ openNav, hideNav, saveInputURL, url }) => ({
             5: openNav,
             6: hideNav,
             7: saveInputURL,
-            1: inputUrl
+            8: url
           }),
-          ({ openNav, hideNav, saveInputURL, inputUrl }) => (openNav ? 32 : 0) | (hideNav ? 64 : 0) | (saveInputURL ? 128 : 0) | (inputUrl ? 2 : 0)
+          ({ openNav, hideNav, saveInputURL, url }) => (openNav ? 32 : 0) | (hideNav ? 64 : 0) | (saveInputURL ? 128 : 0) | (url ? 256 : 0)
         ]
       },
       $$scope: { ctx }
@@ -2069,7 +2219,7 @@ function create_if_block(ctx) {
       const menuwrapper_changes = {};
       if (dirty & 2)
         menuwrapper_changes.inputUrl = ctx2[1];
-      if (dirty & 483) {
+      if (dirty & 993) {
         menuwrapper_changes.$$scope = { dirty, ctx: ctx2 };
       }
       menuwrapper.$set(menuwrapper_changes);
@@ -2099,7 +2249,7 @@ function create_default_slot(ctx) {
   let connectorinside_props = {
     show: ctx[5],
     hide: ctx[6],
-    inputUrl: ctx[1]
+    inputUrl: ctx[8]
   };
   if (ctx[0] !== void 0) {
     connectorinside_props.wallet = ctx[0];
@@ -2129,8 +2279,8 @@ function create_default_slot(ctx) {
         connectorinside_changes.show = ctx[5];
       if (dirty & 64)
         connectorinside_changes.hide = ctx[6];
-      if (dirty & 2)
-        connectorinside_changes.inputUrl = ctx[1];
+      if (dirty & 256)
+        connectorinside_changes.inputUrl = ctx[8];
       if (!updating_wallet && dirty & 1) {
         updating_wallet = true;
         connectorinside_changes.wallet = ctx[0];
@@ -2154,24 +2304,31 @@ function create_default_slot(ctx) {
   };
 }
 function create_fragment(ctx) {
-  let if_block_anchor;
+  let section;
   let current;
   let if_block = ctx[2] && create_if_block(ctx);
   return {
     c() {
+      section = element("section");
       if (if_block)
         if_block.c();
-      if_block_anchor = empty();
+      this.h();
     },
     l(nodes) {
+      section = claim_element(nodes, "SECTION", { class: true });
+      var section_nodes = children(section);
       if (if_block)
-        if_block.l(nodes);
-      if_block_anchor = empty();
+        if_block.l(section_nodes);
+      section_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      attr(section, "class", "m-0 svelte-7sl4wr");
     },
     m(target, anchor) {
+      insert_hydration(target, section, anchor);
       if (if_block)
-        if_block.m(target, anchor);
-      insert_hydration(target, if_block_anchor, anchor);
+        if_block.m(section, null);
       current = true;
     },
     p(ctx2, [dirty]) {
@@ -2185,7 +2342,7 @@ function create_fragment(ctx) {
           if_block = create_if_block(ctx2);
           if_block.c();
           transition_in(if_block, 1);
-          if_block.m(if_block_anchor.parentNode, if_block_anchor);
+          if_block.m(section, null);
         }
       } else if (if_block) {
         group_outros();
@@ -2206,10 +2363,10 @@ function create_fragment(ctx) {
       current = false;
     },
     d(detaching) {
-      if (if_block)
-        if_block.d(detaching);
       if (detaching)
-        detach(if_block_anchor);
+        detach(section);
+      if (if_block)
+        if_block.d();
     }
   };
 }
@@ -2242,8 +2399,13 @@ class Web3WalletMenu extends SvelteComponent {
   }
 }
 const Web3WalletMenu$1 = Web3WalletMenu;
+const Web3WalletMenu$2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  default: Web3WalletMenu$1
+}, Symbol.toStringTag, { value: "Module" }));
 export {
+  WalletManager$1 as WalletManager,
   Web3WalletMenu$1 as Web3WalletMenu,
   Web3WalletMenu$1 as default
 };
-//# sourceMappingURL=index-d12ec70e.js.map
+//# sourceMappingURL=index-2e08d745.js.map

@@ -1,4 +1,4 @@
-import { S as SvelteComponent, i as init, s as safe_not_equal, e as empty, b as insert_hydration, f as transition_in, g as group_outros, t as transition_out, d as check_outros, h as detach, H as createEventDispatcher, o as onMount, v as create_component, a as space, w as claim_component, c as claim_space, x as mount_component, y as destroy_component, B as create_slot, C as update_slot_base, D as get_all_dirty_from_scope, E as get_slot_changes, k as element, q as text, l as claim_element, m as children, r as claim_text, n as attr, F as append_hydration, I as listen, u as set_data, A as noop, J as getContext, K as identity, L as add_render_callback, M as create_bidirectional_transition, N as destroy_each, O as binding_callbacks, P as toggle_class, Q as run_all, R as setContext, T as is_function } from "./index-44914e8a.js";
+import { S as SvelteComponent, i as init, s as safe_not_equal, e as empty, b as insert_hydration, f as transition_in, g as group_outros, t as transition_out, d as check_outros, h as detach, H as createEventDispatcher, o as onMount, v as create_component, a as space, w as claim_component, c as claim_space, x as mount_component, y as destroy_component, B as create_slot, C as update_slot_base, D as get_all_dirty_from_scope, E as get_slot_changes, A as noop, k as element, q as text, l as claim_element, m as children, r as claim_text, n as attr, F as append_hydration, I as listen, u as set_data, J as getContext, K as identity, L as add_render_callback, M as create_bidirectional_transition, N as destroy_each, O as binding_callbacks, P as toggle_class, Q as run_all, R as setContext, T as is_function } from "./index-44914e8a.js";
 import { _ as __vitePreload } from "./preload-helper-b21cceae.js";
 const get_default_slot_changes$3 = (dirty) => ({
   wallet: dirty & 1,
@@ -12,7 +12,7 @@ const get_default_slot_context$3 = (ctx) => ({
   RSAPublicKey: ctx[2],
   Ed25519PublicKey: ctx[3]
 });
-function create_if_block$5(ctx) {
+function create_if_block$6(ctx) {
   let switch_instance;
   let t;
   let if_block_anchor;
@@ -168,10 +168,10 @@ function create_if_block_1$1(ctx) {
     }
   };
 }
-function create_fragment$9(ctx) {
+function create_fragment$a(ctx) {
   let if_block_anchor;
   let current;
-  let if_block = ctx[1] && create_if_block$5(ctx);
+  let if_block = ctx[1] && create_if_block$6(ctx);
   return {
     c() {
       if (if_block)
@@ -197,7 +197,7 @@ function create_fragment$9(ctx) {
             transition_in(if_block, 1);
           }
         } else {
-          if_block = create_if_block$5(ctx2);
+          if_block = create_if_block$6(ctx2);
           if_block.c();
           transition_in(if_block, 1);
           if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -228,7 +228,7 @@ function create_fragment$9(ctx) {
     }
   };
 }
-function instance$8($$self, $$props, $$invalidate) {
+function instance$9($$self, $$props, $$invalidate) {
   let { $$slots: slots = {}, $$scope } = $$props;
   let wallet;
   let Web3WalletMenu;
@@ -237,7 +237,7 @@ function instance$8($$self, $$props, $$invalidate) {
   let ownerAddress;
   const dispatch = createEventDispatcher();
   onMount(async () => {
-    $$invalidate(1, { Web3WalletMenu } = await __vitePreload(() => import("./index-d12ec70e.js"), true ? ["./index-d12ec70e.js","./index-44914e8a.js","./preload-helper-b21cceae.js","..\\assets\\index-da57bcef.css"] : void 0, import.meta.url), Web3WalletMenu);
+    $$invalidate(1, { Web3WalletMenu } = await __vitePreload(() => import("./index-2e08d745.js"), true ? ["./index-2e08d745.js","./preload-helper-b21cceae.js","./index-44914e8a.js","..\\assets\\index-e42c8a49.css"] : void 0, import.meta.url), Web3WalletMenu);
   });
   async function walletReady(e) {
     var _a;
@@ -268,7 +268,7 @@ function instance$8($$self, $$props, $$invalidate) {
 class WalletManager extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance$8, create_fragment$9, safe_not_equal, {});
+    init(this, options, instance$9, create_fragment$a, safe_not_equal, {});
   }
 }
 var commonjsGlobal = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof {} !== "undefined" ? {} : typeof self !== "undefined" ? self : {};
@@ -1912,69 +1912,337 @@ const encodeCID = (version, code, multihash) => {
   return bytes;
 };
 const cidSymbol = Symbol.for("@ipld/js-cid/CID");
-function create_fragment$8(ctx) {
-  let button;
+function create_if_block$5(ctx) {
+  let div8;
+  let div7;
+  let div0;
   let t0;
-  let t1_value = ctx[1].length == 0 ? "ed" : "";
+  let span;
   let t1;
   let t2;
-  let t3_value = renderSize(ctx[3]()) + "";
+  let div6;
+  let div4;
+  let div3;
+  let div2;
+  let h3;
   let t3;
   let t4;
-  let button_disabled_value;
-  let button_class_value;
+  let div1;
+  let p0;
+  let t5;
+  let t6;
+  let p1;
+  let t7;
+  let t8;
+  let div5;
+  let button;
+  let t9;
   let mounted;
   let dispose;
   return {
     c() {
+      div8 = element("div");
+      div7 = element("div");
+      div0 = element("div");
+      t0 = space();
+      span = element("span");
+      t1 = text("\u200B");
+      t2 = space();
+      div6 = element("div");
+      div4 = element("div");
+      div3 = element("div");
+      div2 = element("div");
+      h3 = element("h3");
+      t3 = text("Error");
+      t4 = space();
+      div1 = element("div");
+      p0 = element("p");
+      t5 = text(ctx[0]);
+      t6 = space();
+      p1 = element("p");
+      t7 = text(ctx[1]);
+      t8 = space();
+      div5 = element("div");
       button = element("button");
-      t0 = text("Publish");
-      t1 = text(t1_value);
-      t2 = text(" (");
-      t3 = text(t3_value);
-      t4 = text(")");
+      t9 = text("OK");
       this.h();
     },
     l(nodes) {
-      button = claim_element(nodes, "BUTTON", { class: true });
+      div8 = claim_element(nodes, "DIV", {
+        class: true,
+        "aria-labelledby": true,
+        role: true,
+        "aria-modal": true
+      });
+      var div8_nodes = children(div8);
+      div7 = claim_element(div8_nodes, "DIV", { class: true });
+      var div7_nodes = children(div7);
+      div0 = claim_element(div7_nodes, "DIV", { class: true, "aria-hidden": true });
+      children(div0).forEach(detach);
+      t0 = claim_space(div7_nodes);
+      span = claim_element(div7_nodes, "SPAN", { class: true, "aria-hidden": true });
+      var span_nodes = children(span);
+      t1 = claim_text(span_nodes, "\u200B");
+      span_nodes.forEach(detach);
+      t2 = claim_space(div7_nodes);
+      div6 = claim_element(div7_nodes, "DIV", { class: true });
+      var div6_nodes = children(div6);
+      div4 = claim_element(div6_nodes, "DIV", { class: true });
+      var div4_nodes = children(div4);
+      div3 = claim_element(div4_nodes, "DIV", { class: true });
+      var div3_nodes = children(div3);
+      div2 = claim_element(div3_nodes, "DIV", { class: true });
+      var div2_nodes = children(div2);
+      h3 = claim_element(div2_nodes, "H3", { class: true, id: true });
+      var h3_nodes = children(h3);
+      t3 = claim_text(h3_nodes, "Error");
+      h3_nodes.forEach(detach);
+      t4 = claim_space(div2_nodes);
+      div1 = claim_element(div2_nodes, "DIV", { class: true });
+      var div1_nodes = children(div1);
+      p0 = claim_element(div1_nodes, "P", { class: true });
+      var p0_nodes = children(p0);
+      t5 = claim_text(p0_nodes, ctx[0]);
+      p0_nodes.forEach(detach);
+      t6 = claim_space(div1_nodes);
+      p1 = claim_element(div1_nodes, "P", { class: true });
+      var p1_nodes = children(p1);
+      t7 = claim_text(p1_nodes, ctx[1]);
+      p1_nodes.forEach(detach);
+      div1_nodes.forEach(detach);
+      div2_nodes.forEach(detach);
+      div3_nodes.forEach(detach);
+      div4_nodes.forEach(detach);
+      t8 = claim_space(div6_nodes);
+      div5 = claim_element(div6_nodes, "DIV", { class: true });
+      var div5_nodes = children(div5);
+      button = claim_element(div5_nodes, "BUTTON", { type: true, class: true });
       var button_nodes = children(button);
-      t0 = claim_text(button_nodes, "Publish");
-      t1 = claim_text(button_nodes, t1_value);
-      t2 = claim_text(button_nodes, " (");
-      t3 = claim_text(button_nodes, t3_value);
-      t4 = claim_text(button_nodes, ")");
+      t9 = claim_text(button_nodes, "OK");
       button_nodes.forEach(detach);
+      div5_nodes.forEach(detach);
+      div6_nodes.forEach(detach);
+      div7_nodes.forEach(detach);
+      div8_nodes.forEach(detach);
       this.h();
     },
     h() {
-      button.disabled = button_disabled_value = !ctx[1];
-      attr(button, "class", button_class_value = "flex-0 w-fit -m-3 pl-4 p-2 shadow-lg rounded-r-lg text-white font-semibold select-none " + (ctx[0] == "saved" && ctx[1].length > 0 ? "cursor-pointer bg-blue-500" : "cursor-not-allowed bg-gray-400"));
+      attr(div0, "class", "fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity");
+      attr(div0, "aria-hidden", "true");
+      attr(span, "class", "hidden sm:inline-block sm:align-middle sm:h-screen");
+      attr(span, "aria-hidden", "true");
+      attr(h3, "class", "text-lg leading-6 font-medium ");
+      attr(h3, "id", "modal-title");
+      attr(p0, "class", "text-sm ");
+      attr(p1, "class", "text-sm ");
+      attr(div1, "class", "mt-2");
+      attr(div2, "class", "mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left text-gray-800");
+      attr(div3, "class", "sm:flex sm:items-start");
+      attr(div4, "class", "px-4 pt-5 pb-4 sm:p-6 sm:pb-4");
+      attr(button, "type", "button");
+      attr(button, "class", "w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm");
+      attr(div5, "class", "px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse");
+      attr(div6, "class", "inline-block w-fit align-bottom bg-yellow-200 rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full");
+      attr(div7, "class", "flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0");
+      attr(div8, "class", "fixed z-10 inset-0 overflow-y-auto");
+      attr(div8, "aria-labelledby", "modal-title");
+      attr(div8, "role", "dialog");
+      attr(div8, "aria-modal", "true");
     },
     m(target, anchor) {
-      insert_hydration(target, button, anchor);
-      append_hydration(button, t0);
-      append_hydration(button, t1);
-      append_hydration(button, t2);
-      append_hydration(button, t3);
-      append_hydration(button, t4);
+      insert_hydration(target, div8, anchor);
+      append_hydration(div8, div7);
+      append_hydration(div7, div0);
+      append_hydration(div7, t0);
+      append_hydration(div7, span);
+      append_hydration(span, t1);
+      append_hydration(div7, t2);
+      append_hydration(div7, div6);
+      append_hydration(div6, div4);
+      append_hydration(div4, div3);
+      append_hydration(div3, div2);
+      append_hydration(div2, h3);
+      append_hydration(h3, t3);
+      append_hydration(div2, t4);
+      append_hydration(div2, div1);
+      append_hydration(div1, p0);
+      append_hydration(p0, t5);
+      append_hydration(div1, t6);
+      append_hydration(div1, p1);
+      append_hydration(p1, t7);
+      append_hydration(div6, t8);
+      append_hydration(div6, div5);
+      append_hydration(div5, button);
+      append_hydration(button, t9);
       if (!mounted) {
         dispose = listen(button, "click", ctx[2]);
         mounted = true;
       }
     },
+    p(ctx2, dirty) {
+      if (dirty & 1)
+        set_data(t5, ctx2[0]);
+      if (dirty & 2)
+        set_data(t7, ctx2[1]);
+    },
+    d(detaching) {
+      if (detaching)
+        detach(div8);
+      mounted = false;
+      dispose();
+    }
+  };
+}
+function create_fragment$9(ctx) {
+  let if_block_anchor;
+  let if_block = ctx[0] && create_if_block$5(ctx);
+  return {
+    c() {
+      if (if_block)
+        if_block.c();
+      if_block_anchor = empty();
+    },
+    l(nodes) {
+      if (if_block)
+        if_block.l(nodes);
+      if_block_anchor = empty();
+    },
+    m(target, anchor) {
+      if (if_block)
+        if_block.m(target, anchor);
+      insert_hydration(target, if_block_anchor, anchor);
+    },
     p(ctx2, [dirty]) {
-      if (dirty & 2 && t1_value !== (t1_value = ctx2[1].length == 0 ? "ed" : ""))
-        set_data(t1, t1_value);
-      if (dirty & 2 && button_disabled_value !== (button_disabled_value = !ctx2[1])) {
-        button.disabled = button_disabled_value;
-      }
-      if (dirty & 3 && button_class_value !== (button_class_value = "flex-0 w-fit -m-3 pl-4 p-2 shadow-lg rounded-r-lg text-white font-semibold select-none " + (ctx2[0] == "saved" && ctx2[1].length > 0 ? "cursor-pointer bg-blue-500" : "cursor-not-allowed bg-gray-400"))) {
-        attr(button, "class", button_class_value);
+      if (ctx2[0]) {
+        if (if_block) {
+          if_block.p(ctx2, dirty);
+        } else {
+          if_block = create_if_block$5(ctx2);
+          if_block.c();
+          if_block.m(if_block_anchor.parentNode, if_block_anchor);
+        }
+      } else if (if_block) {
+        if_block.d(1);
+        if_block = null;
       }
     },
     i: noop,
     o: noop,
     d(detaching) {
+      if (if_block)
+        if_block.d(detaching);
+      if (detaching)
+        detach(if_block_anchor);
+    }
+  };
+}
+function instance$8($$self, $$props, $$invalidate) {
+  let { error } = $$props;
+  let { hint = "Are you connected to the network?" } = $$props;
+  const click_handler = () => $$invalidate(0, error = null);
+  $$self.$$set = ($$props2) => {
+    if ("error" in $$props2)
+      $$invalidate(0, error = $$props2.error);
+    if ("hint" in $$props2)
+      $$invalidate(1, hint = $$props2.hint);
+  };
+  return [error, hint, click_handler];
+}
+class Error$1 extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance$8, create_fragment$9, safe_not_equal, { error: 0, hint: 1 });
+  }
+}
+function create_fragment$8(ctx) {
+  let error_1;
+  let t0;
+  let button;
+  let t1;
+  let t2_value = ctx[1].length == 0 ? "ed" : "";
+  let t2;
+  let t3;
+  let t4_value = renderSize(ctx[5]()) + "";
+  let t4;
+  let t5;
+  let button_disabled_value;
+  let button_class_value;
+  let current;
+  let mounted;
+  let dispose;
+  error_1 = new Error$1({ props: { error: ctx[2] } });
+  return {
+    c() {
+      create_component(error_1.$$.fragment);
+      t0 = space();
+      button = element("button");
+      t1 = text("Publish");
+      t2 = text(t2_value);
+      t3 = text(" (");
+      t4 = text(t4_value);
+      t5 = text(")");
+      this.h();
+    },
+    l(nodes) {
+      claim_component(error_1.$$.fragment, nodes);
+      t0 = claim_space(nodes);
+      button = claim_element(nodes, "BUTTON", { class: true });
+      var button_nodes = children(button);
+      t1 = claim_text(button_nodes, "Publish");
+      t2 = claim_text(button_nodes, t2_value);
+      t3 = claim_text(button_nodes, " (");
+      t4 = claim_text(button_nodes, t4_value);
+      t5 = claim_text(button_nodes, ")");
+      button_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      button.disabled = button_disabled_value = !ctx[1] || ctx[3];
+      attr(button, "class", button_class_value = "flex-0 w-fit -m-3 pl-4 p-2 shadow-lg rounded-r-lg text-white font-semibold select-none " + (ctx[0] == "saved" && ctx[1].length > 0 && !ctx[3] ? "cursor-pointer bg-blue-500" : "cursor-not-allowed bg-gray-400"));
+    },
+    m(target, anchor) {
+      mount_component(error_1, target, anchor);
+      insert_hydration(target, t0, anchor);
+      insert_hydration(target, button, anchor);
+      append_hydration(button, t1);
+      append_hydration(button, t2);
+      append_hydration(button, t3);
+      append_hydration(button, t4);
+      append_hydration(button, t5);
+      current = true;
+      if (!mounted) {
+        dispose = listen(button, "click", ctx[4]);
+        mounted = true;
+      }
+    },
+    p(ctx2, [dirty]) {
+      const error_1_changes = {};
+      if (dirty & 4)
+        error_1_changes.error = ctx2[2];
+      error_1.$set(error_1_changes);
+      if ((!current || dirty & 2) && t2_value !== (t2_value = ctx2[1].length == 0 ? "ed" : ""))
+        set_data(t2, t2_value);
+      if (!current || dirty & 10 && button_disabled_value !== (button_disabled_value = !ctx2[1] || ctx2[3])) {
+        button.disabled = button_disabled_value;
+      }
+      if (!current || dirty & 11 && button_class_value !== (button_class_value = "flex-0 w-fit -m-3 pl-4 p-2 shadow-lg rounded-r-lg text-white font-semibold select-none " + (ctx2[0] == "saved" && ctx2[1].length > 0 && !ctx2[3] ? "cursor-pointer bg-blue-500" : "cursor-not-allowed bg-gray-400"))) {
+        attr(button, "class", button_class_value);
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(error_1.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(error_1.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(error_1, detaching);
+      if (detaching)
+        detach(t0);
       if (detaching)
         detach(button);
       mounted = false;
@@ -1996,20 +2264,23 @@ function renderSize(value) {
 }
 function instance$7($$self, $$props, $$invalidate) {
   let { state = "saved" } = $$props;
-  let { bytes } = $$props;
+  let { commits } = $$props;
   let { local = getContext("local") } = $$props;
   const ownerAddress = getContext("ownerAddress");
   const dispatch = createEventDispatcher();
   let ardag = null;
+  let error = null;
+  let publishing = false;
   onMount(async () => {
     const Buffer = await __vitePreload(() => import("./index-fcbc46b5.js").then((n) => n.i), true ? ["./index-fcbc46b5.js","./index-bfa8ea01.js"] : void 0, import.meta.url);
     window.Buffer = Buffer.Buffer;
-    const { initializeArDag } = await __vitePreload(() => import("./index-27eb8209.js"), true ? ["./index-27eb8209.js","./base32-977b94ac.js","./index-fcbc46b5.js","./index-bfa8ea01.js","./events-4b10efcd.js"] : void 0, import.meta.url);
-    const { post: bundlrPost } = await __vitePreload(() => import("./index-94fa359c.js"), true ? ["./index-94fa359c.js","./index-bfa8ea01.js","./index-812ef648.js","./index-fcbc46b5.js","./events-4b10efcd.js"] : void 0, import.meta.url);
-    const Arweave = (await __vitePreload(() => import("./index-812ef648.js").then((n) => n.i), true ? ["./index-812ef648.js","./index-bfa8ea01.js"] : void 0, import.meta.url)).default;
+    const { initializeArDag } = await __vitePreload(() => import("./index-f5af3a35.js"), true ? ["./index-f5af3a35.js","./base32-4c9972d0.js","./index-fcbc46b5.js","./index-bfa8ea01.js","./events-4b10efcd.js"] : void 0, import.meta.url);
+    const { post: bundlrPost } = await __vitePreload(() => import("./index-c3fd133b.js"), true ? ["./index-c3fd133b.js","./index-bfa8ea01.js","./index-b269a514.js","./index-fcbc46b5.js","./events-4b10efcd.js"] : void 0, import.meta.url);
+    const Arweave = (await __vitePreload(() => import("./index-b269a514.js").then((n) => n.i), true ? ["./index-b269a514.js","./index-bfa8ea01.js"] : void 0, import.meta.url)).default;
     let arweave;
     let post = null;
     if (local) {
+      let mine;
       arweave = Arweave.init({
         host: "localhost",
         port: 1984,
@@ -2017,8 +2288,12 @@ function instance$7($$self, $$props, $$invalidate) {
         timeout: 2e4,
         logging: false
       });
-      await arweave.api.get(`/mint/${ownerAddress}/1000000000000000`);
-      const mine = async () => await arweave.api.get(`/mine`);
+      try {
+        await arweave.api.get(`/mint/${ownerAddress}/1000000000000000`);
+        mine = async () => await arweave.api.get(`/mine`);
+      } catch (err) {
+        $$invalidate(2, error = err);
+      }
       const doPost = arweave.transactions.post;
       const p = doPost.bind(arweave.transactions);
       post = async (tx) => {
@@ -2031,20 +2306,22 @@ function instance$7($$self, $$props, $$invalidate) {
       post = bundlrPost;
     }
     ardag = await initializeArDag({ arweave, post });
+    console.log("ardag", ardag);
   });
   async function handlePublish(e) {
-    console.log("local?", local, { bytes });
-    if (!bytes || !bytes.length)
+    if (publishing)
       return;
-    for (let i = 0; i < bytes.length; i++) {
-      const buffer = new Uint8Array(bytes[i]);
-      console.log("saving", buffer);
-      const rootCID = await ardag.persist({ buffer, tags: [] });
-      console.log("Published rootCID", rootCID.toString());
+    $$invalidate(3, publishing = true);
+    if (!commits || !commits.length)
+      return;
+    for (let i = 0; i < commits.length; i++) {
+      const buffer = new Uint8Array(commits[i]);
+      await ardag.persist({ buffer, tags: [] });
     }
     dispatch("published", true);
+    $$invalidate(3, publishing = false);
   }
-  function maxSize(arr = bytes) {
+  function maxSize(arr = commits) {
     if (!arr || !arr.length)
       return;
     const max = arr.reduce(
@@ -2060,23 +2337,23 @@ function instance$7($$self, $$props, $$invalidate) {
   $$self.$$set = ($$props2) => {
     if ("state" in $$props2)
       $$invalidate(0, state = $$props2.state);
-    if ("bytes" in $$props2)
-      $$invalidate(1, bytes = $$props2.bytes);
+    if ("commits" in $$props2)
+      $$invalidate(1, commits = $$props2.commits);
     if ("local" in $$props2)
-      $$invalidate(4, local = $$props2.local);
+      $$invalidate(6, local = $$props2.local);
   };
   $$self.$$.update = () => {
     if ($$self.$$.dirty & 2) {
-      if (bytes && bytes.length)
+      if (commits && commits.length)
         maxSize();
     }
   };
-  return [state, bytes, handlePublish, maxSize, local];
+  return [state, commits, error, publishing, handlePublish, maxSize, local];
 }
 class Publish extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance$7, create_fragment$8, safe_not_equal, { state: 0, bytes: 1, local: 4 });
+    init(this, options, instance$7, create_fragment$8, safe_not_equal, { state: 0, commits: 1, local: 6 });
   }
 }
 function cubicOut(t) {
@@ -2120,7 +2397,7 @@ function create_if_block$4(ctx) {
     props: {
       dag: ctx[1],
       state: ctx[2],
-      bytes: ctx[3]
+      commits: ctx[3]
     }
   });
   publish.$on("published", ctx[6]);
@@ -2153,7 +2430,7 @@ function create_if_block$4(ctx) {
       if (dirty & 4)
         publish_changes.state = ctx[2];
       if (dirty & 8)
-        publish_changes.bytes = ctx[3];
+        publish_changes.commits = ctx[3];
       publish.$set(publish_changes);
     },
     i(local) {
@@ -2882,7 +3159,7 @@ function instance$5($$self, $$props, $$invalidate) {
   let handleRootCIDChange;
   let saveToBrowser;
   onMount(async () => {
-    const { createDag, createContactCard } = await __vitePreload(() => import("./lib-bbfc76ab.js"), true ? ["./lib-bbfc76ab.js","./events-4b10efcd.js","./base32-977b94ac.js","./index-fcbc46b5.js","./index-bfa8ea01.js"] : void 0, import.meta.url);
+    const { createDag, createContactCard } = await __vitePreload(() => import("./lib-612ab5b5.js"), true ? ["./lib-612ab5b5.js","./events-4b10efcd.js","./base32-4c9972d0.js","./index-fcbc46b5.js","./index-bfa8ea01.js"] : void 0, import.meta.url);
     $$invalidate(0, dag = await createDag());
     dag.on("rootCID", (val) => handleRootCIDChange());
     if (typeof localStorage !== "undefined") {
@@ -3634,7 +3911,7 @@ function create_if_block(ctx) {
     props: {
       wallet: ctx[0],
       ownerAddress: ctx[1],
-      local: true,
+      local: ctx[4],
       $$slots: { default: [create_default_slot] },
       $$scope: { ctx }
     }
@@ -3656,7 +3933,7 @@ function create_if_block(ctx) {
         appcontext_changes.wallet = ctx2[0];
       if (dirty & 2)
         appcontext_changes.ownerAddress = ctx2[1];
-      if (dirty & 524288) {
+      if (dirty & 1048576) {
         appcontext_changes.$$scope = { dirty, ctx: ctx2 };
       }
       appcontext.$set(appcontext_changes);
@@ -3681,13 +3958,13 @@ function create_default_slot_1(ctx) {
   let current;
   mount = new Mount({
     props: {
-      src: ctx[15],
-      props: ctx[16]
+      src: ctx[16],
+      props: ctx[17]
     }
   });
   mount.$on("change", function() {
-    if (is_function(ctx[17]))
-      ctx[17].apply(this, arguments);
+    if (is_function(ctx[18]))
+      ctx[18].apply(this, arguments);
   });
   return {
     c() {
@@ -3703,10 +3980,10 @@ function create_default_slot_1(ctx) {
     p(new_ctx, dirty) {
       ctx = new_ctx;
       const mount_changes = {};
-      if (dirty & 32768)
-        mount_changes.src = ctx[15];
       if (dirty & 65536)
-        mount_changes.props = ctx[16];
+        mount_changes.src = ctx[16];
+      if (dirty & 131072)
+        mount_changes.props = ctx[17];
       mount.$set(mount_changes);
     },
     i(local) {
@@ -3735,11 +4012,11 @@ function create_default_slot(ctx) {
         default: [
           create_default_slot_1,
           ({ esModule, props, handleChange }) => ({
-            15: esModule,
-            16: props,
-            17: handleChange
+            16: esModule,
+            17: props,
+            18: handleChange
           }),
-          ({ esModule, props, handleChange }) => (esModule ? 32768 : 0) | (props ? 65536 : 0) | (handleChange ? 131072 : 0)
+          ({ esModule, props, handleChange }) => (esModule ? 65536 : 0) | (props ? 131072 : 0) | (handleChange ? 262144 : 0)
         ]
       },
       $$scope: { ctx }
@@ -3774,7 +4051,7 @@ function create_default_slot(ctx) {
     },
     p(ctx2, dirty) {
       const repo_changes = {};
-      if (dirty & 753664) {
+      if (dirty & 1507328) {
         repo_changes.$$scope = { dirty, ctx: ctx2 };
       }
       repo.$set(repo_changes);
@@ -3807,16 +4084,16 @@ function create_fragment$1(ctx) {
   let if_block_anchor;
   let current;
   walletmanager = new WalletManager({});
-  walletmanager.$on("ownerAddress", ctx[5]);
-  walletmanager.$on("Ed25519PublicKey", ctx[4]);
-  walletmanager.$on("wallet", ctx[6]);
+  walletmanager.$on("ownerAddress", ctx[6]);
+  walletmanager.$on("Ed25519PublicKey", ctx[5]);
+  walletmanager.$on("wallet", ctx[7]);
   sidenav = new SideNav({
     props: {
       $$slots: {
         default: [
           create_default_slot_2,
-          ({ hideNav }) => ({ 18: hideNav }),
-          ({ hideNav }) => hideNav ? 262144 : 0
+          ({ hideNav }) => ({ 19: hideNav }),
+          ({ hideNav }) => hideNav ? 524288 : 0
         ]
       },
       $$scope: { ctx }
@@ -3869,7 +4146,7 @@ function create_fragment$1(ctx) {
     },
     p(ctx2, [dirty]) {
       const sidenav_changes = {};
-      if (dirty & 524300) {
+      if (dirty & 1048588) {
         sidenav_changes.$$scope = { dirty, ctx: ctx2 };
       }
       sidenav.$set(sidenav_changes);
@@ -3926,6 +4203,7 @@ function create_fragment$1(ctx) {
 function handleMsg() {
 }
 function instance($$self, $$props, $$invalidate) {
+  let local = false;
   let wallet;
   let ownerAddress;
   let Ed25519PublicKey;
@@ -3933,7 +4211,7 @@ function instance($$self, $$props, $$invalidate) {
   let username;
   let peers = /* @__PURE__ */ new Set();
   onMount(async () => {
-    ({ connect } = await __vitePreload(() => import("./lib-bbfc76ab.js"), true ? ["./lib-bbfc76ab.js","./events-4b10efcd.js","./base32-977b94ac.js","./index-fcbc46b5.js","./index-bfa8ea01.js"] : void 0, import.meta.url));
+    ({ connect } = await __vitePreload(() => import("./lib-612ab5b5.js"), true ? ["./lib-612ab5b5.js","./events-4b10efcd.js","./base32-4c9972d0.js","./index-fcbc46b5.js","./index-bfa8ea01.js"] : void 0, import.meta.url));
   });
   function keyConnect(e) {
     Ed25519PublicKey = e.detail;
@@ -3956,7 +4234,16 @@ function instance($$self, $$props, $$invalidate) {
     $$invalidate(3, peers = peers.delete(peer.client_id));
   }
   const handleWallet = (e) => $$invalidate(0, wallet = e.detail.wallet);
-  return [wallet, ownerAddress, username, peers, keyConnect, handleAddress, handleWallet];
+  return [
+    wallet,
+    ownerAddress,
+    username,
+    peers,
+    local,
+    keyConnect,
+    handleAddress,
+    handleWallet
+  ];
 }
 class Demo extends SvelteComponent {
   constructor(options) {
@@ -4021,4 +4308,4 @@ export {
   rfc4648 as r,
   toString as t
 };
-//# sourceMappingURL=_page-b852fbc6.js.map
+//# sourceMappingURL=_page-dd37122a.js.map
