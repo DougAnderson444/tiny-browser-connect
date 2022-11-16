@@ -6,6 +6,12 @@ const config = {
 	// Consult https://github.com/sveltejs/svelte-preprocess
 	// for more information about preprocessors
 	preprocess: preprocess({
+		autoPreprocess: {
+			replace: [
+				[/process\.env\.NODE_ENV/g, JSON.stringify(process.env.NODE_ENV)],
+				[/process\.env\.NODE_DEBUG/g, false]
+			]
+		},
 		postcss: true
 	}),
 
