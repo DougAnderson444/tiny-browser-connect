@@ -9,6 +9,7 @@
 	export let tagNode;
 	export let data;
 	export let dag;
+	export let commits = null;
 
 	let states = {
 		saving: 'saving',
@@ -18,7 +19,7 @@
 
 	let state = 'saved';
 
-	let unpublishedBuffers: Uint8Array[] = [];
+	let unpublishedBuffers: Uint8Array[] = commits ? commits : [];
 
 	onMount(async () => {
 		// set unpublishedBuffers to cache save din localStorage, if any
@@ -26,27 +27,27 @@
 		if (res) {
 			const arr = JSON.parse(res);
 			// for each element in arr, decode b64 into Uint8Array
-			unpublishedBuffers = arr.map((b64str) => b64.decode(b64str));
-		} else {
-			unpublishedBuffers = [];
+			unpublishedBuffers = [...unpublishedBuffers, ...arr.map((b64str) => b64.decode(b64str))];
+		} else if (unpublishedBuffers.length) {
+			cache(unpublishedBuffers);
 		}
-		console.log('unpublishedBuffers', unpublishedBuffers);
+		console.log({ unpublishedBuffers });
 	});
 
-	async function handleSave() {
+	async function handleSave(tagProp = 'data') {
+		console.log('Saving...', { tagProp }, { data }, { tagNode });
 		state = 'saving';
-		console.log(state, { data, tagNode });
 		if (!data || !tagNode) return;
 		const dataCid = await dag.tx.addData({ value: data });
-		tagNode.data = dataCid;
-		console.log('saving tagNode', tagNode);
+		// Data (props) save
+		tagNode[tagProp] = dataCid;
 		await dag.tx.add(tag, tagNode);
 		const buffer = await dag.tx.commit();
 		unpublishedBuffers = [...unpublishedBuffers, new Uint8Array(buffer)];
+		console.log({ unpublishedBuffers });
+
 		cache(unpublishedBuffers);
 		dag = dag; // refresh svelte UI
-		console.log('saved tagNode', dag.rootCID.toString());
-
 		state = 'saved';
 	}
 
@@ -57,8 +58,11 @@
 		// save data as props to tag
 	}
 	function handlePublished() {
+		console.log('Published! Clear caches');
 		unpublishedBuffers = [];
+		unpublishedBuffers = unpublishedBuffers;
 		clearCache();
+		console.log({ unpublishedBuffers });
 	}
 
 	function cache(buffers: Uint8Array[]) {
@@ -75,7 +79,7 @@
 	<button
 		class="relative flex-0 w-fit p-2 shadow-lg rounded-r-lg text-white font-semibold select-none
 		{state == 'saved' ? 'cursor-not-allowed bg-gray-400' : 'cursor-pointer bg-blue-500'}"
-		on:click={handleSave}
+		on:click={(e) => handleSave()}
 		disabled={!data || state == 'saved'}
 	>
 		{state == 'saving' ? 'Saving' : state == 'saved' ? 'Saved' : 'Save'}
