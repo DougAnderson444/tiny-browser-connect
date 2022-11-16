@@ -2,9 +2,10 @@
 	import { onMount, createEventDispatcher, getContext } from 'svelte';
 	import type { DagRepo } from '@douganderson444/ipld-car-txs';
 	import type { ArDag } from '@douganderson444/ardag';
+	import Error from './Error.svelte';
 
 	export let state = 'saved';
-	export let bytes: Uint8Array[] | null;
+	export let commits: Uint8Array[] | null;
 	// @ts-ignore
 	export let local = getContext('local');
 
@@ -13,8 +14,8 @@
 	const dispatch = createEventDispatcher();
 
 	let ardag: ArDag | null = null;
-	let myArDag;
-	let arweave;
+	let error: string | null = null;
+	let publishing = false;
 
 	onMount(async () => {
 		const Buffer = await import('buffer/');
@@ -25,6 +26,7 @@
 		let arweave: Arweave;
 		let post = null;
 		if (local) {
+			let mine;
 			arweave = Arweave.init({
 				host: 'localhost',
 				port: 1984,
@@ -32,8 +34,12 @@
 				timeout: 20000,
 				logging: false
 			});
-			await arweave.api.get(`/mint/${ownerAddress}/1000000000000000`);
-			const mine = async () => await arweave.api.get(`/mine`);
+			try {
+				await arweave.api.get(`/mint/${ownerAddress}/1000000000000000`);
+				mine = async () => await arweave.api.get(`/mine`);
+			} catch (err) {
+				error = err;
+			}
 			const doPost = arweave.transactions.post;
 			const p = doPost.bind(arweave.transactions);
 			post = async (tx) => {
@@ -47,35 +53,31 @@
 		}
 
 		ardag = await initializeArDag({ arweave, post });
+		console.log('ardag', ardag);
 	});
-
-	function publish(bytes: Uint8Array[]) {
-		// TODO
-		console.log('publishing', { bytes });
-	}
 
 	// Publishes the dag tag to Arweave, gives you a URL to see the compponent and data if you have access
 	async function handlePublish(e) {
-		console.log('local?', local, { bytes });
+		if (publishing) return;
+		publishing = true;
 		// pass in the dag tag, get a URL out
-		if (!bytes || !bytes.length) return;
+		if (!commits || !commits.length) return;
 
 		// loop through byte array and persist
-		for (let i = 0; i < bytes.length; i++) {
-			const buffer = new Uint8Array(bytes[i]);
-			console.log('saving', buffer);
+		for (let i = 0; i < commits.length; i++) {
+			const buffer = new Uint8Array(commits[i]);
 			const rootCID = await ardag.persist({
 				buffer,
 				tags: []
 			});
-			console.log('Published rootCID', rootCID.toString());
 		}
 		dispatch('published', true);
+		publishing = false;
 	}
 
-	$: if (bytes && bytes.length) maxSize();
+	$: if (commits && commits.length) maxSize();
 
-	function maxSize(arr: Uint8Array[] = bytes) {
+	function maxSize(arr: Uint8Array[] = commits) {
 		if (!arr || !arr.length) return;
 		const max = arr.reduce((acc, curr) => {
 			if (curr.length > acc) return curr.length;
@@ -98,12 +100,16 @@
 	}
 </script>
 
+<Error {error} />
+
 <button
-	disabled={!bytes}
+	disabled={!commits || publishing}
 	on:click={handlePublish}
 	class="flex-0 w-fit -m-3 pl-4 p-2 shadow-lg rounded-r-lg text-white font-semibold select-none
-		{state == 'saved' && bytes.length > 0
+		{state == 'saved' && commits.length > 0 && !publishing
 		? 'cursor-pointer bg-blue-500'
 		: 'cursor-not-allowed bg-gray-400'}"
-	>Publish{bytes.length == 0 ? 'ed' : ''} ({renderSize(maxSize())})</button
+	>Publish{commits.length == 0 ? 'ed' : ''} ({renderSize(maxSize())})</button
 >
+
+<!-- Link to Arweave Loader -->
