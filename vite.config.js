@@ -18,7 +18,7 @@ const config = {
 	},
 	build: {
 		commonjsOptions: {
-			include: [/node_modules/, /p2pt/, /ardag/]
+			include: [/node_modules/, /p2pcf/, /ardag/]
 		},
 		minify: false,
 		sourcemap: true,
@@ -30,7 +30,13 @@ const config = {
 		minimize: false
 	},
 	optimizeDeps: {
-		include: ['immortal-db', 'js-cookie', '@douganderson444/ardag', 'p2pcf', 'ar-gql'],
+		include: [
+			'immortal-db',
+			// 'js-cookie',
+			'@douganderson444/ardag',
+			'p2pcf',
+			'ar-gql'
+		],
 		force: true
 	}
 };
