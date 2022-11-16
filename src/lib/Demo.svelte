@@ -11,6 +11,7 @@
 	import { SideNav } from '@peerpiper/awesome-components-kit/utils';
 	import AppContext from './AppContext.svelte';
 
+	let local = process.env.NODE_ENV === 'development';
 	let wallet;
 	let ownerAddress;
 	let RSAPublicKey;
@@ -76,7 +77,7 @@
 	</SideNav>
 </div>
 {#if wallet && ownerAddress}
-	<AppContext {wallet} {ownerAddress} local={true}>
+	<AppContext {wallet} {ownerAddress} {local}>
 		<div class="flex flex-row min-h-screen h-full">
 			<div class="flex-1 w-2/3 bg-neutral-700 text-neutral-200 pt-16">
 				<Repo let:esModule let:props let:handleChange>
