@@ -1,8 +1,12 @@
 <script>
-	import { onMount } from 'svelte';
+	import { onMount, createEventDispatcher, getContext } from 'svelte';
 	import { CID } from 'multiformats/cid';
 	import Saver from './Saver.svelte';
 	import RepoMenu from './RepoMenu.svelte';
+	import Proxcryptor from './Proxcryptor.svelte';
+
+	const dispatch = createEventDispatcher();
+	const wallet = getContext('wallet');
 
 	let dag;
 	let roots = [];
@@ -32,6 +36,8 @@
 			}
 		}
 
+		if (dag?.rootCID) dispatch('rootCID', dag.rootCID.toString());
+
 		handleRootCIDChange = async () => {
 			if (!dag.rootCID) return;
 			const cid = CID.asCID(dag.rootCID) || CID.parse(dag.rootCID);
@@ -43,16 +49,29 @@
 			// save rootCID to the browser if poss
 			if (saveToBrowser) saveToBrowser('ROOT_CID', cid.toString());
 
+			// also save rootCID to ipns
+			try {
+				await wallet.ipns.update({ value: cid.toString() });
+			} catch (error) {
+				console.log('ipns update error', error);
+			}
+
 			roots = [...roots, cid.toString()];
+			dispatch('rootCID', cid.toString());
 		};
 	});
 </script>
 
 <section class="w-full">
 	<RepoMenu {dag} let:esModule let:props let:selectedTag let:commits let:tagNode>
-		<Saver let:handleChange tag={selectedTag} {dag} {tagNode} {commits}>
-			<slot {handleChange} {esModule} {props} />
-		</Saver>
+		<!-- Check if props is a JWE, if so, decrypt it first -->
+		<!-- 	ENCRYPT data coming out of Mount > Repo > Saver
+				DECRYPT it coming out of RepoMenu > Repo > Mount  -->
+		<Proxcryptor {props} let:props on:props={handleChange} proxcryptor={wallet.proxcryptor}>
+			<Saver let:handleChange tag={selectedTag} {dag} {tagNode} {commits}>
+				<slot {handleChange} {esModule} {props} />
+			</Saver>
+		</Proxcryptor>
 	</RepoMenu>
 
 	{#if roots}
