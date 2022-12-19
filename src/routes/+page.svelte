@@ -3,4 +3,4 @@
 </script>
 
 <!-- <App /> -->
-<Demo />
+<Demo local={true} />

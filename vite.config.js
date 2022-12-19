@@ -13,7 +13,6 @@ const config = {
 		}
 	},
 	define: {
-		global: {},
 		'process.env': { NODE_DEBUG: false }
 	},
 	build: {
@@ -36,8 +35,15 @@ const config = {
 			'@douganderson444/ardag',
 			'p2pcf',
 			'ar-gql'
+			// '@peerpiper/did-ar'
 		],
-		force: true
+		force: true,
+		esbuildOptions: {
+			define: {
+				global: 'globalThis',
+				'globalThis.process.env.NODE_ENV': 'production'
+			}
+		}
 	}
 };
 

@@ -6,6 +6,8 @@
 	import { onMount } from 'svelte';
 	import contactCard from './Apps/ContactCard.svelte.js?raw';
 	import { CID } from 'multiformats/cid';
+	import DropDown from './DropDown.svelte';
+	import TagNode from './TagNode.svelte';
 
 	export let dag;
 
@@ -89,28 +91,20 @@
 	}
 </script>
 
-<section
-	class="flex flex-row rounded items-center justify-between bg-neutral-600 sm:w-1/2 m-4 max-w-full flex-wrap"
->
+<DropDown>
+	<div class="p-0" slot="title">{selectedTag}</div>
+	<DropDown containerStyle={'bg-blue-200 text-black'}>
+		<div slot="title" class="p-2 w-fit my-1">+ Add New App</div>
+		<TagNode />
+	</DropDown>
 	{#if rootObj}
-		<ul class="flex-1 m-1 w-full list-none">
-			{#each Object.keys(rootObj) as tag}
-				<li
-					class="w-full  p-4 cursor-pointer user-select-none"
-					on:click={(e) => (selectedTag = tag)}
-				>
-					{tag}
-				</li>
-			{/each}
-		</ul>
+		{#each Object.keys(rootObj) as tag}
+			<li class="w-full p-4 cursor-pointer user-select-none" on:click={(e) => (selectedTag = tag)}>
+				{tag}
+			</li>
+		{/each}
 	{/if}
-
-	<div class=" flex-0 m-4 h-8 w-8 items-center text-center">
-		<svg class="arrow h-full w-full" viewBox="0 0 20 20">
-			<path d="M7 10l5 5 5-5z" fill="currentColor" />
-		</svg>
-	</div>
-</section>
+</DropDown>
 
 {#if esModule}
 	<slot {props} {esModule} {selectedTag} {commits} {tagNode} />

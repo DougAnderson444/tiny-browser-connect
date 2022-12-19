@@ -11,6 +11,8 @@
 	export let dag;
 	export let commits = null;
 
+	let encrypt = true;
+
 	let states = {
 		saving: 'saving',
 		saved: 'saved',
@@ -95,5 +97,10 @@
 			<Publish {dag} {state} commits={unpublishedBuffers} on:published={handlePublished} />
 		</div>
 	{/if}
+</div>
+
+<div class="m-2">
+	<input type="checkbox" bind:checked={encrypt} />
+	<label for="encrypted">Encrypt</label>
 </div>
 <slot {handleChange} />
